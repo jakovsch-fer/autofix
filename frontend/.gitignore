@@ -78,8 +78,75 @@ web_modules/
 .next
 out
 
-# Stores VSCode versions used for testing VSCode extensions
+# Nuxt.js build / generate output
+.nuxt
+dist
+.output
+
+# NitroJS
+.nitro/
+
+# Gatsby files
+.cache/
+# Comment in the public line in if your project uses Gatsby and not Next.js
+# https://nextjs.org/blog/next-9-1#public-directory-support
+# public
+
+# vuepress build output
+.vuepress/dist
+
+# vuepress v2.x temp directory
+.temp
+
+# Sveltekit cache directory
+.svelte-kit/
+
+# vitepress build output
+**/.vitepress/dist
+
+# vitepress cache directory
+**/.vitepress/cache
+
+# Docusaurus cache and generated files
+.docusaurus
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# Firebase cache directory
+.firebase/
+
+# TernJS port file
+.tern-port
+
+# Stores Visual Studio Code versions used for testing Visual Studio Code extensions
 .vscode-test
 
 # pnpm
 .pnpm-store
+
+# yarn v3
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Vite files
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+.vite/
+
+# Astro generated types
+.astro/
+
+# Turbo Repo
+.turbo
