@@ -3,7 +3,9 @@
 Web platforma za upravljanje servisiranjem vozila koja povezuje vlasnike vozila, servisere i voditelje autoservisa.
 
 **Projekt na kolegiju:** Ovu je aplikaciju razvio studentski tim u sklopu kolegija [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz) na Fakultetu elektrotehnike i računarstva Sveučilišta u Zagrebu (FER).
-**Tim**: L-A-4.3 (Autofix)
+
+**Tim**: G04.3 (Autofix)
+
 **Tema**: [G04 (AutoServis)](https://www.fer.unizg.hr/_download/repository/G04%20-%20EJ1%20-%20AutoServis.pdf)
 
 ## Opis aplikacije

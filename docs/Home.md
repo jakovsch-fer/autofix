@@ -1,30 +1,26 @@
-# [Naziv aplikacije] — Projektna dokumentacija
+# Autofix - Projektna dokumentacija
 
-**Kolegij:** [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz), Fakultet elektrotehnike i računarstva Sveučilišta u Zagrebu  
-**Akademska godina:** [20XX./20XX.]  
-**Tim:** [Oznaka i naziv tima]  
-**Nastavnik:** Vlado Sruk  
-**Asistent / demonstrator:** [Ime i uloga u ovom izvođenju kolegija]
+**Kolegij:** [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz), Fakultet elektrotehnike i računarstva Sveučilišta u Zagrebu
+
+**Akademska godina:** 2026./2027.
+
+**Tim:** G04.3 (Autofix)
+
+**Nastavnik:** Vlado Sruk
+
+**Asistent / demonstrator:** Eda Jovičić, Karla Sikavica
 
 ## Pregled projekta
 
-**Cilj:** Omogućiti čitatelju koji prvi put vidi projekt da u dvije ili tri rečenice prepozna aplikaciju, njezine ciljane korisnike i glavnu svrhu.
-
 [Opis projekta.]
 
-<details>
-<summary><strong>Sažet pregled projekta</strong></summary>
+**Osnovno postavljanje:** [README repozitorija](../README.md#quick-start)
 
-Za projekt na temu CrisisMap sažet pregled može navesti građane kojima trebaju informacije o kriznim događajima povezane s njihovom lokacijom te cilj aplikacije da prijave kriznih događaja prikaže na karti. Funkcionalnost spomenite samo ako pripada odobrenom zadatku tima; bez dokaza nemojte tvrditi da aplikacija poboljšava odgovor hitnih službi. Ovo je primjer informativnog pregleda, a ne tekst za prepisivanje niti dokaz da je funkcionalnost ostvarena.
-
-</details>
-
-**Aplikacija i osnovno postavljanje:** [README repozitorija](../README_PREDLOZAK.md#quick-start)  
-**Javno dostupna aplikacija:** pogledajte [README – Postavljanje](../README_PREDLOZAK.md#deployment)
+**Javno dostupna aplikacija:** [README repozitorija](../README.md#deployment)
 
 ## Članovi tima i uloge
 
-Ažurirani popis članova, njihovih GitHub profila i glavnih uloga ili doprinosa nalazi se u [README-u repozitoriju](../README_PREDLOZAK.md#team-members).
+Ažurirani popis članova, njihovih GitHub profila i glavnih uloga ili doprinosa nalazi se u [README-u repozitorija](../README.md#team-members).
 
 ## Kazalo dokumentacije
 
@@ -33,8 +29,8 @@ Ažurirani popis članova, njihovih GitHub profila i glavnih uloga ili doprinosa
 | [1. Opseg projekta](1-Projekt.md) | Problem, cilj i granice projekta |
 | [2. Analiza zahtjeva](2-Analiza-zahtjeva.md) | Zahtjevi, ograničenja i sljedivost |
 | [3. Obrasci uporabe](3-Obrasci-uporabe.md) | Akteri i reprezentativne interakcije korisnika |
-| [4. Arhitektura i oblikovanje](4-Arhitektura-i-oblikovanje.md) | Glavne odluke oblikovanja, struktura, podaci i ponašanje |
-| [5. Ispitivanje](5-Ispitivanje.md) | Pristup ispitivanju, stvarni rezultati i poznati nedostaci |
+| [4. Arhitektura i oblikovanje](4-Arhitektura-i-oblikovanje.md) | Glavne odluke oblikovanja, struktura, podatci i ponašanje |
+| [5. Ispitivanje](5-Ispitivanje.md) | Pristup ispitivanju, stvarni rezultati i poznati nedostatci |
 | [6. Postavljanje, instalacija i konfiguracija](6-Postavljanje-instalacija-i-konfiguracija.md) | Lokalna instalacija, konfiguracija, javno postavljanje i administracija |
 | [7. Zaključak i budući rad](7-Zakljucak-i-buduci-rad.md) | Zaključak i moguća daljnja poboljšanja |
 | [A. Pregled aktivnosti grupe](A-Pregled-aktivnosti-grupe.md) | Aktivnosti tima, doprinosi i izazovi |
@@ -46,44 +42,59 @@ Ažurirani popis članova, njihovih GitHub profila i glavnih uloga ili doprinosa
 | Iteracija 1 | [Poveznica na demonstraciju ili inačicu projekta] | [Poveznica na video Demo 1, ako je snimljen] |
 | Završni pregled | [Poveznica na završnu inačicu projekta] | [Poveznica na video završne demonstracije, ako je snimljen] |
 
-Dokumentacija se kontinuirano ažurira kako se aplikacija razvija.
-
 ## Organizacija projekta i razvojni proces
 
-**Način rada:** [Stvarni način rada i trajanje iteracije, ako je relevantno.]  
-**Praćenje trenutačnih zadataka i nedostataka:** [Poveznica na GitHub Issues ili stvarno korištenu ploču zadataka.]
+### Praćenje zadataka i nedostataka
 
-<details>
-<summary><strong>Opis načina rada tima</strong></summary>
+Odvija se na [ploči](https://github.com/jakovsch-fer/autofix/projects), radne stavke su:
 
-**Primjer — CrisisMap:**
+- Sprintovi, po jedan za svaki ciklus i unaprijed su označeni [milestoneovima](https://github.com/jakovsch-fer/autofix/milestones) zajedno s rokovima
+- Korisničke priče, samostalne funkcionalnosti koje ostvaruju neki zahtjev, koriste se kao jedinica planiranja posla za sprint i označeni su issueovima
+- Zadatci/nedostatci, koriste se za dodatnu podjelu paralelnog posla u priči ako je potrebno (npr. frontend i backend dio) ili nepredviđeni posao (npr. dojava naknadno otkrivene greške), označeni su [pod-issueovima](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues) ili su odvojeni od priča (nije fiksno), npr. dokumentacija
 
-Navedite pristup koji tim stvarno koristi. Tim koji razvija CrisisMap može organizirati prijave, rad na karti i provjere kao GitHub Issues, jednom tjedno raspraviti prioritete i iznad postaviti poveznicu na svoju aktivnu ploču zadataka. Takav je konkretan opis procesa informativniji od tvrdnje da tim koristi „Scrum” ako zapravo ne primjenjuje njegove prakse. Stvarni tim treba navesti vlastiti ritam rada i odgovornosti; dokumentacija ne treba duplicirati ploču zadataka. Primjer opisuje mogući tijek rada (engl. workflow), a ne tvrdi da je objavljeni tim CrisisMapa radio upravo tako.
+Radne stavke se:
 
-</details>
+- Treba ručno micati po ploči ovisno o stanju (To Do, In Progress, Done), pod-issueovi automatski prate stanje roditelja
+- Može [označiti](https://github.com/jakovsch-fer/autofix/labels) po vrsti zadatka, ali nije nužno
+- Treba opisati ako naslov i oznake nisu dovoljni
+- Može dodijeliti (assign) sebi i/ili kolegi dok je na čekanju, ali nije nužno
+- Treba dodijeliti sebi dok je posao u tijeku tj. kad ste preuzeli posao
+
+### Planiranje sprintova
+
+Unaprijed se otvaraju priče i svaku se dodaje u sprint tako da se dodijeli ploči i odg. milestoneu.
+Sve što nije vezano za sprint također treba biti dodano na ploču, ali ne mora biti dodijeljeno milestoneu.
+Zadatci se mogu otvarati tek kad se otkrije potreba ili mogućnost, ali bolje unaprijed ako je poznato (i značajno).
+Zadatci koji su vezani za priču otvaraju se kao pod-issue.
+
+### Razvojni proces (strategija grananja, rad u repozitoriju)
+
+Rad na zadatcima (pojedine priče ili samostalnim) prati se u zasebnoj kratkotrajnoj grani (grana značajke, feature branch), to uključuje novu funkcionalnost, preinake ili ispravke greški i dokumentaciju.
+Ona u pravilu ima jednog autora (nositelja zadatka, assignee) koji u nju dodaje commitove.
+Opseg i cilj promjena grane treba biti jasan kako bi se što brže mogla integrirati u glavnu granu (`main`) što smanjuje potencijal za nastanak međuovisnosti grana i konflikata (merge conflict) i time olakšava istovremeni rad na više zadataka. Isto vrijedi i za lokalno stanje kod autora, promjene (commitove) treba prenositi (push) rano i često umjesto sve odjednom kako bi posao bio vidljiv svima.
+Nositelj zato treba unaprijed procijeniti kojih se sve zadataka tiče nova grana i uz nju otvoriti zahtjev za uključivanje (pull request) u čijem opisu mogu biti poveznice na obuhvaćene zadatke zajedno s ključnom riječi radi automatizacije, npr. `closes #123`.
+Kad nositelj smatra da je posao dovršen treba zatražiti pregled (code review) barem jednog člana ostatka tima, manjim dijelom zbog provjere kvalitete koda a više radi komuniciranja promjena bitnih za druge dijelove sustava i za otvaranje rasprave.
+Odobrenjem pregleda i zatvaranjem pull requesta grana se spaja i ne bi se trebala dalje koristiti u novim ili ponovno otvorenim pull requestovima.
+
+Glavna grana `main` prati zajedničko (dogovoreno, kanonsko) stanje projekta, u nju se ne commita izravno, nego prima promjene svakim zatvorenim pull requestom tj. spajanjem kratkotrajnih grana, osim za iznimke kao početno postavljanje repozitorija, metapodataka, konfiguracije alata, Actions cjevovoda i sl.
+Nastoji se da sadržaj grane bude spreman za pokretanje (demonstrabilan), ali ne nužno (to postaje tek na kraju sprinta tj. za predaju), prvenstveno je temelj za (istovremeni) rad na novim zadatcima tijekom razvoja.
+U tome pomažu i cjevovodi za kontinuiranu integraciju (CI, izgradnja i pokretanje testova) i kontinuiranu isporuku (CD, postavljanje ogledne inačice) koji se automatski pokreću u životnom ciklusu pull requestova.
+Automatsko postavljanje konačne javne inačice također koristi glavnu granu, ali se okida na drugi način, npr. ručno ili stvaranjem oznake verzije (Git tag).
+
+**Ne koristi se:** dugotrajna razvojna grana (`develop`), zasebna grana za dokumentaciju (`devdoc`)
+**Resursi:** [Projekt/Git](https://www.fer.unizg.hr/predmet/proinz/projekt/git), [Git u timskom razvoju](https://moodle.fer.hr/pluginfile.php/141989/mod_resource/content/10/PROINZ_26_Git.pdf)
 
 ## Pravila dokumentacije
 
-Dokumentacija se sastoji od međusobno povezanih Markdown stranica. Obavezni UML dijagrami izrađuju se u PlantUML-u, uz PlantUML izvor u dokumentaciji sačuvajte i čitljivu sliku. Primjeri u ovom predlošku kolegija pokazuju kako nešto dokumentirati; nisu dio rezultata studentskog projekta.
-
-<details>
-<summary><strong>Izvori dijagrama i nastavni primjeri</strong></summary>
-
-Nastavni primjeri pretpostavljaju React/Vite klijentski dio, Node.js poslužiteljski dio, PostgreSQL, smještaj aplikacije na Renderu i Selenium WebDriver (JavaScript). Vaš tehnološki skup može biti drukčiji; u dokumentaciji opišite ono što stvarno koristite.
-
-Za obrazac uporabe podnošenja prijave kriznog događaja u CrisisMapu tim može čuvati UML izvor u `.puml` datoteci, prikazati odgovarajuću sliku na relevantnoj stranici dokumentacije te ažurirati oboje kada se interakcija promijeni. Koristite stvarni dijagram i stvarno postavljanje vlastitog projekta. Domena ili tehnologija prikazana u primjeru ne postaje zahtjev osim ako je dio odobrenog zadatka.
-
->Napomena o primjerima: Blokovi „Primjer — CrisisMap" nastavni su scenarij, a ne rezultat ičijeg projekta; ne prepisujte ih. U primjerima se koriste React, Node.js, PostgreSQL, Render i Selenium samo radi dosljednosti. Vaš stog može biti drukčiji (npr. Java/Spring); dokumentirajte ono što stvarno koristite.</details>
+Dokumentacija se sastoji od međusobno povezanih Markdown stranica. Obavezni UML dijagrami izrađuju se u PlantUML-u, uz PlantUML izvor u dokumentaciji sačuvajte i čitljivu sliku.
 
 ## Akademski integritet, ponašanje i licenciranje
 
-README repozitorija sadrži projektnu [izjavu o uporabi umjetne inteligencije](../README_PREDLOZAK.md#ai-usage), [informacije o kodeksu ponašanja i podršci](../README_PREDLOZAK.md#code-of-conduct-and-support) te [status licence ili ponovne uporabe](../README_PREDLOZAK.md#license). Pristupni podaci i druge tajne nikada se ne objavljuju u dokumentaciji niti dijele u običnim porukama.
+README repozitorija sadrži [izjavu o uporabi umjetne inteligencije](../README.md#ai-usage), [informacije o kodeksu ponašanja i podršci](../README.md#code-of-conduct-and-support) te [informacije o licenci](../README.md#license). Pristupni podatci i druge tajne nikada se ne objavljuju u dokumentaciji niti dijele u običnim porukama.
 
 ## Izjava o uporabi umjetne inteligencije
 
-<!-- UPUTA: Ovo je detaljan zapis uporabe umjetne inteligencije; README sadrži kratak sažetak i poveznicu na ovaj odjeljak. Unesite samo ono što se stvarno dogodilo i uklonite neupotrijebljene retke. Ako nije korišten nijedan alat generativne umjetne inteligencije, zamijenite cijeli odjeljak jednom rečenicom koja to jasno navodi. Svaki redak mora upućivati na stranicu, datoteku, zahtjev za uključivanje promjena (PR) ili zadatak. Nikada ne unosite pristupne podatke, osobne podatke ni tuđi zaštićeni sadržaj u alate umjetne inteligencije. -->
-
-Kratak sažetak: [README – Uporaba umjetne inteligencije](../README_PREDLOZAK.md#ai-usage). Ovaj odjeljak bilježi koji su alati korišteni, za koju dokumentaciju ili kod te kako je tim provjerio rezultat. Slijedi FER-ova [pravila o primjerenoj uporabi umjetne inteligencije](https://www.fer.unizg.hr/_download/repository/Policy%20on%20the%20appropriate%20use%20of%20artificial%20intelligence%20at%20the%20faculty%20of%20electrical%20engineering%20and%20computing%5B1%5D.pdf).
+Ovaj odjeljak bilježi koji su alati korišteni, za koju dokumentaciju ili kod te kako je tim provjerio rezultat. Slijedi FER-ova [pravila o primjerenoj uporabi umjetne inteligencije](https://www.fer.unizg.hr/_download/repository/Policy%20on%20the%20appropriate%20use%20of%20artificial%20intelligence%20at%20the%20faculty%20of%20electrical%20engineering%20and%20computing%5B1%5D.pdf).
 
 ### Korišteni alati
 
@@ -114,8 +125,6 @@ Stranice i artefakti koji nisu navedeni iznad izrađeni su bez pomoći generativ
 | Problem | Kako je pronađen | Rješenje |
 | --- | --- | --- |
 | [Netočna, izmišljena ili iz predloška preuzeta tvrdnja] | [Pregled, ispitivanje ili usporedba s aplikacijom] | [Ispravak s poveznicom] |
-
-<!-- UPUTA: Zabilježite stvarne ispravke ili napišite „Nisu utvrđene”. Općenita tvrdnja poput „sav tekst je pregledan” nije dokaz; dokaz su prethodne tablice. Tim mora moći objasniti svaku rečenicu koju objavi. -->
 
 <details>
 <summary><strong>Primjer zapisa uporabe umjetne inteligencije</strong></summary>
