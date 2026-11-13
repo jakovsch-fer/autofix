@@ -1,0 +1,34 @@
+CREATE TABLE klijent (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    ime VARCHAR(100) NOT NULL,
+	prezime VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password_hash TEXT NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE radnici (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    ime VARCHAR(100) NOT NULL,
+	prezime VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password_hash TEXT NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE voditelj (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    ime VARCHAR(100) NOT NULL,
+	prezime VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password_hash TEXT NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE radnik_klijent (
+	id_klijent BIGINT REFERENCES klijent(id),
+	id_radnik BIGINT REFERENCES radnici(id),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+	PRIMARY KEY(id_klijent, id_radnik)
+);
+
