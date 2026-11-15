@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<title>AutoServis - Registracija</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>AutoServis</h1>
+<h2>Registracija</h2>
+<form onsubmit="return registriraj(event)">
+Ime i prezime:<br>
+<input type="text" name="ime" required><br><br>
+Uloga:<br>
+<select name="uloga">
+<option value="vlasnik">Vlasnik vozila</option>
+<option value="serviser">Serviser</option>
+<option value="voditelj">Voditelj autoservisa</option>
+</select><br><br>
+Autoservis (serviser i voditelj):<br>
+<input type="text" name="autoservis"><br><br>
+<input type="submit" value="Registriraj se">
+</form>
+<script src="js/mock.js"></script>
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script>
+async function provjeri() {
+  try {
+    const ja = await api("GET", "/me");
+    if (ja.uloga) location.href = POCETNE[ja.uloga];
+  } catch (e) {
+    location.href = "index.html";
+  }
+}
+
+async function registriraj(e) {
+  e.preventDefault();
+  const f = e.target;
+  try {
+    const ja = await api("POST", "/registracija", { ime: f.ime.value, uloga: f.uloga.value, autoservis: f.autoservis.value });
+    location.href = POCETNE[ja.uloga];
+  } catch (greska) {
+    alert(greska.message);
+  }
+  return false;
+}
+
+provjeri();
+</script>
+</body>
+</html>

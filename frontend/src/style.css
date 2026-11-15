@@ -1,0 +1,22 @@
+body { max-width: 900px; margin: 0 auto; padding: 10px; }
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid #999; padding: 6px; text-align: left; }
+textarea { width: 350px; }
+
+.koraci { display: flex; list-style: none; padding: 0; margin: 25px 0; counter-reset: k; }
+.koraci li { flex: 1; text-align: center; position: relative; color: #888; font-size: 14px; }
+.koraci li::before { counter-increment: k; content: counter(k); display: block; width: 30px; height: 30px; line-height: 30px; margin: 0 auto 5px; border-radius: 50%; background: #ccc; color: white; position: relative; z-index: 1; }
+.koraci li::after { content: ""; position: absolute; top: 15px; left: -50%; width: 100%; height: 3px; background: #ccc; }
+.koraci li:first-child::after { display: none; }
+.koraci li.gotovo { color: black; }
+.koraci li.gotovo::before, .koraci li.gotovo::after, .koraci li.sad::after { background: #2a9d5c; }
+.koraci li.sad { color: black; font-weight: bold; }
+.koraci li.sad::before { background: #2a72c9; }
+.koraci small { font-weight: normal; color: #666; }
+
+.poruke { border: 1px solid #999; padding: 8px; margin: 10px 0; }
+
+fieldset { margin: 12px 0; }
+
+details { border: 1px solid #999; padding: 8px; margin: 10px 0; }
+summary { font-weight: bold; cursor: pointer; }

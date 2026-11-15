@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<title>AutoServis - Raspored i dodjela servisera</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>AutoServis</h1>
+<div id="nav"></div>
+<hr>
+<h2>Raspored i dodjela servisera</h2>
+<p>Svakom zahtjevu dodijelite servisera i termin, pa spremite.</p>
+<div id="popis">Učitavanje...</div>
+<script src="js/mock.js"></script>
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script>
+let serviseri = [];
+
+function opcije(lista, odabrano) {
+  return lista.map((o) => '<option value="' + o[0] + '"' + (String(o[0]) === String(odabrano) ? " selected" : "") + ">" + esc(o[1]) + "</option>").join("");
+}
+
+async function ucitaj() {
+  serviseri = await api("GET", "/serviseri");
+  const lista = await api("GET", "/zahtjevi");
+  lista.sort((a, b) => a.termin.localeCompare(b.termin));
+  if (!lista.length) {
+    $("popis").innerHTML = "<p>Nema zahtjeva.</p>";
+    return;
+  }
+  const statusi = Object.keys(STATUSI).map((k) => [k, STATUSI[k]]);
+  const radnici = [["", "- nije dodijeljen -"]].concat(serviseri.map((s) => [s.id, s.ime]));
+  let h = '<form onsubmit="return spremi(event)"><table><tr><th>Vozilo</th><th>Vrsta</th><th>Termin</th><th>Status</th><th>Serviser</th></tr>';
+  lista.forEach((z) => {
+    h += "<tr><td>" + esc(z.vozilo.naziv) + " (" + esc(z.vozilo.oznaka) + ")</td><td>" + esc(z.vrsta) + "</td>";
+    h += '<td><input type="datetime-local" id="t-' + z.id + '" value="' + esc(z.termin) + '"></td>';
+    h += '<td><select id="s-' + z.id + '">' + opcije(statusi, z.status) + "</select></td>";
+    h += '<td><select id="p-' + z.id + '">' + opcije(radnici, z.serviser ? z.serviser.id : "") + "</select></td></tr>";
+  });
+  h += '</table><br><input type="submit" value="Spremi promjene"></form>';
+  $("popis").innerHTML = h;
+  window.zahtjeviIds = lista.map((z) => z.id);
+}
+
+async function spremi(e) {
+  e.preventDefault();
+  try {
+    for (const id of window.zahtjeviIds) {
+      const serviser = $("p-" + id).value;
+      await api("PATCH", "/zahtjevi/" + id, { termin: $("t-" + id).value, status: $("s-" + id).value, serviser_id: serviser === "" ? null : Number(serviser) });
+    }
+    alert("Promjene su spremljene.");
+    await ucitaj();
+  } catch (greska) {
+    alert(greska.message);
+  }
+  return false;
+}
+
+pocni("voditelj");
+</script>
+</body>
+</html>

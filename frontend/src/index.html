@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<title>AutoServis - Prijava</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>AutoServis</h1>
+<h2>Prijava</h2>
+<div id="sadrzaj">Učitavanje...</div>
+<script src="js/mock.js"></script>
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script>
+async function provjeri() {
+  try {
+    const ja = await api("GET", "/me");
+    location.href = ja.uloga ? POCETNE[ja.uloga] : "registracija.html";
+    return;
+  } catch (e) {}
+  if (CONFIG.USE_MOCK) {
+    $("sadrzaj").innerHTML = '<p>Mock način (bez backenda). Prijavi se kao:</p>' +
+      '<p><input type="button" value="Vlasnik vozila" onclick="prijava(1)"> ' +
+      '<input type="button" value="Serviser" onclick="prijava(2)"> ' +
+      '<input type="button" value="Voditelj" onclick="prijava(4)"> ' +
+      '<input type="button" value="Nova registracija" onclick="prijavaNovi()"></p>' +
+      '<p><a href="#" onclick="resetirajMock(); return false;">Resetiraj mock podatke</a></p>';
+  } else {
+    $("sadrzaj").innerHTML = '<p><a href="' + CONFIG.API_BASE + '/auth/login"><input type="button" value="Prijava putem OAuth 2.0"></a></p>';
+  }
+}
+
+async function prijava(id) {
+  try {
+    const ja = await api("POST", "/mock-login", { id: id });
+    location.href = POCETNE[ja.uloga];
+  } catch (e) {
+    alert(e.message);
+  }
+}
+
+async function prijavaNovi() {
+  await api("POST", "/mock-login", { novi: true });
+  location.href = "registracija.html";
+}
+
+provjeri();
+</script>
+</body>
+</html>

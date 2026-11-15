@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<title>AutoServis - Moji zahtjevi</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>AutoServis</h1>
+<div id="nav"></div>
+<hr>
+<h2>Moji zahtjevi</h2>
+<div id="popis">Učitavanje...</div>
+<script src="js/mock.js"></script>
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script>
+function opcijeStatusa(trenutni) {
+  return ["potvrdeno", "zaprimljeno", "u_tijeku", "zavrseno"].map((s) => '<option value="' + s + '"' + (s === trenutni ? " selected" : "") + ">" + STATUSI[s] + "</option>").join("");
+}
+
+function blok(z, otvoren) {
+  const gotov = z.status === "zavrseno" || z.status === "otkazano";
+  let h = '<details data-id="' + z.id + '"' + (otvoren ? " open" : "") + "><summary>" + esc(z.vrsta) + " - " + esc(z.vozilo.naziv) + " (" + esc(z.vozilo.oznaka) + ") | " + esc(z.vlasnik) + " | " + termin(z.termin) + " | " + STATUSI[z.status] + "</summary>";
+  h += traka(z.status, z.ponuda && z.ponuda.odluka === null ? "ponuda poslana" : "");
+  h += radoviHtml(z);
+  if (z.ponuda) {
+    h += "<p><b>Ponuda:</b> " + esc(z.ponuda.opis) + ", " + eur(z.ponuda.trosak) + " (" + (z.ponuda.odluka ? ODLUKE[z.ponuda.odluka] : "čeka odluku vlasnika") + ")</p>";
+  }
+  if (z.status === "zavrseno") h += "<p><b>Konačni trošak:</b> " + eur(z.trosak) + "</p>";
+  if (!gotov) {
+    h += '<fieldset><legend>Status</legend><form onsubmit="return postaviStatus(event, ' + z.id + ')"><select name="status">' + opcijeStatusa(z.status) + '</select> <input type="submit" value="Spremi status"></form></fieldset>';
+    h += '<fieldset><legend>Evidencija rada</legend><form onsubmit="return dodajRad(event, ' + z.id + ')">Opis rada:<br><input type="text" name="opis" required><br>Ugrađeni dio:<br><input type="text" name="dio"><br>Utrošeno vrijeme (min):<br><input type="number" name="minute" required><br><br><input type="submit" value="Dodaj rad"></form></fieldset>';
+    h += '<fieldset><legend>Ponuda za dodatne radove</legend><form onsubmit="return posaljiPonudu(event, ' + z.id + ')">Opis radova:<br><input type="text" name="opis" required><br>Procijenjeni trošak (€):<br><input type="number" name="trosak" step="0.01" required><br><br><input type="submit" value="Pošalji ponudu"></form></fieldset>';
+  }
+  h += "<fieldset><legend>Poruke vlasniku</legend>" + porukeHtml(z) + "</fieldset>";
+  if (!gotov) {
+    h += '<fieldset><legend>Završetak servisa</legend><form onsubmit="return zavrsi(event, ' + z.id + ')">Konačni trošak (€):<br><input type="number" name="trosak" step="0.01" required><br><br><input type="submit" value="Završi servis"></form></fieldset>';
+  }
+  return h + "</details>";
+}
+
+async function ucitaj() {
+  const otvoreni = Array.from(document.querySelectorAll("details[open]")).map((d) => d.dataset.id);
+  const lista = await api("GET", "/zahtjevi");
+  lista.sort((a, b) => b.termin.localeCompare(a.termin));
+  $("popis").innerHTML = lista.length ? lista.map((z) => blok(z, otvoreni.indexOf(String(z.id)) >= 0)).join("") : "<p>Nema dodijeljenih zahtjeva.</p>";
+}
+
+function postaviStatus(e, id) {
+  e.preventDefault();
+  const status = e.target.status.value;
+  izvedi(() => api("POST", "/zahtjevi/" + id + "/status", { status: status }));
+  return false;
+}
+
+function dodajRad(e, id) {
+  e.preventDefault();
+  const f = e.target;
+  const rad = { opis: f.opis.value, dio: f.dio.value, minute: Number(f.minute.value) };
+  izvedi(() => api("POST", "/zahtjevi/" + id + "/radovi", rad));
+  return false;
+}
+
+function posaljiPonudu(e, id) {
+  e.preventDefault();
+  const f = e.target;
+  const ponuda = { opis: f.opis.value, trosak: Number(f.trosak.value) };
+  izvedi(() => api("POST", "/zahtjevi/" + id + "/ponuda", ponuda));
+  return false;
+}
+
+function zavrsi(e, id) {
+  e.preventDefault();
+  const trosak = Number(e.target.trosak.value);
+  izvedi(() => api("POST", "/zahtjevi/" + id + "/zavrsi", { trosak: trosak }));
+  return false;
+}
+
+pocni("serviser");
+</script>
+</body>
+</html>

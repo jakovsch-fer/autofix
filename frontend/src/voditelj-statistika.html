@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<title>AutoServis - Povijest i statistika</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>AutoServis</h1>
+<div id="nav"></div>
+<hr>
+<h2>Povijest i statistika</h2>
+<div id="popis">Učitavanje...</div>
+<script src="js/mock.js"></script>
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script>
+async function ucitaj() {
+  try {
+    const s = await api("GET", "/statistika");
+    let h = "<p>Servisa: <b>" + s.broj_servisa + "</b> | Prosječno trajanje: <b>" + s.prosjecno_trajanje_min + " min</b> | Ukupno: <b>" + eur(s.ukupna_vrijednost) + "</b></p>";
+    h += "<table><tr><th>Vrsta servisa</th><th>Broj</th></tr>";
+    Object.keys(s.po_vrsti).forEach((k) => {
+      h += "<tr><td>" + esc(k) + "</td><td>" + s.po_vrsti[k] + "</td></tr>";
+    });
+    h += "</table><h3>Povijest</h3><table><tr><th>Datum</th><th>Vozilo</th><th>Vrsta</th><th>Trošak</th></tr>";
+    s.povijest.forEach((p) => {
+      h += "<tr><td>" + esc(p.datum) + "</td><td>" + esc(p.vozilo) + "</td><td>" + esc(p.vrsta) + "</td><td>" + eur(p.trosak) + "</td></tr>";
+    });
+    $("popis").innerHTML = h + "</table>";
+  } catch (e) {
+    if (e.status === 403) {
+      $("popis").innerHTML = '<p>Statistika je dostupna uz aktivnu pretplatu. <a href="voditelj-pretplata.html">Pretplata</a></p>';
+    } else {
+      throw e;
+    }
+  }
+}
+
+pocni("voditelj");
+</script>
+</body>
+</html>

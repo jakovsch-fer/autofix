@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<title>AutoServis - Pretplata</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>AutoServis</h1>
+<div id="nav"></div>
+<hr>
+<h2>Pretplata</h2>
+<div id="popis">Učitavanje...</div>
+<script src="js/mock.js"></script>
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script>
+async function ucitaj() {
+  const p = await api("GET", "/pretplata");
+  let h = "<p>Status: " + (p.aktivna ? "aktivna" : "nije aktivna") + " | Cijena: " + eur(p.cijena) + " / mjesec</p>";
+  if (!p.aktivna) {
+    h += "<p>Napredne funkcionalnosti dostupne su uz pretplatu.</p>";
+    h += '<p><input type="button" value="Plati pretplatu" onclick="plati()"></p>';
+    h += "<p><small>Plaćanje kartice obavlja vanjski pružatelj naplate, podaci kartice ne dolaze na naš server.</small></p>";
+  }
+  $("popis").innerHTML = h;
+}
+
+async function plati() {
+  try {
+    const odgovor = await api("POST", "/pretplata");
+    if (odgovor && odgovor.url) {
+      location.href = odgovor.url;
+      return;
+    }
+    await ucitaj();
+  } catch (e) {
+    alert(e.message);
+  }
+}
+
+pocni("voditelj");
+</script>
+</body>
+</html>

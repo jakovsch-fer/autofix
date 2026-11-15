@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<title>AutoServis - Novi zahtjev</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>AutoServis</h1>
+<div id="nav"></div>
+<hr>
+<h2>Novi zahtjev</h2>
+<form onsubmit="return posalji(event)">
+Vozilo:<br>
+<select name="vozilo" id="vozila"></select><br><br>
+Vrsta servisa:<br>
+<select name="vrsta">
+<option>Redovni servis</option>
+<option>Zamjena guma</option>
+<option>Popravak kočnica</option>
+<option>Dijagnostika</option>
+</select><br><br>
+Željeni termin:<br>
+<input type="datetime-local" name="termin" required><br><br>
+<input type="submit" value="Pošalji zahtjev">
+</form>
+<script src="js/mock.js"></script>
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script>
+async function pripremi() {
+  const ja = await pokreni("vlasnik");
+  if (!ja) return;
+  try {
+    const vozila = await api("GET", "/vozila");
+    if (!vozila.length) {
+      $("vozila").innerHTML = "<option value=''>Prvo dodajte vozilo</option>";
+      return;
+    }
+    $("vozila").innerHTML = vozila.map((v) => '<option value="' + v.id + '">' + esc(v.model) + " (" + esc(v.oznaka) + ")</option>").join("");
+  } catch (e) {
+    alert(e.message);
+  }
+}
+
+async function posalji(e) {
+  e.preventDefault();
+  const f = e.target;
+  try {
+    await api("POST", "/zahtjevi", { vozilo_id: Number(f.vozilo.value), vrsta: f.vrsta.value, termin: f.termin.value });
+    location.href = "zahtjevi.html";
+  } catch (greska) {
+    alert(greska.message);
+  }
+  return false;
+}
+
+pripremi();
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<title>AutoServis - Moja vozila</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>AutoServis</h1>
+<div id="nav"></div>
+<hr>
+<h2>Moja vozila</h2>
+<div id="popis">Učitavanje...</div>
+<script src="js/mock.js"></script>
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script>
+async function ucitaj() {
+  const vozila = await api("GET", "/vozila");
+  let h = "<p>Još nema vozila.</p>";
+  if (vozila.length) {
+    h = "<table><tr><th>Oznaka</th><th>Vozilo</th><th>Godina</th><th>Km</th></tr>";
+    vozila.forEach((v) => {
+      h += "<tr><td>" + esc(v.oznaka) + "</td><td>" + esc(v.model) + "</td><td>" + v.godina + "</td><td>" + v.km + "</td></tr>";
+    });
+    h += "</table>";
+  }
+  $("popis").innerHTML = h + '<p><a href="vozilo-novo.html">Dodaj vozilo</a></p>';
+}
+
+pocni("vlasnik");
+</script>
+</body>
+</html>

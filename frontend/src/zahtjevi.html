@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<title>AutoServis - Zahtjevi i povijest</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>AutoServis</h1>
+<div id="nav"></div>
+<hr>
+<h2>Zahtjevi i povijest</h2>
+<div id="popis">Učitavanje...</div>
+<script src="js/mock.js"></script>
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script>
+function blok(z) {
+  const cekaOdluku = z.ponuda && z.ponuda.odluka === null;
+  let h = "<h3>" + esc(z.vrsta) + " - " + esc(z.vozilo.naziv) + " (" + esc(z.vozilo.oznaka) + ")</h3>";
+  h += "<p>Termin: " + termin(z.termin) + " | Serviser: " + (z.serviser ? esc(z.serviser.ime) : "još nije dodijeljen") + "</p>";
+  h += traka(z.status, cekaOdluku ? "čeka vašu odluku" : "");
+  h += radoviHtml(z);
+  if (z.ponuda) {
+    h += "<p><b>Ponuda za dodatne radove:</b> " + esc(z.ponuda.opis) + ", " + eur(z.ponuda.trosak);
+    if (cekaOdluku) {
+      h += '</p><p><input type="button" value="Prihvati" onclick="odluka(' + z.id + ', true)"> <input type="button" value="Odbij" onclick="odluka(' + z.id + ', false)">';
+    } else {
+      h += " (" + ODLUKE[z.ponuda.odluka] + ")";
+    }
+    h += "</p>";
+  }
+  if (z.status === "zavrseno") {
+    h += "<p><b>Račun:</b> ukupno <b>" + eur(z.trosak) + "</b></p>";
+    h += '<p><a href="#" onclick="potvrda(' + z.id + '); return false;">Preuzmi potvrdu o servisu</a></p>';
+    if (z.ocjena) {
+      h += "<p>Vaša ocjena: " + z.ocjena + "/5</p>";
+    } else {
+      h += '<form onsubmit="return ocijeni(event, ' + z.id + ')">Ocjena: <select name="ocjena"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select> <input type="submit" value="Ocijeni"></form>';
+    }
+  }
+  h += porukeHtml(z);
+  return h + "<hr>";
+}
+
+async function ucitaj() {
+  const lista = await api("GET", "/zahtjevi");
+  lista.sort((a, b) => b.termin.localeCompare(a.termin));
+  $("popis").innerHTML = lista.length ? lista.map(blok).join("") : "<p>Još nema zahtjeva.</p>";
+}
+
+function odluka(id, prihvaceno) {
+  izvedi(() => api("POST", "/zahtjevi/" + id + "/ponuda/odluka", { prihvaceno: prihvaceno }));
+}
+
+function ocijeni(e, id) {
+  e.preventDefault();
+  const ocjena = Number(e.target.ocjena.value);
+  izvedi(() => api("POST", "/zahtjevi/" + id + "/ocjena", { ocjena: ocjena }));
+  return false;
+}
+
+async function potvrda(id) {
+  if (!CONFIG.USE_MOCK) {
+    location.href = CONFIG.API_BASE + "/zahtjevi/" + id + "/potvrda";
+    return;
+  }
+  try {
+    const p = await api("GET", "/zahtjevi/" + id + "/potvrda");
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([p.tekst], { type: "text/plain;charset=utf-8" }));
+    a.download = "potvrda-servis-" + id + ".txt";
+    a.click();
+  } catch (e) {
+    alert(e.message);
+  }
+}
+
+pocni("vlasnik");
+</script>
+</body>
+</html>

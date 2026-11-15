@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<title>AutoServis - Novo vozilo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>AutoServis</h1>
+<div id="nav"></div>
+<hr>
+<h2>Novo vozilo</h2>
+<form onsubmit="return spremi(event)">
+Registarska oznaka:<br>
+<input type="text" name="oznaka" required><br><br>
+Marka i model:<br>
+<input type="text" name="model" required><br><br>
+Godina:<br>
+<input type="number" name="godina" required><br><br>
+Kilometri:<br>
+<input type="number" name="km" required><br><br>
+<input type="submit" value="Spremi">
+</form>
+<script src="js/mock.js"></script>
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script>
+async function spremi(e) {
+  e.preventDefault();
+  const f = e.target;
+  try {
+    await api("POST", "/vozila", { oznaka: f.oznaka.value, model: f.model.value, godina: Number(f.godina.value), km: Number(f.km.value) });
+    location.href = "vozila.html";
+  } catch (greska) {
+    alert(greska.message);
+  }
+  return false;
+}
+
+pokreni("vlasnik");
+</script>
+</body>
+</html>

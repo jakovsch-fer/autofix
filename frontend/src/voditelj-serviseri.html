@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<title>AutoServis - Serviseri</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>AutoServis</h1>
+<div id="nav"></div>
+<hr>
+<h2>Serviseri</h2>
+<div id="popis">Učitavanje...</div>
+<h3>Dodaj servisera</h3>
+<form onsubmit="return dodaj(event)">
+E-mail servisera (OAuth račun):<br>
+<input type="email" name="email" required><br><br>
+<input type="submit" value="Dodaj">
+</form>
+<script src="js/mock.js"></script>
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script>
+async function ucitaj() {
+  const lista = await api("GET", "/serviseri");
+  let h = "<p>Nema servisera.</p>";
+  if (lista.length) {
+    h = "<table><tr><th>Ime</th><th>Specijalizacija</th><th>Aktivnih zahtjeva</th><th></th></tr>";
+    lista.forEach((s) => {
+      h += "<tr><td>" + esc(s.ime) + "</td><td>" + esc(s.specijalizacija) + "</td><td>" + s.aktivnih_zahtjeva + '</td><td><input type="button" value="Deaktiviraj" onclick="deaktiviraj(' + s.id + ')"></td></tr>';
+    });
+    h += "</table>";
+  }
+  $("popis").innerHTML = h;
+}
+
+function dodaj(e) {
+  e.preventDefault();
+  const email = e.target.email.value;
+  izvedi(async () => {
+    await api("POST", "/serviseri", { email: email });
+    e.target.reset();
+  });
+  return false;
+}
+
+function deaktiviraj(id) {
+  if (!confirm("Deaktivirati servisera?")) return;
+  izvedi(() => api("POST", "/serviseri/" + id + "/deaktiviraj"));
+}
+
+pocni("voditelj");
+</script>
+</body>
+</html>
