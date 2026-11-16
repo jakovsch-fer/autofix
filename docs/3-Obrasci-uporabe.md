@@ -38,6 +38,10 @@ Vanjski sustav može biti sekundarni akter obrasca uporabe kada sudjeluje u ostv
 
 </details>
 
+----------------------------------------------------------------------------
+
+![Dijagram obrazaca uporabe sustava Autofix](./assets/diagrams/UML-autofix.svg)
+
 ## 3.2 Specifikacije obrazaca uporabe
 
 **Cilj:** Za svaki obrazac uporabe iz dijagrama objasniti cilj aktera, uobičajenu interakciju s aplikacijom i važne alternative. Jednostavne obrasce uporabe opišite kratko; proširite one kod kojih alternative, vanjske ovisnosti ili posljedice zahtijevaju dodatno objašnjenje.
