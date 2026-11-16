@@ -82,6 +82,7 @@ U tome pomažu i cjevovodi za kontinuiranu integraciju (CI, izgradnja i pokretan
 Automatsko postavljanje konačne javne inačice također koristi glavnu granu, ali se okida na drugi način, npr. ručno ili stvaranjem oznake verzije (Git tag).
 
 **Ne koristi se:** dugotrajna razvojna grana (`develop`), zasebna grana za dokumentaciju (`devdoc`)
+
 **Resursi:** [Projekt/Git](https://www.fer.unizg.hr/predmet/proinz/projekt/git), [Git u timskom razvoju](https://moodle.fer.hr/pluginfile.php/141989/mod_resource/content/10/PROINZ_26_Git.pdf)
 
 ## Pravila dokumentacije

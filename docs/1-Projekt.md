@@ -6,7 +6,12 @@
 
 **Cilj:** Jasno razgraničiti problem koji se rješava od predloženog rješenja i stvarne koristi za korisnika.
 
-[Problem, cilj i očekivana korist vlastitim riječima tima.]
+U slučaju kvara osobnog vozila građaninu trebaju bitne informacije o dostupnim autoservisima (npr. lokacija, recenzije, cijene i ovlaštenje).
+Cilj platforme je objediniti ponudu autoservisa i prikazati sve bitne informacije na jednom mjestu kako bi građanin mogao donijeti informiranu odluku iz jednog izvora.
+Građaninu (vlasniku vozila, klijentu autoservisa) treba jasan način za naručivanje svog vozila na odabrani servis te praćenje njegovog tijeka kao i komunikacijski kanal sa serviserom za naknadne dogovore, upite i dojave.
+Cilj
+Voditelju autoservisa treba
+Cilj
 
 <details>
 <summary><strong>Očekivane koristi i potkrepljujući dokazi</strong></summary>
@@ -70,19 +75,4 @@ Ovaj pregled zadržite na razini opsega: navedite glavnu mogućnost i njezinu gr
 
 ## 1.4 Postojeći pristupi i opravdanost projekta
 
-**Cilj:** Objasniti kako korisnici trenutačno rješavaju problem i koja preostala potreba opravdava odobreni projekt.
-
-[U dvije do četiri rečenice opišite jedan postojeći postupak ili relevantno rješenje, što ono već omogućuje i koja konkretna potreba motivira ovaj projekt. Činjenične tvrdnje o vanjskim proizvodima ili praksama potkrijepite izvorom.]
-
-<details>
-<summary><strong>Postojeći pristupi i opravdanost projekta</strong></summary>
-
-**Primjer — CrisisMap:** „Nakon teškog vremenskog događaja građanin će možda morati provjeriti izvor meteoroloških upozorenja i zaseban izvor lokalnih prijava. Predloženi prikaz na karti u CrisisMapu objedinjuje prijave kriznih događaja relevantne za odabranu lokaciju. Aplikacija ne zamjenjuje službena upozorenja ni hitne službe.” Time se objašnjava potreba i namjeravana granica projekta bez tvrdnje da su svi postojeći kanali neučinkoviti. Prva je rečenica **primjer korisničkog scenarija**, a ne izmjeren nalaz o stvarnim korisnicima. Ako tim navodi konkretnu službu upozoravanja ili konkurentski proizvod, treba navesti izvor. Pregled konkurencije i snimke zaslona nisu obavezni.
-
-Ako je postojeće rješenje stvarno utjecalo na projekt, usporedite samo relevantnu funkcionalnost, primjerice jasnoću karte ili potrebnu integraciju. Izbjegavajte unaprijed zadani broj proizvoda ili tablicu kriterija koji nisu povezani s odobrenim zadatkom.
-
-</details>
-
----
-
->**Završna provjera:** Opis problema, cilj projekta, korisnici i dionici, granice opsega te postojeći pristupi međusobno su usklađeni. Navedene koristi ne predstavljaju neprovjerene tvrdnje, a uključene i izostavljene funkcionalnosti odgovaraju odobrenom projektnom zadatku.
+U slučaju kvara osobnog vozila, građanin će vjerojatno sam prikupljati bitne informacije o autoservisima (npr. lokacija, recenzije, cijene i ovlaštenje) kako bi ih mogli usporediti i donijeti konačnu odluku, i to iz više odvojenih izvora (npr. preporuke po lokaciji s Google Maps, javne recenzije s društvenih mreža, cijene s vlastitih oglasa ili web-mjesta pojedinih poduzeća). Također, stupanje u komunikaciju radi početnog dogovora kao i naknadnih upita klijenta ili dojava servisera odvijat će se telefonskim pozivima ili izravnim odlascima u sam servis. Voditelji poduzeća s ograničenim brojem servisera koji istovremeno rade na više vozila trebaju upravljati njihovim zadatcima te voditi računa o novim narudžbama koje pristižu i evidenciji obavljenih popravaka, za što možda koriste različite alate (digitalne ili ne). Autofix pruža objedinjenu platformu koja omogućuje izravnu komunikaciju servisera s klijentom putem poruka u stvarnom vremenu i obavijesti e-poštom, kao i sve potrebne alate za upravljanje narudžbama servisa, praćenje njihovog napretka i raspoređivanje zadataka u tijeku. Dio platforme koji građanima objedinjuje prikaz i time olakšava pronalazak autoservisa koji im najbolje odgovara nije planirani zahtjev za prvu inačicu stoga ne zamjenjuje sustave preporučivanja postojećih platformi.
