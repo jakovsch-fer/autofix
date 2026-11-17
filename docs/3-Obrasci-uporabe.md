@@ -40,7 +40,7 @@ Vanjski sustav može biti sekundarni akter obrasca uporabe kada sudjeluje u ostv
 
 ----------------------------------------------------------------------------
 
-![Dijagram obrazaca uporabe sustava Autofix](./assets/diagrams/UML-autofix.svg)
+![Dijagram obrazaca uporabe sustava Autofix](./assets/diagrams/Autofix-UML.svg)
 
 ## 3.2 Specifikacije obrazaca uporabe
 
