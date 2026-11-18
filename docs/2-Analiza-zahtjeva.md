@@ -11,7 +11,7 @@
 | F-005 | Vlasnik naručuje servis | Visok | Zadatak | Pohranjuje se i prikazuje predana narudžba s odabranim terminom dolaska, vozilom i vrstom servisa, servis je u početnom stanju i vlasnik može odustati od narudžbe |
 | F-006 | Sustav prikazuje popis servisa u tijeku | Visok | Zadatak | Prikaz ovisi o korisniku, vlasnik pregledava one koje je naručio, voditelj sve pristigle narudžbe autoservisa, a serviser one koji su mu dodijeljeni |
 | F-007 | Sustav prikazuje povijest servisiranja | Srednji | Zadatak | Prikaz ovisi o korisniku, vlasnik pregledava servise za njegova vozila, a voditelj sve obavljene servise njegovog autoservisa |
-| F-008 | Sustav prikazuje grafički pregled stanja narudžbe tj. servisa i detaljnu vremensku crtu tijeka rada | Srednji | Povratne informacije | Za pojedini servis na popisu stvara se detaljniji prikaz sa svim podatcima i radnjama definiranim u drugim zahtjevima, ovisno o korisniku |
+| F-008 | Sustav prikazuje grafički pregled stanja narudžbe tj. servisa i detaljnu vremensku crtu tijeka rada | Visok | Povratne informacije | Za pojedini servis na popisu stvara se detaljniji prikaz sa svim podatcima i radnjama definiranim u drugim zahtjevima, ovisno o korisniku |
 | F-009 | Sustav šalje obavijesti o promjeni stanja narudžbe/servisa e-poštom | Srednji | Povratne informacije | Promjene bitnih podataka vezanih za pojedini servis šalju se u obliku sažete transakcijske obavijesti e-poštom, ovisno o korisniku |
 | F-010 | Voditelj dodjeljuje narudžbe serviserima | Visok | Zadatak | Pohranjuje se dodijeljeni serviser, ažurira se stanje koje se prikazuje vlasniku i serviseru |
 | F-011 | Voditelj mijenja raspored servisa, vlasnik prihvaća ili odbija novi termin | Visok | Zadatak | Pohranjuje se potvrđeni termin ili zahtjev za novim, ažurira se stanje koje se prikazuje vlasniku i serviseru |
@@ -30,37 +30,14 @@
 
 ## 2.2 Nefunkcijski zahtjevi
 
-**Cilj:** Odrediti važna svojstva kvalitete i uvjete rada odobrene aplikacije na način koji tim može razumno provjeriti.
-
 | ID | Opis | Prioritet | Izvor | Način provjere |
 | --- | --- | --- | --- | --- |
-| NF-01 | [Konkretan zahtjev (npr. odziv, sigurnost, pristupačnost)] | Visok / Srednji / Nizak | [Sigurnost / Uputa / SLA] | [Mjerenje / Testni scenarij / Pregled] |
-|  |  |  |  |  |
-
-<details>
-<summary><strong>Nefunkcijski zahtjevi za analizu</strong></summary>
-
-Relevantna svojstva mogu se odnositi na uporabljivost, pristupačnost, sigurnost, performanse ili pouzdanost. Odaberite svojstva specifična za projekt i opišite kako ih je moguće provjeriti. Zahtjev navodi što se očekuje; stvarna opažanja i dokazi pripadaju rezultatima ispitivanja, a ne drugom stupcu s rezultatima u ovoj tablici.
-
-**Primjer — nefunkcijski zahtjevi za aplikaciju CrisisMap:**
-
-| ID | Opis | Prioritet | Izvor |
-| --- | --- | --- | --- |
-| NF-1.1 | Sustav mora podržati 1.000 istodobnih korisnika uz vrijeme odziva kraće od 1 s. | Visok | SLA | Opteretiti sustav zadanim brojem istodobnih korisnika i izmjeriti vrijeme odziva. |
-| NF-1.2 | Svi osjetljivi podaci moraju biti šifrirani algoritmom AES-256. | Visok | Sigurnosna politika | Pregledati način pohrane i konfiguraciju šifriranja za podatke na koje se zahtjev odnosi. |
-| NF-1.3 | Korisničko sučelje mora podržavati engleski i španjolski jezik. | Srednji | Povratna informacija dionika | Pregledati reprezentativne korisničke tijekove u oba jezika. |
-| NF-1.4 | Dostupnost sustava mora iznositi najmanje 99,5 % mjesečno. | Visok | SLA | Izračunati mjesečnu dostupnost iz zapisa sustava za nadzor, ako takvi podaci postoje.|
-| NF-3.1.7 | Sustav treba imati odgovarajuću dokumentaciju. | Visok | Pravila dokumentiranja | Pregledati zahtijevane dokumentaciju prema obavezama.|
-| NF-3.1.7.1 | Kod sustava treba biti dokumentiran prema „Code Conventions for the Java Programming Language”. | Visok | Pravila dokumentiranja | Pregledati kod. |
-| NF-3.1.7.2 | Sustav treba biti opisan projektnim dokumentom/SRS-om. | Visok | Pravila dokumentiranja | Pregledati strukturu dokumenta  |
-| NF-3.1.7.3 | Sustav treba imati „Operativni priručnik” koji opisuje pravilnu uporabu. | Visok | Pravila dokumentiranja | Pregledati postoji li priručnik i mogu li se prema njemu izvršiti opisane radnje. |
-| NF-3.1.7.4 | Sustav treba imati „Plan implementacije” za pravilno postavljanje. | Visok | Smjernice za postavljanje | Pregledati odgovara li opisani postupak stvarnom postupku postavljanja.|
-
-**Provjerljivost i opseg:** Primjer uvodi performanse, sigurnost, lokalizaciju, dostupnost i dokumentaciju, uključujući hijerarhijski ID zahtjeva. Navedeni izvori primjeri su podrijetla zahtjeva, a ne dokaz da za studentski projekt stvarno postoji SLA ili sigurnosna politika. Vrijednosti poput 1.000 korisnika, 99,5 % mjesečne dostupnosti i AES-256 moraju imati odobren izvor i izvediv način provjere prije nego što postanu zahtjevi tima. Skup zahtjeva o dokumentaciji ilustrira razlaganje zahtjeva, ali zahtjevi za izradu *ove dokumentacije kolegija* u pravilu pripadaju uputama zadatka, a ne zahtjevima kvalitete web-aplikacije.
-
-**Primjer prilagodbe:** Ako je pristupačnost zahtjevana za  projekt, projektno specifičan zahtjev može glasiti: „NF-01: Sve obavezne radnje u obrascu za podnošenje prijave moguće je izvršiti samo tipkovnicom, uz vidljiv fokus na aktivnoj kontroli.” Provjera: navigirati kroz obrazac bez pokazivačkog uređaja, odabrati ili unijeti lokaciju, poslati prijavu i provjeriti može li se pročitati rezultat. To je provjerljivo svojstvo kvalitete, a ne dodatna funkcionalnost koju svaki projekt mora implementirati.
-
-</details>
+| NF-01 | Osjetljivi podatci korisnika (za kontakt, plaćanje i registracijske oznake) zaštićeni su od curenja u pohrani i prijenosu ili nisu uopće dijeljeni s platformom, sustav na siguran način tolerira neovlašteni ili zlonamjerni pristup | Visok | Sigurnost, privatnost, dostupnost, AS-01, AS-04 | Provjera oblikovanja sustava (modela podataka, protokola, kriptografskih postupaka) i ispitni scenariji |
+| NF-02 | Ovlasti korisnika za stvaranje, ažuriranje i brisanje domenskih podataka platforme ograničene su na opseg određen njihovom ulogom i uvjetovan je uspješnom autentifikacijom, sustav na konzistentan način tolerira ovlašteni, ali neispravni pristup | Visok | Sigurnost, integritet, C-01 | Provjera oblikovanja sustava (validacija podataka, kontrola pristupa) i ispitni scenariji |
+| NF-03 | Korisničko sučelje je čitljivo i uporabljivo u različitim formatima prikaza (na mobilnim uređajima) | Srednji | Pristupačnost, C-02, AS-02 | Provjera ogledne inačice, simulacija drugih formata tijekom ispitivanja |
+| NF-04 | Sustav na konzistentan način tolerira neočekivane greške ili ispade gradivnih komponenti te obavještava korisnika i administratora (u zapisniku) | Srednji | Dostupnost, integritet | Provjera oblikovanja sustava i okruženja isporuke (automatski oporavak nije planiran za prvu inačicu), izrada sigurnosnih kopija baze i ispitni scenariji (umetanje greški) |
+| NF-05 | Povjerljivi kriptografski materijal platforme (lozinka administratora, privatni ključevi i ključevi vanjskih usluga) zaštićeni su od curenja | Visok | Sigurnost, AS-11 | Provjera ogledne inačice i povijesti kontrole verzije |
+| NF-06 | Sustav održava visoku dostupnost kroz vrijeme i brz odziv na zahtjeve pod opterećenjem | Nizak | Dostupnost | Provjera okruženja isporuke sustava (SLA poslužitelja u oblaku, objava nove inačice bez prekida, balansiranje opterećenja), simuliranje opterećenja i mjerenje vremena odziva ogledne i javne inačice |
 
 ## 2.3 Dionici i akteri
 
@@ -90,29 +67,21 @@ Relevantna svojstva mogu se odnositi na uporabljivost, pristupačnost, sigurnost
 | AS-07 | Pretpostavka | Administrator stvara dostupne autoservise unesene tijekom registracije voditelja i servisera, nisu proizvoljni | Procjena tima | Provjeriti s asistentom |
 | AS-08 | Pretpostavka | Voditelji i serviseri unose točne podatke o autoservisu, nema potrebe za odvojeno upravljanje pozivnicama i potvrdama izvan zajedničkog toka registracije | Procjena tima | Provjeriti s asistentom |
 | AS-09 | Pretpostavka | Mogućnost voditelja da mijenja članstvo servisera ("daje otkaz") i zatvaranje cijelog autoservisa su izvan opsega | Procjena tima | Provjeriti s asistentom |
+| AS-10 | Pretpostavka | Uloga se korisnicima dodjeljuje prilikom registracije, vlasnici i serviseri ne trebaju pristupati platformi kao vlasnici vozila | Procjena tima | Provjeriti s asistentom |
+| AS-11 | Pretpostavka | Administrator kao korisnik je usko vezan uz platformu stoga se prijavljuje vlastitom (tajnom) lozinkom i potencijalno kroz odvojeno sučelje | Procjena tima | Provjeriti s asistentom |
 
 ## 2.5 Značajne promjene zahtjeva
 
-**Cilj:** Sačuvati razlog promjena koje mijenjaju dogovoreni opseg, prioritet ili kriterije prihvaćanja, uz istodobno održavanje prethodnih zahtjeva ažurnima.
-
 | Datum | ID zahtjeva | Promjena i razlog | Dogovoreno s / dokaz |
 | --- | --- | --- | --- |
-|  |  |  |  |
-
-<details>
-<summary><strong>Primjer značajne promjene</strong></summary>
-
-**Primjer scenarija — odluka tijekom pregleda CrisisMapa:**
-
-| Datum | ID zahtjeva | Promjena i razlog | Dogovoreno s / dokaz |
-| --- | --- | --- | --- |
-| [Datum pregleda] | F-004, NF-01 | Dodati ručni odabir lokacije kada korisnik odbije geolokaciju preglednika; bez toga građanin ne može podnijeti prijavu kriznog događaja s lokacijom. | [Poveznica na stvarnu bilješku pregleda ili zadatak tima] |
-
-**Razlog promjene:** Zapis navodi zahvaćene stavke i objašnjava razlog iz perspektive korisnika, a zatim upućuje na dokaz odluke.  Nakon stvarne odluke ažurirajte trenutačne zahtjeve; stilska izmjena teksta ne zahtijeva zapis u dnevniku promjena. Trenutačni red zadataka držite u alatu za praćenje zadataka.
-
-</details>
-
----
+|  | F-001, F-002 | Razdvojeni iz "Prijava i registracija putem OAuth 2.0 s odabirom uloge" |  |
+|  | F-006, F-008, F-009 | Razdvojeni iz "Vlasnik prati status i prima e-mail obavijesti" |  |
+|  | F-010, F-011 | Razdvojeni iz "Voditelj dodjeljuje zahtjeve serviserima i mijenja raspored" |  |
+|  | F-007, F-015, F-017 | Razdvojeni iz "Vlasnik pregledava račun i povijest, preuzima potvrdu i ocjenjuje servis" |  |
+|  | F-007, F-018 | Opseg sužen od "Voditelj pregledava povijest i statistiku autoservisa" i spojen u F-007 |  |
+|  | F-020, F-021 | Razdvojeni iz "Administrator upravlja korisnicima i autoservisima, deaktivira račune, postavlja cijenu pretplate" |  |
+|  | F-022 | Nedostatak | Projektni zadatak |
+|  | F-003, F-012, F-016, F-023 | Zabilježeni kao ideje/proširenja koja nisu nužna za ispunjenje zadatka niti planirane za prvu inačicu |  |
 
 ## 2.6 Sljedivost zahtjeva
 
