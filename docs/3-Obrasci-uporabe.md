@@ -5,7 +5,7 @@
 ## 3.1 Dijagram obrazaca uporabe
 
 **Cilj:** Prikazati granicu sustava, relevantne aktere i njihove glavne ciljeve u **preglednom UML dijagramu obrazaca uporabe**. Ako je za razumijevanje pojedinog dijela sustava potrebno prikazati više detalja, taj dio izdvojite u dodatni usmjereni dijagram. Dodatni dijagrami trebaju produbiti dio preglednog modela, a ne stvarati nepovezane ili duplicirane prikaze istog sustava.
-
+<!--
 ![Dijagram obrazaca uporabe sustava CrisisMap](./assets/diagrams/3-1-crisismap-system-UC.svg)
 
 **Slika 3.1. Dijagram obrazaca uporabe sustava CrisisMap**
@@ -37,17 +37,17 @@ Dijagram prikazuje **ogledni scenarij** s građaninom, posjetiteljem i koordinat
 Vanjski sustav može biti sekundarni akter obrasca uporabe kada sudjeluje u ostvarenju korisničkog cilja; tehničke veze opisuju se u arhitekturi. Nemojte stvarati dodatni obavezni dijagram obrazaca uporabe samo radi popisa integracija. Prenatrpan dijagram podijelite prema povezanim akterima ili ciljevima samo kada time postaje čitljiviji.
 
 </details>
-
+-->
 ----------------------------------------------------------------------------
 
 ![Dijagram obrazaca uporabe sustava Autofix](./assets/diagrams/Autofix-UML.svg)
 
 ## 3.2 Specifikacije obrazaca uporabe
-
+<!--
 **Cilj:** Za svaki obrazac uporabe iz dijagrama objasniti cilj aktera, uobičajenu interakciju s aplikacijom i važne alternative. Jednostavne obrasce uporabe opišite kratko; proširite one kod kojih alternative, vanjske ovisnosti ili posljedice zahtijevaju dodatno objašnjenje.
 
 **Za svaki obrazac uporabe koristite jednu okomitu tablicu.** Navedite samo onoliko pojedinosti koliko interakcija zahtijeva; neprimjenjivu alternativu izostavite umjesto da je popunjavate samo radi forme.
-
+-->
 ### UC-[ID]: [Naziv usmjeren na cilj]
 
 | Element specifikacije | Opis |
@@ -62,7 +62,7 @@ Vanjski sustav može biti sekundarni akter obrasca uporabe kada sudjeluje u ostv
 <details>
 <summary><strong>Primjeri specifikacija: Registracija i prijava kriznog događaja</strong></summary>
 
-**Primjer — CrisisMap:**
+<!-- **Primjer — CrisisMap:**
 
 **UC-001: Registracija računa.** Ovaj kratki primjer odnosi se na projekt čiji odobreni zadatak uključuje račune s adresom e-pošte i lozinkom.
 
@@ -100,9 +100,128 @@ Ako odobreni zadatak umjesto toga koristi isključivo OAuth prijavu, zamijenite 
 | Glavni tijek | 1. Moderator otvara prijavu koja čeka pregled.<br>2. Aplikacija prikazuje podatke prijave i dostupne moderatorske radnje.<br>3. Moderator odabire odobravanje ili odbijanje.<br>4. Aplikacija provjerava ovlasti, mijenja status prijave i prikazuje novi status. |
 | Alternativni ili neuspješni tijekovi, ako postoje | **3a — Radnja nije potvrđena:** Moderator odustaje od promjene i prijava ostaje nepromijenjena.<br>**4a — Ovlasti nisu valjane:** Aplikacija odbija promjenu i status prijave ostaje nepromijenjen. |
 | Rezultat | Prijava ima novi status ako je moderatorska radnja uspješno provedena; inače ostaje nepromijenjena. |
-</details>
+</details> -->
 
 ---
+
+UC-001: ...
+
+| Polje | Opis |
+| --- | --- |
+|Primarni akter | Klijent |
+| ID zahtjeva | F-001 |
+| Preduvjeti, ako postoje | / |
+| Glavni tijek | Građanin preko OAuth se registrira/ulogira kako bi mogao koristiti stranicu. |
+| Alternativni ili neuspješni tijekovi, ako postoje | Uneseni su krivi ili nepostojeći podaci te se javlja odgovarajuća poruka. |
+| Rezultat | Prijava je uspješna i korisnik može pristupiti stranici. |
+<br>
+
+UC-002: ...
+
+| Polje | Opis |
+| --- | --- |
+|Primarni akter | Klijent |
+| ID zahtjeva | F-008 |
+| Preduvjeti, ako postoje | Klijent je prijavljen na račun s klijentskim ovlastima. |
+| Glavni tijek | Klijentu se prikazuje trenutna faza u kojoj se servis za pojedino vozilo nalazi. |
+| Alternativni ili neuspješni tijekovi, ako postoje | / |
+| Rezultat | Klijent dobije informaciju o statusu servisa vozila. |
+<br>
+
+UC-003: ...
+
+| Polje | Opis |
+| --- | --- |
+|Primarni akter | Klijent |
+| ID zahtjeva | F-005 |
+| Preduvjeti, ako postoje | Klijent je prijavljen na račun s klijentskim ovlastima. |
+| Glavni tijek | Klijent šalje zahtjev za servisiranje vozila, koju voditelj može prihvatiti i pridjelit joj servisera ili odbiti. |
+| Alternativni ili neuspješni tijekovi, ako postoje | 1. Klijent krivo pošalje zahtjev - u slučaju da krivo pošalje zahtjev (npr. nepotpune informacije o vozilu), voditelj mora informirati klijenta da nedostaju informacije i da ponovno pošalje zahtjev.<br> 2. Voditelj ne potvrdi/odbije narudžbu - u slučaju da voditelj ne daje informaciju o narudžbi, klijent dobije e-poštu da zahtjev nije uspješno primljen. |
+| Rezultat | Narudžba klijenta je obrađena te se klijentu javi je li prihvaćena ili odbijena. |
+<br>
+
+UC-004: ...
+
+| Polje | Opis |
+| --- | --- |
+|Primarni akter | Klijent |
+| ID zahtjeva | F-012 |
+| Preduvjeti, ako postoje | Klijent/radnik su se uspješno prijavili na svoj račun. |
+| Glavni tijek | Građanin i klijent komuniciraju pomoću poruka o servisu vozila. |
+| Alternativni ili neuspješni tijekovi, ako postoje | Poruka nije uspješno poslana - u slučaju da poruka nije uspješno poslana, pošiljatelj dobije informaciju da nije uspješno poslana poruka i da pokuša ponovno. |
+| Rezultat | Uspješna komunikacija klijenta i servisera preko poruka. |
+<br>
+
+UC-005: ...
+
+| Polje | Opis |
+| --- | --- |
+|Primarni akter | Voditelj |
+| ID zahtjeva | F-010 |
+| Preduvjeti, ako postoje | Voditelj je uspješno prijavljen na račun s odgovarajućim ovlastima. |
+| Glavni tijek | Serviser dodjeljuje zahtjeve za servisiranje serviserima. |
+| Alternativni ili neuspješni tijekovi, ako postoje | Nema servisera kojemu može dodijeliti narudžbu - u slučaju nemogućnosti dodjele, voditelj javi klijentu da se termin mora odgoditi. |
+| Rezultat | Uspješna dodjela narudžbe serviseru. |
+<br>
+
+UC-006: ...
+
+| Polje | Opis |
+| --- | --- |
+|Primarni akter | Serviser |
+| ID zahtjeva | ? (provjeriti) |
+| Preduvjeti, ako postoje | Serviser je ulogiran s odgovarajućim ovlastima. |
+| Glavni tijek | Serviser aktivno ažurira stanje servisa. |
+| Alternativni ili neuspješni tijekovi, ako postoje | / |
+| Rezultat | Serviser promijeni status servisa i klijent može vidjeti promijenjen status. |
+<br>
+
+UC-007: ...
+
+| Polje | Opis |
+| --- | --- |
+|Primarni akter | Administrator platforme |
+| ID zahtjeva | ? (provjeriti) |
+| Preduvjeti, ako postoje | Administrator je prijavljen na račun s odgovarajućim ovlastima. |
+| Glavni tijek | Administrator postavlja/mijenja cijenu koju servisi moraju platiti za prikaz na stranici Autofix. |
+| Alternativni ili neuspješni tijekovi, ako postoje | Neuspješno postavljanje cijene - u slučaju da se nije uspješno postavila/promijenila cijena, administrator dobije poruku koja javlja grešku. |
+| Rezultat | Cijena pretplate je promijenjena. |
+<br>
+
+UC-008: ...
+
+| Polje | Opis |
+| --- | --- |
+|Primarni akter | Administrator platforme |
+| ID zahtjeva | F-020 |
+| Preduvjeti, ako postoje | Administrator je prijavljen na račun s odgovarajućim ovlastima. |
+| Glavni tijek | Administrator dodjeljuje/potvrđuje odgovarajuće ovlasti korisnicima. |
+| Alternativni ili neuspješni tijekovi, ako postoje | / |
+| Rezultat | Dodane su odgovarajuće ovlasti pojedinim serviserima/voditeljima. |
+<br>
+
+UC-009: ...
+
+| Polje | Opis |
+| --- | --- |
+|Primarni akter | Klijent |
+| ID zahtjeva | F-009 |
+| Preduvjeti, ako postoje | / |
+| Glavni tijek | Klijent preko e-pošte dobije informacije o bitnim promjenama vezane za pojedine servise. |
+| Alternativni ili neuspješni tijekovi, ako postoje | / |
+| Rezultat | Klijent dobije sve bitne informacije vezane za promjene pojedinih servisa. |
+<br>
+
+UC-010: ...
+
+| Polje | Opis |
+| --- | --- |
+|Primarni akter | Klijent |
+| ID zahtjeva | F-016 |
+| Preduvjeti, ako postoje | / |
+| Glavni tijek | Klijent je preusmjeren na uslugu za internetsko plaćanje i dobije e-poštu o potvrdi uplate. |
+| Alternativni ili neuspješni tijekovi, ako postoje | Nemogućnost internetskog plaćanja - u slučaju da klijent nije u mogućnosti platiti preko usluge, može dobiti račun na e-poštu. |
+| Rezultat | Klijent je uspješno platio servis. |
 
 ## 3.3 Provjera dosljednosti obrazaca uporabe
 
