@@ -100,7 +100,7 @@ Ako odobreni zadatak umjesto toga koristi isključivo OAuth prijavu, zamijenite 
 
 ---
 
-UC-001: ...
+UC-001: Prijava u sustav - za korištenje Autofix-a korisnici se moraju uspješno registrirati i ulogirati.
 
 | Polje | Opis |
 | --- | --- |
@@ -112,7 +112,7 @@ UC-001: ...
 | Rezultat | Prijava je uspješna i korisnik može pristupiti stranici. |
 <br>
 
-UC-002: ...
+UC-002: Pregled statusa servisa - klijentu se mora aktivno prikazivati trenutni status servisa i u kojoj se fazi nalazi.
 
 | Polje | Opis |
 | --- | --- |
@@ -124,7 +124,7 @@ UC-002: ...
 | Rezultat | Klijent dobije informaciju o statusu servisa vozila. |
 <br>
 
-UC-003: ...
+UC-003: Zahtjev za servisiranje - klijent mora biti u mogućnosti poslati zahtjev za servisiranje koju onda voditelj može prihvatiti ili odbiti.
 
 | Polje | Opis |
 | --- | --- |
@@ -136,7 +136,7 @@ UC-003: ...
 | Rezultat | Narudžba klijenta je obrađena te se klijentu javi je li prihvaćena ili odbijena. |
 <br>
 
-UC-004: ...
+UC-004: Razgovor preko poruka - klijent i serviser mogu komunicirati preko stranice pomoću poruka.
 
 | Polje | Opis |
 | --- | --- |
@@ -148,7 +148,7 @@ UC-004: ...
 | Rezultat | Uspješna komunikacija klijenta i servisera preko poruka. |
 <br>
 
-UC-005: ...
+UC-005: Dodjela klijenta radniku - voditelj može dodijeliti narudžbe klijenata serviserima.
 
 | Polje | Opis |
 | --- | --- |
@@ -160,7 +160,7 @@ UC-005: ...
 | Rezultat | Uspješna dodjela narudžbe serviseru. |
 <br>
 
-UC-006: ...
+UC-006: Ažuriranje statusa servisa - klijent mora vidjeti kada se promijeni status servisa, a tu promjenu radi serviser.
 
 | Polje | Opis |
 | --- | --- |
@@ -172,7 +172,7 @@ UC-006: ...
 | Rezultat | Serviser promijeni status servisa i klijent može vidjeti promijenjen status. |
 <br>
 
-UC-007: ...
+UC-007: Postavljanje cijene pretplate - s obzirom da je Autofix platforrma koja prikazuje listu raznih auto servisa, ti servisi moraju platiti pretplatu.
 
 | Polje | Opis |
 | --- | --- |
@@ -184,7 +184,7 @@ UC-007: ...
 | Rezultat | Cijena pretplate je promijenjena. |
 <br>
 
-UC-008: ...
+UC-008: Upravljanje korisnicima i njihovim ulogama - Administrator može mijenjati i dodjeljivati uloge svojim korisnicima. 
 
 | Polje | Opis |
 | --- | --- |
@@ -196,7 +196,7 @@ UC-008: ...
 | Rezultat | Dodane su odgovarajuće ovlasti pojedinim serviserima/voditeljima. |
 <br>
 
-UC-009: ...
+UC-009: Dobivanje e-pošte o statusu servisa i potvrdi plaćanja - klijent za svaku bitniju promjenu tijekom servisa bude informiran preko e-pošte i također dobije potvrdu o plaćanju putem e-pošte.
 
 | Polje | Opis |
 | --- | --- |
@@ -208,7 +208,7 @@ UC-009: ...
 | Rezultat | Klijent dobije sve bitne informacije vezane za promjene pojedinih servisa. |
 <br>
 
-UC-010: ...
+UC-010: Plaćanje servisa - klijent moar biti u mogućnosti internetsko platiti servis pomoću vanjske usluge.
 
 | Polje | Opis |
 | --- | --- |
