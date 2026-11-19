@@ -87,9 +87,11 @@ function poruka(e, id) {
 async function pokreni(uloga) {
   let ja;
   try {
-    ja = await api("GET", "/me");
+    ja = await api("GET", "/users/me");
   } catch (e) {
-    if (e.status === 401) {
+    if (e.status === 404) {
+      location.href = "registracija.html";
+    } else if (e.status === 401) {
       location.href = "index.html";
     } else {
       alert(e.message);
@@ -111,6 +113,7 @@ async function pokreni(uloga) {
 }
 
 async function odjava() {
+  sessionStorage.removeItem("token");
   try {
     await api("POST", "/logout");
   } catch (e) {}

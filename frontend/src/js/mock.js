@@ -136,8 +136,8 @@ async function mock(metoda, putanja, tijelo) {
   }
   if (!ja) throw greska(401, "Niste prijavljeni");
 
-  if (ruta("GET", /^\/me$/)) return mockOsoba(ja);
-  if (ruta("POST", /^\/registracija$/)) {
+  if (ruta("GET", /^\/users\/me$/)) return mockOsoba(ja);
+  if (ruta("POST", /^\/auth\/register$/)) {
     if (!tijelo.ime || !tijelo.uloga) throw greska(400, "Ime i uloga su obavezni");
     ja.ime = tijelo.ime;
     ja.uloga = tijelo.uloga;

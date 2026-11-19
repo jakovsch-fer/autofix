@@ -9,16 +9,22 @@
 <h1>AutoServis</h1>
 <h2>Prijava</h2>
 <div id="sadrzaj">Učitavanje...</div>
+<script src="https://cdn.jsdelivr.net/npm/oidc-client-ts@3.0.1/dist/browser/oidc-client-ts.min.js"></script>
 <script src="js/mock.js"></script>
 <script src="js/api.js"></script>
 <script src="js/common.js"></script>
 <script>
 async function provjeri() {
   try {
-    const ja = await api("GET", "/me");
+    const ja = await api("GET", "/users/me");
     location.href = ja.uloga ? POCETNE[ja.uloga] : "registracija.html";
     return;
-  } catch (e) {}
+  } catch (e) {
+    if (e.status === 404) {
+      location.href = "registracija.html";
+      return;
+    }
+  }
   if (CONFIG.USE_MOCK) {
     $("sadrzaj").innerHTML = '<p>Mock način (bez backenda). Prijavi se kao:</p>' +
       '<p><input type="button" value="Vlasnik vozila" onclick="prijava(1)"> ' +
@@ -27,7 +33,7 @@ async function provjeri() {
       '<input type="button" value="Nova registracija" onclick="prijavaNovi()"></p>' +
       '<p><a href="#" onclick="resetirajMock(); return false;">Resetiraj mock podatke</a></p>';
   } else {
-    $("sadrzaj").innerHTML = '<p><a href="' + CONFIG.API_BASE + '/auth/login"><input type="button" value="Prijava putem OAuth 2.0"></a></p>';
+    $("sadrzaj").innerHTML = '<p><input type="button" value="Prijava putem OAuth 2.0" onclick="prijavaOidc()"></p>';
   }
 }
 

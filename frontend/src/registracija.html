@@ -10,7 +10,7 @@
 <h2>Registracija</h2>
 <form onsubmit="return registriraj(event)">
 Ime i prezime:<br>
-<input type="text" name="ime" required><br><br>
+<input type="text" name="ime" id="ime" required><br><br>
 Uloga:<br>
 <select name="uloga">
 <option value="vlasnik">Vlasnik vozila</option>
@@ -27,10 +27,19 @@ Autoservis (serviser i voditelj):<br>
 <script>
 async function provjeri() {
   try {
-    const ja = await api("GET", "/me");
-    if (ja.uloga) location.href = POCETNE[ja.uloga];
+    const ja = await api("GET", "/users/me");
+    if (ja.uloga) {
+      location.href = POCETNE[ja.uloga];
+      return;
+    }
+    $("ime").value = ja.ime || "";
   } catch (e) {
-    location.href = "index.html";
+    if (e.status === 404) {
+      const c = claimovi();
+      $("ime").value = c.name || ((c.given_name || "") + " " + (c.family_name || "")).trim();
+    } else {
+      location.href = "index.html";
+    }
   }
 }
 
@@ -38,7 +47,7 @@ async function registriraj(e) {
   e.preventDefault();
   const f = e.target;
   try {
-    const ja = await api("POST", "/registracija", { ime: f.ime.value, uloga: f.uloga.value, autoservis: f.autoservis.value });
+    const ja = await api("POST", "/auth/register", { ime: f.ime.value, email: claimovi().email, uloga: f.uloga.value, autoservis: f.autoservis.value });
     location.href = POCETNE[ja.uloga];
   } catch (greska) {
     alert(greska.message);

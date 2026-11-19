@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<title>AutoServis - Prijava</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>AutoServis</h1>
+<p id="poruka">Prijava u tijeku...</p>
+<script src="https://cdn.jsdelivr.net/npm/oidc-client-ts@3.0.1/dist/browser/oidc-client-ts.min.js"></script>
+<script src="js/mock.js"></script>
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script>
+async function zavrsi() {
+  try {
+    const um = new oidc.UserManager({
+      authority: CONFIG.OIDC_AUTHORITY,
+      client_id: CONFIG.OIDC_CLIENT_ID,
+      redirect_uri: location.origin + location.pathname,
+      response_type: "code",
+      scope: "openid profile email",
+    });
+    const korisnik = await um.signinRedirectCallback();
+    spremiToken(korisnik.id_token);
+  } catch (e) {
+    document.getElementById("poruka").textContent = "Prijava nije uspjela: " + e.message;
+    return;
+  }
+  try {
+    const ja = await api("GET", "/users/me");
+    location.href = ja.uloga ? POCETNE[ja.uloga] : "registracija.html";
+  } catch (e) {
+    if (e.status === 404) location.href = "registracija.html";
+    else document.getElementById("poruka").textContent = e.message;
+  }
+}
+zavrsi();
+</script>
+</body>
+</html>
