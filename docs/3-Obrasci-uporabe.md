@@ -165,7 +165,7 @@ UC-006: Ažuriranje statusa servisa - klijent mora vidjeti kada se promijeni sta
 | Polje | Opis |
 | --- | --- |
 |Primarni akter | Serviser |
-| ID zahtjeva | ? (provjeriti) |
+| ID zahtjeva | / |
 | Preduvjeti, ako postoje | Serviser je ulogiran s odgovarajućim ovlastima. |
 | Glavni tijek | Serviser aktivno ažurira stanje servisa. |
 | Alternativni ili neuspješni tijekovi, ako postoje | / |
@@ -177,7 +177,7 @@ UC-007: Postavljanje cijene pretplate - s obzirom da je Autofix platforrma koja 
 | Polje | Opis |
 | --- | --- |
 |Primarni akter | Administrator platforme |
-| ID zahtjeva | ? (provjeriti) |
+| ID zahtjeva | / |
 | Preduvjeti, ako postoje | Administrator je prijavljen na račun s odgovarajućim ovlastima. |
 | Glavni tijek | Administrator postavlja/mijenja cijenu koju servisi moraju platiti za prikaz na stranici Autofix. |
 | Alternativni ili neuspješni tijekovi, ako postoje | Neuspješno postavljanje cijene - u slučaju da se nije uspješno postavila/promijenila cijena, administrator dobije poruku koja javlja grešku. |
@@ -219,10 +219,12 @@ UC-010: Plaćanje servisa - klijent moar biti u mogućnosti internetsko platiti 
 | Alternativni ili neuspješni tijekovi, ako postoje | Nemogućnost internetskog plaćanja - u slučaju da klijent nije u mogućnosti platiti preko usluge, može dobiti račun na e-poštu. |
 | Rezultat | Klijent je uspješno platio servis. |
 
+</details>
+
 ## 3.3 Provjera dosljednosti obrazaca uporabe
 
 **Cilj:** Provjeriti međusobnu usklađenost obrazaca uporabe, aktera, zahtjeva i ispitnih slučajeva. Cjelovito mapiranje održava se isključivo u **[matrici sljedivosti zahtjeva](2-Analiza-zahtjeva.md#26-sljedivost-zahtjeva)**.
-
+<!--
 | Provjera | Pitanje za tim |
 | --- | --- |
 | Zahtjev | Je li svaki važan obrazac uporabe povezan s postojećim zahtjevom? |
@@ -257,3 +259,4 @@ Povezivanje zahtjev → obrazac uporabe → ispitivanje održavajte **samo jedno
 </details>
 
 **Završna provjera:** Dijagram, specifikacije obrazaca uporabe i matrica sljedivosti međusobno su usklađeni. Svaki važan obrazac uporabe povezan je s postojećim zahtjevom, akteri odgovaraju stvarnim ulogama u aplikaciji, a opisani glavni i alternativni tijekovi odgovaraju ponašanju koje sustav stvarno podržava.
+-->
