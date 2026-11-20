@@ -20,12 +20,12 @@ Za svaki relevantan sastanak ili zapis tjedne koordinacije upišite jedan sažet
 
 **Autofix:**
 
-**Kratice članova tima:** MN = Marko Nujić, JŠ = Jakov Schremedei, IB = Ivan Borbaš, TB = Tonko Bogdan
+**Kratice članova tima:** MN = Marko Nujić, JS = Jakov Schramadei, IB = Ivan Borbaš, TB = Tonko Bogdan
 
 | Datum i sudionici | Glavna tema | Odluka, radnja ili otvoreno pitanje | Poveznica na zadatak ili nastali rezultat, ako postoji |
 | --- | --- | --- | --- |
-| 24. 10. 2026.; MN, JŠ, IB, TB | Podjela uloge u izradi projekta | Inicijalno: MN - baza podataka, JŠ - backend, IB - frontend, TB - backend | / |
-| 8. 11. 2026.; MN, JŠ, IB, TB | Diskusija o načinu izrade projekta (izgled stranice, potrebne funkcionalnosti, baza podataka) | Koristi se Django za izradu stranice; dogovoreni su izgled stranice i potrebne tablice za bazu podataka  | / |
+| 24. 10. 2026.; MN, JS, IB, TB | Podjela uloga u izradi projekta | Inicijalno: MN - baza podataka, JS - backend, IB - frontend, TB - backend | / |
+| 8. 11. 2026.; MN, JS, IB, TB | Diskusija o načinu izrade projekta (izgled stranice, potrebne funkcionalnosti, baza podataka) | Koristi se Django za izradu stranice; dogovoreni su izgled stranice i potrebne tablice za bazu podataka  | / |
 
 **Ishod i odgovornost:** Zapisi jasno definiraju tko je odgovoran za koji dio posla i koji je provjerljivi rezultat dogovoren. npr Rečenica „Raspravljali smo o obradi lokacije” prikrila bi je li se itko obvezao na promjenu. Ovi redci navode odluku ili otvorenu radnju, odgovornu osobu i rezultat koji se može pregledati.
 
@@ -63,13 +63,12 @@ Ako koristite tablicu, plan vodite na korisnoj tjednoj razini i ažurirajte ga k
 
 | Aktivnost ili rezultat | Član | Prijavljeni sati | Reprezentativni rezultat ili poveznica |
 | --- | --- | --- | --- |
-| Stvaranje baze podataka | MN | 2 | Branch - BP-dodaneTablice |
-| Ispunjavanje dokumentacije | MN | 7 |Branch - 3.2---verzija-1; UML-update-1; Branch - docs-zahtjevi (poglavlje 2.6 Sljedivost zahtjeva) |
-| Implementacija frontend-a | IB | 5 | Izrada korisničkog sučelja pomoću HTML-a, CSS-a i JavaScripta |
-| OAuth prijava i registracija | IB	| 3 |	Auth0 autentifikacija, callback, odjava i registracija korisnika – PR #12|
+| Modeliranje baze podataka | MN, TB | 2, 4 | grana - BP-dodaneTablice |
+| Ispunjavanje dokumentacije | MN | 7 | grana - 3.2---verzija-1; UML-update-1; grana - docs-zahtjevi (poglavlje 2.6 Sljedivost zahtjeva) |
+| Ispunjavanje dokumentacije | JS | 9 | grana `docs-projekt` (PR #3), grana `docs-zahtjevi` (PR #9) |
+| Implementacija frontend-a | IB | 5 | Izrada korisničkog sučelja pomoću HTML-a, CSS-a i JavaScripta (PR #12) |
+| OAuth prijava i registracija | JS, IB | 5, 3 | Auth0 autentifikacija, preusmjeravanje, odjava i registracija korisnika (PR #12) |
 
-
-Koristite aktivnosti specifične za projekt umjesto obaveznog retka za svako poglavlje dokumentacije ili svaki UML dijagram. Tim treba dosljedno bilježiti sate i izbjegavati dvostruko brojanje zajedničkog rada; reprezentativni rezultat objašnjava što je prijavljeni trud proizveo. Sati su samoprijavljena procjena uloženog rada, a ne mjera kvalitete niti zamjena za pregled koda i artefakata.
 <!--
 <details>
 <summary><strong>Primjer aktivnosti i rezultata rada</strong></summary>
