@@ -15,7 +15,7 @@ Cilj platforme je objediniti ponudu autoservisa i prikazati sve bitne informacij
 | Serviser | Preuzeti dodijeljeni posao, voditi evidenciju popravaka, komunicirati s vlasnikom o napretku ili promjenama opsega posla i zaključiti ga konačnim troškom | Akter |
 | Administrator platforme | Upravljati korisnicima, postaviti cijene pretplate, pregledati statistiku korištenja platforme | Akter |
 | Državni inspektorat | Dodatni izvor podataka za tržišne inspekcije (žalbe, zaštita potrošača), inspekcije rada (evidencija radnih sati) i inspekcije zaštite okoliša (evidencija zamijenjenih dijelova) | Pravni/regulatorni |
-| Porezna uprava | Uvid u povijest transakcija (cijene, računi) radi revizije | Pravni/regulatorni |
+| Porezna uprava | Uvid u povijest transakcija (cijene, računi) radi nadzora | Pravni/regulatorni |
 | Agencija za zaštitu osobnih podataka | Osiguravanje usklađenosti s GDPR-om (privole) | Pravni/regulatorni |
 | Osiguravajuća društva | Uvid u evidenciju popravaka i povijest servisa radi procjene štete | Komercijalni |
 | Distributeri autodijelova | Uvid u podatke o vozilima (model, godina) i dijelovima radi procjene potražnje | Komercijalni |
@@ -27,7 +27,7 @@ Cilj platforme je objediniti ponudu autoservisa i prikazati sve bitne informacij
 
 **Izvan opsega ili odgođeno:** Objedinjeni pregled ponude autoservisa za vlasnike vozila (odgođeno), s preporukama prilagođenim podatcima vlasnika (izvan opsega), implementacije drugih korisničkih sučelja osim web-aplikacije (izvan opsega), programska podrška prilagođena dionicima s regulatornim ili komercijalnim interesom (izvan opsega), npr. automatski i periodički izvoz traženih podataka iz baze u ljudski ili strojno čitljivom obliku
 
-**Vanjske ovisnosti:** Usluga slanja e-pošte (npr. Mailgun), pružatelj identiteta protokolom OAuth 2.0 (npr. Microsoft identity platform), usluga internetskog plaćanja (npr. Stripe)
+**Vanjske ovisnosti:** Usluga slanja e-pošte (npr. Mailgun), pružatelj identiteta protokolom OAuth 2.0 (npr. Auth0), usluga internetskog plaćanja (npr. Stripe)
 
 ## 1.4 Postojeći pristupi i opravdanost projekta
 

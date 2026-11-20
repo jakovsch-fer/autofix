@@ -74,28 +74,24 @@
 
 | Datum | ID zahtjeva | Promjena i razlog | Dogovoreno s / dokaz |
 | --- | --- | --- | --- |
-|  | F-001, F-002 | Razdvojeni iz "Prijava i registracija putem OAuth 2.0 s odabirom uloge" |  |
-|  | F-006, F-008, F-009 | Razdvojeni iz "Vlasnik prati status i prima e-mail obavijesti" |  |
-|  | F-010, F-011 | Razdvojeni iz "Voditelj dodjeljuje zahtjeve serviserima i mijenja raspored" |  |
-|  | F-007, F-015, F-017 | Razdvojeni iz "Vlasnik pregledava račun i povijest, preuzima potvrdu i ocjenjuje servis" |  |
-|  | F-007, F-018 | Opseg sužen od "Voditelj pregledava povijest i statistiku autoservisa" i spojen u F-007 |  |
-|  | F-020, F-021 | Razdvojeni iz "Administrator upravlja korisnicima i autoservisima, deaktivira račune, postavlja cijenu pretplate" |  |
-|  | F-022 | Nedostatak | Projektni zadatak |
-|  | F-003, F-012, F-016, F-023 | Zabilježeni kao ideje/proširenja koja nisu nužna za ispunjenje zadatka niti planirane za prvu inačicu |  |
+| 18.11.2026. | F-001, F-002 | Razdvojeni iz "Prijava i registracija putem OAuth 2.0 s odabirom uloge" | [prijedlog](meeting-notes/prijedlog-2.md) |
+| 18.11.2026. | F-006, F-008, F-009 | Razdvojeni iz "Vlasnik prati status i prima e-mail obavijesti" | [prijedlog](meeting-notes/prijedlog-2.md) |
+| 18.11.2026. | F-010, F-011 | Razdvojeni iz "Voditelj dodjeljuje zahtjeve serviserima i mijenja raspored" | [prijedlog](meeting-notes/prijedlog-2.md) |
+| 18.11.2026. | F-007, F-015, F-017 | Razdvojeni iz "Vlasnik pregledava račun i povijest, preuzima potvrdu i ocjenjuje servis" | [prijedlog](meeting-notes/prijedlog-2.md) |
+| 18.11.2026. | F-007, F-018 | Opseg sužen od "Voditelj pregledava povijest i statistiku autoservisa" i spojen u F-007 | [prijedlog](meeting-notes/prijedlog-2.md) |
+| 18.11.2026. | F-020, F-021 | Razdvojeni iz "Administrator upravlja korisnicima i autoservisima, deaktivira račune, postavlja cijenu pretplate" | [prijedlog](meeting-notes/prijedlog-2.md) |
+| 18.11.2026. | F-022 | Nedostatak | Projektni zadatak |
+| 18.11.2026. | F-003, F-012, F-016, F-023 | Zabilježeni kao ideje/proširenja koja nisu nužna za ispunjenje zadatka niti planirane za prvu inačicu | Rasprava tima |
 
 ## 2.6 Sljedivost zahtjeva
-
-**Cilj:** Osigurati dvosmjernu sljedivost — povezati zahtjeve s opisanim ponašanjem, dijelovima sustava koji ih ostvaruju te ispitivanjem ili drugom provjerom. 
 
 <!--| ID zahtjeva | Obrazac uporabe / modul | Arhitekturna realizacija | Ispitivanje ili provjera |
 | --- | --- | --- | --- |
 | F-001 | UC-001 | Komponenta, modul ili drugo mjesto realizacije | ST-01, CT-01 ili druga provjera |
 | F-002 |  |  |  |
--->
 <details>
 <summary><strong>Sljedivost zahtjeva do obrazaca uporabe i ispitivanja</strong></summary>
-
-**Poveznice zahtjeva Autofixa:**
+-->
 
 | ID zahtjeva | Obrazac uporabe / ponašanje | Arhitekturna realizacija | Ispitivanje / provjera |
 | --- | --- | --- | --- |
