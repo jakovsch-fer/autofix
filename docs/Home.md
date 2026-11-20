@@ -39,7 +39,7 @@ Ažurirani popis članova, njihovih GitHub profila i glavnih uloga ili doprinosa
 
 | Kontrolna točka | Demonstracija | Video |
 | --- | --- | --- |
-| Iteracija 1 | [Poveznica na demonstraciju ili inačicu projekta] | [Poveznica na video Demo 1, ako je snimljen] |
+| Iteracija 1 | [v0.1.0](https://github.com/jakovsch-fer/autofix/tree/v0.1.0) | [Poveznica na video Demo 1, ako je snimljen] |
 | Završni pregled | [Poveznica na završnu inačicu projekta] | [Poveznica na video završne demonstracije, ako je snimljen] |
 
 ## Organizacija projekta i razvojni proces
@@ -101,7 +101,7 @@ Ovaj odjeljak bilježi koji su alati korišteni, za koju dokumentaciju ili kod t
 
 | Alat | Inačica ili model | Koristio/la | Glavna svrha |
 | --- | --- | --- | --- |
-|Claude|Opus 5.5| Tonko Bogdan| Uređivanje i pripomoč pri izdradi dijagrama|
+|Claude|Opus 5.5| Tonko Bogdan| Uređivanje i pripomoć pri izradi dijagrama|
 | [Naziv alata] | [Inačica ili model, ako je poznat] | [Član/članovi tima] | [npr. izrada nacrta dokumentacije, generiranje izvora dijagrama] |
 
 ### Opseg doprinosa umjetne inteligencije
