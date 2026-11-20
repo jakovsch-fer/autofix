@@ -92,7 +92,7 @@ async function pokreni(uloga) {
     if (e.status === 404) {
       location.href = "registracija.html";
     } else if (e.status === 401) {
-      location.href = "index.html";
+      location.href = location.origin;
     } else {
       alert(e.message);
     }

@@ -22,7 +22,7 @@ async function zavrsi() {
     document.getElementById("poruka").textContent = "Prijava nije uspjela: " + e.message;
     return;
   }
-  location.href = "index.html"
+  location.href = location.origin
 }
 zavrsi();
 </script>

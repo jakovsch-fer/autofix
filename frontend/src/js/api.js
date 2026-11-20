@@ -9,7 +9,7 @@ const um = () => new oidc.UserManager({
   authority: CONFIG.OIDC_AUTHORITY,
   client_id: CONFIG.OIDC_CLIENT_ID,
   redirect_uri: location.origin + "/callback.html",
-  post_logout_redirect_uri: location.origin + "/index.html",
+  post_logout_redirect_uri: location.origin,
   response_type: "code",
   scope: "openid profile email",
   extraQueryParams: {

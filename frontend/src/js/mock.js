@@ -82,7 +82,7 @@ function mockId() {
 function resetirajMock() {
   localStorage.removeItem(KLJUC);
   localStorage.removeItem(KLJUC_KORISNIK);
-  location.href = "index.html";
+  location.href = location.origin;
 }
 
 function greska(status, poruka) {
