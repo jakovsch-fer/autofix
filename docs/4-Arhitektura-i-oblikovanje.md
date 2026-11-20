@@ -84,7 +84,8 @@ Započnite crtanjem granice oko predloženog sustava. Unutar nje prepoznajte dij
 
 **Primjer-Autofix:** Korisnik putem svog korisničkog računa postavlja automobil i pronalazi servis. Korisnik može postaviti više vozila i svako vozilo se zasebno moze servisirati. Aplikacija pohranjuje vozilo i daje autoservisu da odabere jednog radnika koji radi na vozilu.
 
-**ER dijagram:** ![ER dijagram podataka sustava Autofix](./assets/diagrams/4-2-Autofix-data-ERD.svg)
+**ER dijagram:** 
+![ER dijagram podataka sustava Autofix](./assets/diagrams/4-2-Autofix-data-ERD.svg)
 
 **Izvor dijagrama:** [izvor](./puml/4-2-Autofix-data-ERD.puml)  
 **Implementacija:** Implementacija je na [izvoru](../db/AutoFixERD.pgerd)
@@ -108,8 +109,9 @@ Započnite crtanjem granice oko predloženog sustava. Unutar nje prepoznajte dij
 
 **Cilj:** Prije implementacije reprezentativnog dijela sustava modelirati i prikazati razrede ili sučelja potrebna za dodjelu odgovornosti, operacija i veza. Oblikovanje ažurirajte kada se te odluke promijene.
 
-**Dijagram razreda:** [Ugradite čitljiv UML dijagram razreda za reprezentativni dio oblikovanja.]  
-**PlantUML izvor:** [Poveznica na odgovarajuću `.puml` datoteku.]  
+**Dijagram razreda:** 
+![Dijagram razreda za zatraženi servis](./assets/diagrams/4-3-Autofix-domain-CD.svg)
+**PlantUML izvor:** [izvor](./puml/4-3-Autofix-domain-CD.puml)  
 **Referenca na kod pri završnom pregledu:** [Poveznica na odgovarajuću implementaciju.]
 <!--
 <details>
