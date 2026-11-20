@@ -108,6 +108,10 @@ Ovaj odjeljak bilježi koji su alati korišteni, za koju dokumentaciju ili kod t
 
 | Stranica, datoteka ili artefakt | Vrsta pomoći | Što je alat proizveo | Što je tim zadao i promijenio | Lokacija |
 | --- | --- | --- | --- | --- |
+|4-2-Autofix-data-ERD.svg|pomoć u oblikovanju|pomogao postići konzistentno oblikovanje dijagrama||[mjesto](./assets/diagrams/4-2-Autofix-data-ERD.svg)|
+|4-3-Autofix-domain-CD.svg|pomoć u oblikovanju|pomogao postići konzistentno oblikovanje dijagrama||[mjesto](./assets/diagrams/4-3-Autofix-domain-CD.svg)|
+|4-2-Autofix-data-ERD.puml|pomoć u oblikovanju|pomogao postići konzistentnu sintaksu UML||[mjesto](./puml/4-2-Autofix-data-ERD.puml)|
+|4-3-Autofix-domain-CD.puml|pomoć u oblikovanju|pomogao postići konzistentnu sintaksu UML||[mjesto](./puml/4-3-Autofix-domain-CD.puml)|
 | [npr. 3. Obrasci uporabe, UC-002] | [Izrada nacrta / preoblikovanje / prijevod / izvor dijagrama / sažimanje] | [Kratak opis] | [Ulaz zadan alatu; dodane, ispravljene ili uklonjene činjenice] | [Stranica dokumentacije, `.puml` datoteka, PR] |
 
 Stranice i artefakti koji nisu navedeni iznad izrađeni su bez pomoći generativne umjetne inteligencije.
