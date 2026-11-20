@@ -107,7 +107,7 @@
 | F-012 | UC-004 Razgovor preko poruka | Web-klijent; API za slanje poruke | CT-03 provjera uspješnosti slanja i dobivanja poruke |
 | F-016 | UC-010 Plaćanje servisa | Web-klijent; API za plaćanje; usluga za internetsko plaćanje | CT-04 Provjera uspješnog preusmjerenja na uslugu |
 | F-020 | UC-008 Upravljanje korisnicima i njihovim ulogama | Web-klijent; API za upravljanje korisnicima | ST-06 Provjera ažuriranja podataka korisnika nakon promjene |
-|F-003, F-004, F-006, F-008, F-011, F-013 do F-015, F-017 do F-019, F-020 do F-023| na čekanju, razlog : funkcionalnosti neće nužno biti uklučene u zadnjoj predaji rada. ||||
+|F-003, F-004, F-006, F-008, F-011, F-013 do F-015, F-017 do F-019, F-020 do F-023| Na čekanju, razlog : funkcionalnosti neće nužno biti uključene u rad. ||||
 
 <!--
 **Pokrivenost i dokazi:** CT-06 provjerava odabir primatelja za F-005, ali sam po sebi ne dokazuje da je obavijest stvarno dostavljena; ako projekt zahtijeva potpunu dostavu od početka do kraja, za taj dio treba postojati zasebna provjera. Svaki redak pokazuje gdje je zahtjev opisan kao ponašanje, gdje je ostvaren u sustavu i gdje se nalazi dokaz njegove provjere. Zahtjev ne mora imati zaseban obrazac uporabe ako ne opisuje korisničku interakciju; tada navedite relevantno ponašanje, arhitekturni element ili drugi prikladan način realizacije. U svojem projektu koristite stvarne nazive komponenata, modula i provjera iz dokumentacije i implementacije. Nedostajuću poveznicu ostavite praznom ili označite kao *na čekanju* uz kratak razlog. Stvarni rezultati ispitivanja bilježe se uz ispitne slučajeve; ova tablica pokazuje gdje ih pronaći.
