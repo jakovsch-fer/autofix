@@ -5,7 +5,7 @@
 ## A.1 Evidencija sastanaka
 
 **Cilj:** Voditi kratak zapis projektnih sastanaka i tjedne koordinacije: tko je sudjelovao, što je odlučeno i koja je radnja uslijedila. Raspravu koja nije dovela do odluke zabilježite samo ako je važno pitanje ostalo otvoreno.
-
+<!--
 >Definirati prije prve uporabe:
 `[Inicijali/Kratica] = [Ime i prezime]` (npr. *AK = Ana Kovač; LM = Luka Marić; EP = Ema Petrović; NK = Nika Kralj*).																														
 
@@ -14,18 +14,18 @@
 |  |  |  |  |
 
 Za svaki relevantan sastanak ili zapis tjedne koordinacije upišite jedan sažet redak. Dodijeljeni zadatak treba imati odgovornu osobu; za neriješeno pitanje treba navesti tko će ga dalje obraditi. Sam naslov sastanka ne pokazuje što se promijenilo. U ovu evidenciju nemojte kopirati cijeli popis issuea ni prijepis razgovora.
-
+-->
 <details>
-<summary><strong>Primjer evidencije sastanaka (CrisisMap)</strong></summary>
+<summary><strong>Evidencija sastanka Autofix</strong></summary>
 
-**Primjer — CrisisMap:**
+**Autofix:**
 
-**Kratice članova tima:** AK = Ana Kovač; LM = Luka Marić; EP = Ema Petrović; NK = Nika Kralj.
+**Kratice članova tima:** MN = Marko Nujić, JŠ = Jakov Schremedei, IB = Ivan Borbaš, TB = Tonko Bogdan
 
 | Datum i sudionici | Glavna tema | Odluka, radnja ili otvoreno pitanje | Poveznica na zadatak ili nastali rezultat, ako postoji |
 | --- | --- | --- | --- |
-| 15. 11. 2025.; AK, LM, EP | Lokacija kada je pristup preglednika odbijen | Dodati ručni odabir položaja na karti u obrazac za prijavu. AK obrađuje obrazac; LM provjerava valjanost lokacije. | Zadataka #21 i #23. |
-| 22. 11. 2025.; AK, EP | Usklađivanje formata lokacijskih podataka | klijentski dio i poslužiteljski API koriste neusklađene formate koordinata. EP će uskladiti format zahtjeva i demonstrira spremanje na sljedećem pregledu. | Zadatak #25. |
+| 24. 10. 2026.; MN, JŠ, IB, TB | Podjela uloge u izradi projekta | Inicijalno: MN - baza podataka, JŠ - backend, IB - frontend, TB - backend | / |
+| 8. 11. 2026.; MN, JŠ, IB, TB | Diskusija o načinu izrade projekta (izgled stranice, potrebne funkcionalnosti, baza podataka) | Koristi se Django za izradu stranice; dogovoreni su izgled stranice i potrebne tablice za bazu podataka  | / |
 
 **Ishod i odgovornost:** Zapisi jasno definiraju tko je odgovoran za koji dio posla i koji je provjerljivi rezultat dogovoren. npr Rečenica „Raspravljali smo o obradi lokacije” prikrila bi je li se itko obvezao na promjenu. Ovi redci navode odluku ili otvorenu radnju, odgovornu osobu i rezultat koji se može pregledati.
 
@@ -35,7 +35,7 @@ Za svaki relevantan sastanak ili zapis tjedne koordinacije upišite jedan sažet
 
 **Cilj:** Prikazati planirani redoslijed rada i odgovornosti u timu. Prikažite projektne tjedne ili druga kratka razdoblja koja tim koristi, uključujući pripremu za formalne provjere.
 
-**Trenutačni plan:** [Poveznica na GitHub Projects ploču, Gantogram ili održavanu tablicu u nastavku. Navesti osobu zaduženu za ažurnost plana. Odaberite jedan glavni prikaz i navedite tko ga održava ažurnim.]
+**Trenutačni plan:** [Github Project ploča](https://github.com/users/jakovsch-fer/projects/4/views/2)
 
 | Razdoblje/Tjedan | Glavni planirani rad | Odgovorni članovi | Poveznica na zadatke |
 | --- | --- | --- | --- |
@@ -63,10 +63,12 @@ Ako koristite tablicu, plan vodite na korisnoj tjednoj razini i ažurirajte ga k
 
 | Aktivnost ili rezultat | Član | Prijavljeni sati | Reprezentativni rezultat ili poveznica |
 | --- | --- | --- | --- |
-|  |  |  |  |
+| Stvaranje baze podataka | MN | 2 | Branch - BP-dodaneTablice |
+| Ispunjavanje dokumentacije | MN | 9 |Branch - 3.2---verzija-1; UML-update-1; Branch - docs-zahtjevi (poglavlje 2.6 Sljedivost zahtjeva) |
+
 
 Koristite aktivnosti specifične za projekt umjesto obaveznog retka za svako poglavlje dokumentacije ili svaki UML dijagram. Tim treba dosljedno bilježiti sate i izbjegavati dvostruko brojanje zajedničkog rada; reprezentativni rezultat objašnjava što je prijavljeni trud proizveo. Sati su samoprijavljena procjena uloženog rada, a ne mjera kvalitete niti zamjena za pregled koda i artefakata.
-
+<!--
 <details>
 <summary><strong>Primjer aktivnosti i rezultata rada</strong></summary>
 
@@ -82,7 +84,7 @@ Koristite aktivnosti specifične za projekt umjesto obaveznog retka za svako pog
 **Trud i rezultat:** Završni stupac omogućuje raspravu o doprinosu bez tretiranja velikog broja sati kao dokaza isporuke. Tim može prijaviti stvarno dugotrajan, još neriješen problem integracije kao obavljen rad i iskreno opisati njegov ishod.
 
 </details>
-
+-->
 ## A.4 Pregled promjena u repozitoriju
 
 **Cilj:** Prikazati kada su promjene napravljene u repozitoriju i tko ih je napravio, uz napomenu da sam broj zapisa promjena ne mjeri kvalitetu doprinosa.
@@ -97,21 +99,23 @@ Graf može pokazati kada su zapisi promjena napravljeni i tko ih je napravio, al
 
 | Izazov | Poduzeta radnja | Ishod ili preostalo ograničenje |
 | --- | --- | --- |
-|  |  |  |
+| Mali broj članova tima | Fleksibilnije si dodijelili uloge - nije jednoznačno određeno, već imamo neke primarne uloge, a ako negdje treba pomoći, prilagodimo se. | Ograničenje - u slučaju da svi imaju puno posla, a nekome treba pomoći, nemamo opciju prebaciti nekoga |
 
+<!--
 <details>
 <summary><strong>Rješavanje nesklada formata lokacije</strong></summary>
 
-**Primjer — CrisisMap:**
+**Autofix izazovi i riješenja:**
 
 | Izazov | Poduzeta radnja | Ishod ili preostalo ograničenje |
 | --- | --- | --- |
-| Odabrani položaj na karti prikazivao se u klijentu, ali podnesena prijava nije zadržavala koordinate. | AK i EP usporedile su zahtjev preglednika s poljima lokacije koje očekuje API; AK je uskladila format zahtjeva, a LM je dodao provjeru valjanosti lokacije. | Nova prijava u ovom se scenariju može dohvatiti sa spremljenim položajem; tim povezuje odgovarajuću promjenu integracije i provjeru. |
+| Mali broj članova tima | Fleksibilnije si dodijelili uloge - nije jednoznačno određeno, već imamo neke primarne uloge, a ako negdje treba pomoći, prilagodimo se privremenim ulogama | Ograničenje - u slučaju da svi imaju puno posla, a nekome treba pomoći, nemamo opciju privremeno dodijeliti nekome drugu ulogu |
 
 **Problem, odgovor i ishod:** Svaki se dio može provjeriti u projektu. Rečenica poput „imali smo poteškoće s integracijom i riješili ih timskim radom” ne bi čitatelju rekla što nije radilo ni kako je rješenje promijenjeno.
-
+-->
 </details>
 
 ---
-
->**Završna provjera:** Sastanci navode smislene ishode i odgovorne osobe; plan odražava namjeravani rad; tablica uloženog rada i generirani prikaz repozitorija odnose na ovaj vidljivi projekt; konkretni izazovi povezani su s radnjama i njihovim rezultatima. 
+<!--
+>**Završna provjera:** Sastanci navode smislene ishode i odgovorne osobe; plan odražava namjeravani rad; tablica uloženog rada i generirani prikaz repozitorija odnose na ovaj vidljivi projekt; konkretni izazovi povezani su s radnjama i njihovim rezultatima.
+-->
