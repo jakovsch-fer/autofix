@@ -87,23 +87,31 @@
 
 **Cilj:** Osigurati dvosmjernu sljedivost — povezati zahtjeve s opisanim ponašanjem, dijelovima sustava koji ih ostvaruju te ispitivanjem ili drugom provjerom. 
 
-| ID zahtjeva | Obrazac uporabe / modul | Arhitekturna realizacija | Ispitivanje ili provjera |
+<!--| ID zahtjeva | Obrazac uporabe / modul | Arhitekturna realizacija | Ispitivanje ili provjera |
 | --- | --- | --- | --- |
-| F-001 | [UC-001] | [Komponenta, modul ili drugo mjesto realizacije] | [ST-01, CT-01 ili druga provjera] |
-|  |  |  |  |
-
+| F-001 | UC-001 | Komponenta, modul ili drugo mjesto realizacije | ST-01, CT-01 ili druga provjera |
+| F-002 |  |  |  |
+-->
 <details>
 <summary><strong>Sljedivost zahtjeva do obrazaca uporabe i ispitivanja</strong></summary>
 
-**Primjer — poveznice zahtjeva CrisisMapa:**
+**Poveznice zahtjeva Autofixa:**
 
 | ID zahtjeva | Obrazac uporabe / ponašanje | Arhitekturna realizacija | Ispitivanje / provjera |
 | --- | --- | --- | --- |
-| F-004 | UC-002 Podnošenje prijave kriznog događaja | Web-klijent; API za prijave; usluga za prijave | ST-01 Valjano podnošenje prijave; ST-02 Nedostaje obavezna lokacija; ST-03 Dopuštenje geolokacije odbijeno |
-| F-005 | Odabir primatelja obavijesti | Proces za obavijesti | CT-06 Primatelji obavijesti; potpuna dostava obavijesti nije pokrivena ovom provjerom |
+| F-001, F-002 | UC-001 Prijava u sustav | Web-klijent; API za prijave; usluga za prijave (OAuth) | ST-01 Valjano podnošenje prijave |
+| F-005 | UC-003  Zahtjev za servisiranje | Web-klijent; API za zahtjev servisiranja | ST-02 Provjera jesu li svi potrebni podaci ispunjeni |
+| F-007 | UC-002 Pregled statusa servisa; | Web-klijent | ST-03 Provjera pokazuje li točne podatke o statusu servisa |
+| F-009 | UC-009 Dobivanje e-pošte o statusu servisa i potvrdi plaćanja | usluga za e-pošte (Mailgun) | CT-01 Provjera ispravnosti slanja e-pošte putem Mailguna; CT-02 Provjera ispravnosti podataka u predlošku e-pošte; ST-04 Provjera dobiva li korisnik e-poštu nakon promjene statusa servisa ili potvrde plaćanja |
+| F-010 | UC-005 Dodjela klijenta serviseru | Web-klijent; API za obavljanje dodjele narudžbi | ST-05 Provjera uspješne dodjele klijenta serviseru |
+| F-012 | UC-004 Razgovor preko poruka | Web-klijent; API za slanje poruke | CT-03 provjera uspješnosti slanja i dobivanja poruke |
+| F-016 | UC-010 Plaćanje servisa | Web-klijent; API za plaćanje; usluga za internetsko plaćanje | CT-04 Provjera uspješnog preusmjerenja na uslugu |
+| F-020 | UC-008 Upravljanje korisnicima i njihovim ulogama | Web-klijent; API za upravljanje korisnicima | ST-06 Provjera ažuriranja podataka korisnika nakon promjene |
+|F-003, F-004, F-006, F-008, F-011, F-013 do F-015, F-017 do F-019, F-020 do F-023| na čekanju, razlog : funkcionalnosti neće nužno biti uklučene u zadnjoj predaji rada. ||||
 
+<!--
 **Pokrivenost i dokazi:** CT-06 provjerava odabir primatelja za F-005, ali sam po sebi ne dokazuje da je obavijest stvarno dostavljena; ako projekt zahtijeva potpunu dostavu od početka do kraja, za taj dio treba postojati zasebna provjera. Svaki redak pokazuje gdje je zahtjev opisan kao ponašanje, gdje je ostvaren u sustavu i gdje se nalazi dokaz njegove provjere. Zahtjev ne mora imati zaseban obrazac uporabe ako ne opisuje korisničku interakciju; tada navedite relevantno ponašanje, arhitekturni element ili drugi prikladan način realizacije. U svojem projektu koristite stvarne nazive komponenata, modula i provjera iz dokumentacije i implementacije. Nedostajuću poveznicu ostavite praznom ili označite kao *na čekanju* uz kratak razlog. Stvarni rezultati ispitivanja bilježe se uz ispitne slučajeve; ova tablica pokazuje gdje ih pronaći.
-
+-->
 </details>
 
 ---
