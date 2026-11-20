@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<title>AutoServis - Odjava</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>AutoServis</h1>
+<p id="poruka">Odjava u tijeku...</p>
+<script src="https://cdn.jsdelivr.net/npm/oidc-client-ts@3.0.1/dist/browser/oidc-client-ts.min.js"></script>
+<script src="js/mock.js"></script>
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script>
+async function zavrsi() {
+  try {
+    sessionStorage.removeItem("token");
+    if (CONFIG.USE_MOCK) odjaviMock();
+    const korisnik = await um().signoutRedirect();
+  } catch (e) {
+    document.getElementById("poruka").textContent = "Odjava nije uspjela: " + e.message;
+    return;
+  }
+  // location.href = "index.html"
+}
+zavrsi();
+</script>
+</body>
+</html>

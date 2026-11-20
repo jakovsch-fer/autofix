@@ -21,33 +21,39 @@ Autoservis (serviser i voditelj):<br>
 <input type="text" name="autoservis"><br><br>
 <input type="submit" value="Registriraj se">
 </form>
+<script src="https://cdn.jsdelivr.net/npm/oidc-client-ts@3.0.1/dist/browser/oidc-client-ts.min.js"></script>
 <script src="js/mock.js"></script>
 <script src="js/api.js"></script>
 <script src="js/common.js"></script>
 <script>
 async function provjeri() {
-  try {
-    const ja = await api("GET", "/users/me");
-    if (ja.uloga) {
-      location.href = POCETNE[ja.uloga];
-      return;
-    }
-    $("ime").value = ja.ime || "";
-  } catch (e) {
-    if (e.status === 404) {
-      const c = claimovi();
-      $("ime").value = c.name || ((c.given_name || "") + " " + (c.family_name || "")).trim();
-    } else {
-      location.href = "index.html";
-    }
-  }
+  const u = await um().getUser();
+  if (!u) return;
+  const c = u.profile
+  $("ime").value = c.name || ((c.given_name || "") + " " + (c.family_name || "")).trim();
+  // try {
+  //   const ja = await api("GET", "/users/me");
+  //   if (ja.uloga) {
+  //     location.href = POCETNE[ja.uloga];
+  //     return;
+  //   }
+  //   $("ime").value = ja.ime || "";
+  // } catch (e) {
+  //   if (e.status === 404) {
+  //     const c = claimovi();
+  //     $("ime").value = c.name || ((c.given_name || "") + " " + (c.family_name || "")).trim();
+  //   } else {
+  //     location.href = "index.html";
+  //   }
+  // }
 }
 
 async function registriraj(e) {
   e.preventDefault();
   const f = e.target;
   try {
-    const ja = await api("POST", "/auth/register", { ime: f.ime.value, email: claimovi().email, uloga: f.uloga.value, autoservis: f.autoservis.value });
+    const u = await um().getUser();
+    const ja = await api("POST", "/auth/register", { ime: f.ime.value, email: u.profile.email, uloga: f.uloga.value, autoservis: f.autoservis.value });
     location.href = POCETNE[ja.uloga];
   } catch (greska) {
     alert(greska.message);

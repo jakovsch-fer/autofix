@@ -1,9 +1,21 @@
 const CONFIG = {
   USE_MOCK: true,
-  API_BASE: "http://localhost:8000/api",
-  OIDC_AUTHORITY: "https://accounts.google.com",
-  OIDC_CLIENT_ID: "UPISI_CLIENT_ID",
+  API_BASE: "/api",
+  OIDC_AUTHORITY: "https://dev-jfdn2h5ieertkrel.us.auth0.com",
+  OIDC_CLIENT_ID: "ijdOGnWw9Z4RwmFAxsUK6bAFPNA7QOGu",
 };
+
+const um = () => new oidc.UserManager({
+  authority: CONFIG.OIDC_AUTHORITY,
+  client_id: CONFIG.OIDC_CLIENT_ID,
+  redirect_uri: location.origin + "/callback.html",
+  post_logout_redirect_uri: location.origin + "/index.html",
+  response_type: "code",
+  scope: "openid profile email",
+  extraQueryParams: {
+    audience: "api://autofix",
+  },
+});
 
 function dohvatiToken() {
   return sessionStorage.getItem("token");
@@ -48,15 +60,4 @@ async function api(metoda, putanja, tijelo) {
   }
   if (odgovor.status === 204) return null;
   return odgovor.json();
-}
-
-function prijavaOidc() {
-  const um = new oidc.UserManager({
-    authority: CONFIG.OIDC_AUTHORITY,
-    client_id: CONFIG.OIDC_CLIENT_ID,
-    redirect_uri: location.origin + location.pathname.replace(/[^/]*$/, "") + "callback.html",
-    response_type: "code",
-    scope: "openid profile email",
-  });
-  return um.signinRedirect();
 }

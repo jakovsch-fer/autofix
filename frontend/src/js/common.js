@@ -98,10 +98,10 @@ async function pokreni(uloga) {
     }
     return null;
   }
-  if (!ja.uloga) {
-    location.href = "registracija.html";
-    return null;
-  }
+  // if (!ja.uloga) {
+  //   location.href = "registracija.html";
+  //   return null;
+  // }
   if (uloga && ja.uloga !== uloga) {
     location.href = POCETNE[ja.uloga];
     return null;
@@ -113,11 +113,7 @@ async function pokreni(uloga) {
 }
 
 async function odjava() {
-  sessionStorage.removeItem("token");
-  try {
-    await api("POST", "/logout");
-  } catch (e) {}
-  location.href = "index.html";
+  location.href = "odjava.html";
 }
 
 function pocni(uloga) {
