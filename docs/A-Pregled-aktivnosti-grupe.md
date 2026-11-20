@@ -64,7 +64,7 @@ Ako koristite tablicu, plan vodite na korisnoj tjednoj razini i ažurirajte ga k
 | Aktivnost ili rezultat | Član | Prijavljeni sati | Reprezentativni rezultat ili poveznica |
 | --- | --- | --- | --- |
 | Stvaranje baze podataka | MN | 2 | Branch - BP-dodaneTablice |
-| Ispunjavanje dokumentacije | MN | 9 |Branch - 3.2---verzija-1; UML-update-1; Branch - docs-zahtjevi (poglavlje 2.6 Sljedivost zahtjeva) |
+| Ispunjavanje dokumentacije | MN | 7 |Branch - 3.2---verzija-1; UML-update-1; Branch - docs-zahtjevi (poglavlje 2.6 Sljedivost zahtjeva) |
 | Implementacija frontend-a | IB | 5 | Izrada korisničkog sučelja pomoću HTML-a, CSS-a i JavaScripta |
 | OAuth prijava i registracija | IB	| 3 |	Auth0 autentifikacija, callback, odjava i registracija korisnika – PR #12|
 
