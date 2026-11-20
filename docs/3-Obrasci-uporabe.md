@@ -6,7 +6,7 @@
 
 **Cilj:** Prikazati granicu sustava, relevantne aktere i njihove glavne ciljeve u **preglednom UML dijagramu obrazaca uporabe**. Ako je za razumijevanje pojedinog dijela sustava potrebno prikazati više detalja, taj dio izdvojite u dodatni usmjereni dijagram. Dodatni dijagrami trebaju produbiti dio preglednog modela, a ne stvarati nepovezane ili duplicirane prikaze istog sustava.
 
-![Dijagram obrazaca uporabe sustava CrisisMap](./assets/diagrams/3-1-crisismap-system-UC.svg)
+![Dijagram obrazaca uporabe sustava CrisisMap](./assets/diagrams/Autofix-funkcionalnosti.svg)
 
 **Slika 3.1. Dijagram obrazaca uporabe sustava CrisisMap**
 
