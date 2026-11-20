@@ -56,7 +56,7 @@ Vanjski sustav može biti sekundarni akter obrasca uporabe kada sudjeluje u ostv
 | **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
 
 <details>
-<summary><strong>Primjeri specifikacija: Registracija i prijava kriznog događaja</strong></summary>
+<summary><strong>Specifikacije: Autofix</strong></summary>
 
 <!-- **Primjer — CrisisMap:**
 
