@@ -72,6 +72,7 @@ Navedite nekoliko tehnologija i vanjskih usluga koje bitno određuju kako vaša 
 ## Članovi tima
 
 | Član | GitHub profil | Glavna uloga ili doprinos |
+| --- | --- | --- | --- |
 | Marko Nujić | @Marko1324354 | Voditelj, modeliranje, dokumentacija |
 | Ivan Borbaš | @IBorbas | Frontend, dokumentacija |
 | Tonko Bogdan | @TB-FER | Backend, modeliranje, dokumentacija |
