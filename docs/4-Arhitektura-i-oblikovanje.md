@@ -22,7 +22,7 @@ Za svaki UML dijagram čuvajte čitljivu sliku i PlantUML izvor, kako je opisano
 
 | Odluka | Razmatrana alternativa | Projektno specifično obrazloženje i kompromis |
 | --- | --- | --- |
-| Klijent u pregledniku | Više poslužiteljskih domena  | Klijent u pregledniku omogućuje korisnicima lakši pregled i čini sve lakšim i spojenijim povezujući servise i korisnike |
+| Klijent u pregledniku i jedan API | Više poslužiteljskih domena  | Klijent u pregledniku korisnicima olakšava pregled sadržaja te na jednostavan način povezuje servise i korisnike |
 |Relacijska pohrana podataka|Dokumentno orjentirana pohrana podataka|Pohrana podataka u vanjskoj bazi podataka omogućuje lakši pristup adminu stranice za izmjenu samih podataka i olakšava prikaz veza između korisnika i servisa|
 
 Objasnite glavne arhitekturne odluke bez ponavljanja popisa tehnologija. Ako važna odluka ima ADR, dovoljno je u tablici navesti njegov ID.
