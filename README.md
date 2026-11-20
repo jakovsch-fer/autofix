@@ -1,7 +1,5 @@
 # Autofix
 
-Web platforma za upravljanje servisiranjem vozila koja povezuje vlasnike vozila, servisere i voditelje autoservisa.
-
 **Projekt na kolegiju:** Ovu je aplikaciju razvio studentski tim u sklopu kolegija [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz) na Fakultetu elektrotehnike i računarstva Sveučilišta u Zagrebu (FER).
 
 **Tim**: G04.3 (Autofix)
@@ -10,46 +8,43 @@ Web platforma za upravljanje servisiranjem vozila koja povezuje vlasnike vozila,
 
 ## Opis aplikacije
 
-[...]
+Web platforma za upravljanje servisiranjem vozila koja povezuje vlasnike vozila, servisere i voditelje autoservisa.
 
 ### Ključne funkcionalnosti
 
-- [Reprezentativna funkcionalnost koju korisnici mogu isprobati]
-- [Druga reprezentativna funkcionalnost]
-- [Po želji dodatna funkcionalnost; nemojte kopirati cijeli popis zahtjeva]
+- Dodavanje i naručivanje vozila na servis
+- Raspoređivanje i dodjela servisa
+- Praćenje tijeka servisa i evidentiranje radova
+- Praćenje servisne povijesti vozila
 
 Za potpuni opseg, zahtjeve, oblikovanje i dokaze ispitivanja pogledajte [projektnu dokumentaciju](docs/Home.md).
 
 <a id="deployment"></a>
 ## Postavljanje (engl. deployment)
 
-**Javno dostupna inačica:** [Javni URL]
+**Javno dostupna inačica:** https://g04-3-autofix.onrender.com
 
-**Isprobajte:** [Jedna ili dvije kratke radnje koje pokazuju funkcionalan korisnički tijek.]
+**Isprobajte:** Prijavite se, isprobajte gore navedene funkcionalnosti (ili više), odjavite se i ponovite za korisnike s drugim ulogama.
 
-**Demonstracija:** [Objasnite kako dobiti potreban ograničeni pristup ako je prijava obavezna; u suprotnom napišite „Korisnički račun nije potreban.” Ovdje ne objavljujte lozinke ni pristupne tokene.]
+**Pristup:** Prijava preusmjerava na portal pružatelja identiteta, registracija je moguća izravno putem adrese e-pošte ili identitetom treće strane (Google ili Microsoft). Postoje i 3 unaprijed registrirana korisnika s odgovarajućim ulogama: `vlasnik@example.com`, `voditelj@example.com` i `serviser@example.com`.
 
-**Ograničenja:** [Kratko navedite ograničenja postavljene inačice ili postavite poveznicu na jedinstveno mjerodavno mjesto u dokumentaciji s poznatim problemima.]
-
-[Vodič za postavljanje i pokretanje](docs/6-Postavljanje-instalacija-i-konfiguracija.md) opisuje smještaj aplikacije (engl. hosting) koji tim stvarno koristi. Tim može koristiti Render ili drugu platformu koju ste dogovorili s asistentom/demonstratorom.
+**Ograničenja:** Demonstracijska inačica za prvi ciklus postavljena je kao samostalan klijentski dio sustava (pogledajte [4. poglavlje](docs/4-Arhitektura-i-oblikovanje.md#41-ključne-arhitekturne-odluke)), stoga su radnje koje trajno utječu na bazu podataka ograničene na lokalnu pohranu u korištenom pregledniku.
 
 <a id="quick-start"></a>
 ## Brzi početak / instalacija
 
-**Preduvjeti:** [Navedite potrebno izvršno okruženje (engl. runtime) i verzija, upravitelj paketa (engl. package manager), baza podataka ili vanjska usluga ako je nužna.]
+**Preduvjeti:** Node.js (>= 24), Python (>= 3.13), npm ili [pnpm](https://pnpm.io), [uv](https://docs.astral.sh/uv)
 
 ```bash
-git clone [repository URL]
-cd [repository directory]
-[install dependencies]
-[run the application]
+git clone 'https://github.com/jakovsch-fer/autofix'
+cd autofix/frontend
+npm run build
+python -m http.server -d dist -b localhost 8000
 ```
 
-**Adresa:** [Stvarna adresa koju aplikacija ispiše nakon pokretanja.]
+**Adresa:** `http://localhost:8000/`
 
-**Konfiguracija:** [Navedite potrebne varijable okruženja (engl. environment variables) ili uputite na sigurnu datoteku `.env.example`; objasnite gdje se dobivaju vrijednosti. Nikada ne stavljajte stvarne pristupne podatke u ovu datoteku, primjer konfiguracije, snimke zaslona, zapise ni zapise promjena (engl. commits).]
-
-[Dodajte kratak korak provjere, primjerice koja se stranica treba otvoriti ili koja naredba pokreće osnovnu provjeru.] Za detaljno postavljanje pogledajte [projektnu dokumentaciju](docs/Home.md).
+<!-- **Konfiguracija:** [Navedite potrebne varijable okruženja (engl. environment variables) ili uputite na sigurnu datoteku `.env.example`; objasnite gdje se dobivaju vrijednosti. Nikada ne stavljajte stvarne pristupne podatke u ovu datoteku, primjer konfiguracije, snimke zaslona, zapise ni zapise promjena (engl. commits).] -->
 
 ## Tehnologije
 
@@ -76,17 +71,20 @@ Navedite nekoliko tehnologija i vanjskih usluga koje bitno određuju kako vaša 
 <a id="team-members"></a>
 ## Članovi tima
 
-| Član | Glavna uloga ili doprinos |
-| --- | --- |
+| Član | GitHub profil | Glavna uloga ili doprinos |
+| Marko Nujić | @Marko1324354 | Voditelj, modeliranje, dokumentacija |
+| Ivan Borbaš | @IBorbas | Frontend, dokumentacija |
+| Tonko Bogdan | @TB-FER | Backend, modeliranje, dokumentacija |
+| Jakov Schramadei | @jakovsch-fer | Backend, dokumentacija, postavljanje |
 
 ## Doprinos projektu
 
-[Ako je primjenjivo, ukratko opišite kako se evidentiraju zadatci i nedostatci te kako se pregledavaju promjene koda i gdje se nalazi aktualna evidencija zadataka. Ako tim održava `CONTRIBUTING.md`, ovdje postavite poveznicu umjesto ponavljanja pravila. Nemojte stvarati tu datoteku samo zato da biste popunili ovaj odjeljak.]
+Pogledajte [projektnu dokumentaciju](docs/Home.md#organizacija-projekta-i-razvojni-proces).
 
 <a id="license"></a>
 ## Licenca
 
-**Status licence:** [Navedite licencu i postavite poveznicu na projektnu datoteku `LICENSE` ili izričito navedite da nije dodijeljena licenca koja dopušta javnu ponovnu uporabu. Namjeravani opseg provjerite s timom; nemojte prepisivati licencu predloška ove dokumentacije kao licencu svoje aplikacije.]
+**Status licence:** Nije odabrana.
 
 Dokumentacijski predložak kolegija sadrži otvorene obrazovne sadržaje (engl. Open Educational Resources, OER) i licenciran je licencom Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International.
 
@@ -97,7 +95,7 @@ Kod trećih strana, skupovi podataka, slike, ikone i drugi sadržaji zadržavaju
 
 Ovaj projekt slijedi FER-ova [pravila o primjerenoj uporabi umjetne inteligencije](https://www.fer.unizg.hr/_download/repository/Policy%20on%20the%20appropriate%20use%20of%20artificial%20intelligence%20at%20the%20faculty%20of%20electrical%20engineering%20and%20computing%5B1%5D.pdf).
 
-**Izjava:** [Navedite jesu li korišteni alati umjetne inteligencije. Ako jesu, navedite alate i njihove glavne namjene te objasnite kako je tim pregledao nastali kod ili tekst i kako može objasniti vlastiti doprinos. Ako nisu korišteni, to jasno navedite. U alate umjetne inteligencije nemojte unositi privatne podatke, pristupne podatke ni tuđe zaštićene materijale.]
+**Izjava:** Korišteni su alati umjetne inteligencije. Za detaljan opseg pogledajte [projektnu dokumentaciju](docs/Home.md#izjava-o-uporabi-umjetne-inteligencije).
 
 <a id="code-of-conduct-and-support"></a>
 ## Kodeks ponašanja i podrška [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
