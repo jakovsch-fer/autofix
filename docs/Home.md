@@ -101,6 +101,7 @@ Ovaj odjeljak bilježi koji su alati korišteni, za koju dokumentaciju ili kod t
 
 | Alat | Inačica ili model | Koristio/la | Glavna svrha |
 | --- | --- | --- | --- |
+|Claude|Opus 5.5| Tonko Bogdan| Uređivanje i pripomoč pri izdradi dijagrama|
 | [Naziv alata] | [Inačica ili model, ako je poznat] | [Član/članovi tima] | [npr. izrada nacrta dokumentacije, generiranje izvora dijagrama] |
 
 ### Opseg doprinosa umjetne inteligencije
