@@ -65,6 +65,8 @@ Ako koristite tablicu, plan vodite na korisnoj tjednoj razini i ažurirajte ga k
 | --- | --- | --- | --- |
 | Stvaranje baze podataka | MN | 2 | Branch - BP-dodaneTablice |
 | Ispunjavanje dokumentacije | MN | 9 |Branch - 3.2---verzija-1; UML-update-1; Branch - docs-zahtjevi (poglavlje 2.6 Sljedivost zahtjeva) |
+| Implementacija frontend-a | IB | 5 | Izrada korisničkog sučelja pomoću HTML-a, CSS-a i JavaScripta |
+| OAuth prijava i registracija | IB	| 3 |	Auth0 autentifikacija, callback, odjava i registracija korisnika – PR #12|
 
 
 Koristite aktivnosti specifične za projekt umjesto obaveznog retka za svako poglavlje dokumentacije ili svaki UML dijagram. Tim treba dosljedno bilježiti sate i izbjegavati dvostruko brojanje zajedničkog rada; reprezentativni rezultat objašnjava što je prijavljeni trud proizveo. Sati su samoprijavljena procjena uloženog rada, a ne mjera kvalitete niti zamjena za pregled koda i artefakata.
