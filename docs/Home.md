@@ -12,11 +12,11 @@
 
 ## Pregled projekta
 
-[Opis projekta.]
+Web platforma za upravljanje servisiranjem vozila koja povezuje vlasnike vozila, servisere i voditelje autoservisa.
 
 **Osnovno postavljanje:** [README repozitorija](../README.md#quick-start)
 
-**Javno dostupna aplikacija:** [README repozitorija](../README.md#deployment)
+**Javno dostupna inačica:** [README repozitorija](../README.md#deployment)
 
 ## Članovi tima i uloge
 
@@ -109,7 +109,7 @@ Ovaj odjeljak bilježi koji su alati korišteni, za koju dokumentaciju ili kod t
 | --- | --- | --- | --- | --- |
 | [npr. 3. Obrasci uporabe, UC-002] | [Izrada nacrta / preoblikovanje / prijevod / izvor dijagrama / sažimanje] | [Kratak opis] | [Ulaz zadan alatu; dodane, ispravljene ili uklonjene činjenice] | [Stranica dokumentacije, `.puml` datoteka, PR] |
 
-Stranice i artefakti koji nisu navedeni iznad izrađeni su bez pomoći generativne umjetne inteligencije. [Po želji: kao dodatne retke navedite kod ili ispitivanja izrađena uz pomoć umjetne inteligencije.]
+Stranice i artefakti koji nisu navedeni iznad izrađeni su bez pomoći generativne umjetne inteligencije.
 
 ### Provjera generiranog sadržaja
 
