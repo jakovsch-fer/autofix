@@ -25,9 +25,9 @@ async function ucitaj() {
   const lista = await api("GET", "/serviseri");
   let h = "<p>Nema servisera.</p>";
   if (lista.length) {
-    h = "<table><tr><th>Ime</th><th>Specijalizacija</th><th>Aktivnih zahtjeva</th><th></th></tr>";
+    h = "<table><tr><th>Ime</th><th>Specijalizacija</th><th>Aktivnih zahtjeva</th></tr>";
     lista.forEach((s) => {
-      h += "<tr><td>" + esc(s.ime) + "</td><td>" + esc(s.specijalizacija) + "</td><td>" + s.aktivnih_zahtjeva + '</td><td><input type="button" value="Deaktiviraj" onclick="deaktiviraj(' + s.id + ')"></td></tr>';
+      h += "<tr><td>" + esc(s.ime) + "</td><td>" + esc(s.specijalizacija) + "</td><td>" + s.aktivnih_zahtjeva + '</td></tr>';
     });
     h += "</table>";
   }
