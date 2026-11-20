@@ -22,10 +22,11 @@ Za svaki UML dijagram čuvajte čitljivu sliku i PlantUML izvor, kako je opisano
 
 | Odluka | Razmatrana alternativa | Projektno specifično obrazloženje i kompromis |
 | --- | --- | --- |
-|  |  |  |
+| Klijent u pregledniku | Više poslužiteljskih domena  | Klijent u pregledniku omogućuje korisnicima lakši pregled i čini sve lakšim i spojenijim povezujući servise i korisnike |
+|Relacijska pohrana podataka|Dokumentno orjentirana pohrana podataka|Pohrana podataka u vanjskoj bazi podataka omogućuje lakši pristup adminu stranice za izmjenu samih podataka i olakšava prikaz veza između korisnika i servisa|
 
 Objasnite glavne arhitekturne odluke bez ponavljanja popisa tehnologija. Ako važna odluka ima ADR, dovoljno je u tablici navesti njegov ID.
-
+<!--
 <details>
 <summary><strong>Primjer arhitekturnih odluka i kompromisa</strong></summary>
 
@@ -39,7 +40,7 @@ Objasnite glavne arhitekturne odluke bez ponavljanja popisa tehnologija. Ako va�
 **Analiza primjera:** Obje odluke navode razlog vezan uz aplikaciju za prijavljivanje kriznih događaja i priznaju kompromis. Odluka o poslužiteljskom sustavu upućuje na ADR-01 umjesto ponavljanja cijele usporedbe. Moduli unutar jedne aplikacije koja se postavlja kao cjelina nisu zasebne mikrousluge. U vlastitoj tablici navedite alternative koje je tim doista razmatrao.
 
 </details>
-
+-->
 ## 4.2 Gradivni blokovi i UML dijagram komponenata
 
 **Cilj:** Prikazati logičku podjelu programa na komponente, njihova sučelja i vanjske integracije. Dijagram komponenata prikazuje logičku organizaciju, dok dijagram razmještaja prikazuje fizičko izvođenje. Ovaj prikaz ažurirajte kako sustav poprima konačan oblik.
@@ -86,7 +87,7 @@ Započnite crtanjem granice oko predloženog sustava. Unutar nje prepoznajte dij
 **ER dijagram:** ![ER dijagram podataka sustava Autofix](./assets/diagrams/4-2-Autofix-data-ERD.svg)
 
 **Izvor dijagrama:** [izvor](./puml/4-2-Autofix-data-ERD.puml)  
-**Implementacija:** [Navedite gdje je odgovarajući model podataka definiran u projektu.]
+**Implementacija:** Implementacija je na [izvoru](../db/AutoFixERD.pgerd)
 <!--
 <details>
 <summary><strong>Jedna prijava poplave i povezani podaci</strong></summary>
