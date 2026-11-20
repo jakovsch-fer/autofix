@@ -87,19 +87,21 @@ function poruka(e, id) {
 async function pokreni(uloga) {
   let ja;
   try {
-    ja = await api("GET", "/me");
+    ja = await api("GET", "/users/me");
   } catch (e) {
-    if (e.status === 401) {
-      location.href = "index.html";
+    if (e.status === 404) {
+      location.href = "registracija.html";
+    } else if (e.status === 401) {
+      location.href = location.origin;
     } else {
       alert(e.message);
     }
     return null;
   }
-  if (!ja.uloga) {
-    location.href = "registracija.html";
-    return null;
-  }
+  // if (!ja.uloga) {
+  //   location.href = "registracija.html";
+  //   return null;
+  // }
   if (uloga && ja.uloga !== uloga) {
     location.href = POCETNE[ja.uloga];
     return null;
@@ -111,10 +113,7 @@ async function pokreni(uloga) {
 }
 
 async function odjava() {
-  try {
-    await api("POST", "/logout");
-  } catch (e) {}
-  location.href = "index.html";
+  location.href = "odjava.html";
 }
 
 function pocni(uloga) {

@@ -1,0 +1,224 @@
+' ==============================================================================
+' 4-3-Autofix-domain-CD.puml
+'
+' Svrha:    Prikazuje domenski model i aplikacijski servis za tijek servisnog
+'           zahtjeva: agregat ServisniZahtjev (s dijelovima ObavljeniRad,
+'           Ponuda i Ocjena), servis ZahtjevServis, sučelje ZahtjevRepozitorij
+'           (trajnost je apstrahirana) i sučelje ObavijestPort (vanjski servis
+'           za slanje e-mail obavijesti). Slojevi su razdvojeni na aplikacijski
+'           i domenski.
+' Izvor:    Zadatak "G04 - EJ1 - AutoServis", ER model 4-2-Autofix-data-ERD,
+'           API koji koristi frontend (frontend/src/js/mock.js).
+' AI:       Dijagram je izrađen uz pripomoć AI-ja za provjeru i bolji formating zadatka;
+' Praćenje: Model je polazište za implementaciju (backend, Django Ninja). Kad
+'           se dizajn promijeni tijekom razvoja, ažurirati model; nazivi
+'           operacija su konceptualni.
+'
+' Diagram level: Structural / Domain Design
+' Diagram type:  Class Diagram
+' Version:       1.0
+' ==============================================================================
+
+@startuml
+title Sustav AutoFix – domenski model servisnog zahtjeva
+
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam packageStyle rectangle
+skinparam ArrowColor #212529
+
+skinparam class {
+    BackgroundColor #E7F1FF
+    BorderColor #0D6EFD
+}
+
+skinparam note {
+    BackgroundColor #F8F9FA
+    BorderColor #212529
+    FontColor #212529
+}
+
+' ==============================================================================
+' Aplikacijski sloj: orkestrira slučajeve korištenja i delegira domeni.
+' ==============================================================================
+package "Aplikacijski sloj" {
+
+  class ZahtjevServis <<ApplicationService>> {
+    +zatraziServis(voziloId: Long, vrsta: VrstaServisa, termin: DateTime): Long
+    +dodijeliServisera(zahtjevId: Long, serviserId: Long): void
+    +promijeniTermin(zahtjevId: Long, termin: DateTime): void
+    +promijeniStatus(zahtjevId: Long, status: StatusZahtjeva): void
+    +evidentirajRad(zahtjevId: Long, opis: String, dio: String, minute: Integer): void
+    +izradiPonudu(zahtjevId: Long, opis: String, trosak: Decimal): void
+    +odluciOPonudi(zahtjevId: Long, prihvaceno: Boolean): void
+    +zavrsi(zahtjevId: Long, konacniTrosak: Decimal): void
+    +ocijeni(zahtjevId: Long, ocjena: Integer, komentar: String): void
+    +potvrda(zahtjevId: Long): Document
+  }
+
+  interface ObavijestPort <<Port>> {
+    +posaljiEmail(primatelj: String, naslov: String, tekst: String): void
+  }
+
+}
+
+' ==============================================================================
+' Domenski sloj: sadrži poslovno stanje i pravila.
+' ==============================================================================
+package "Domenski sloj" {
+
+  ' Vozilo, vlasnik, serviser i autoservis su drugi agregati, pa se
+  ' referenciraju samo identifikatorom, a ne objektom. ObavljeniRad, Ponuda i
+  ' Ocjena su dijelovi agregata i prikazani su kompozicijom, a ne atributima.
+  class ServisniZahtjev <<Entity>> <<AggregateRoot>> {
+    -id: Long
+    -voziloId: Long
+    -vlasnikId: Long
+    -autoservisId: Long
+    -serviserId: Long [0..1]
+    -vrsta: VrstaServisa
+    -termin: DateTime
+    -status: StatusZahtjeva
+    -konacniTrosak: Decimal [0..1]
+    -zatrazenoU: DateTime
+    +potvrdi(): void
+    +dodijeli(serviserId: Long): void
+    +zaprimiVozilo(): void
+    +zapocni(): void
+    +dodajRad(rad: ObavljeniRad): void
+    +ponudi(opis: String, trosak: Decimal): void
+    +odluciOPonudi(prihvaceno: Boolean): void
+    +zavrsi(konacniTrosak: Decimal): void
+    +otkazi(): void
+    +ocijeni(ocjena: Ocjena): void
+    +ukupnoMinuta(): Integer
+  }
+
+  class ObavljeniRad <<Entity>> {
+    -id: Long
+    -opis: String
+    -ugradeniDio: String [0..1]
+    -utrosenoMinuta: Integer
+    -napomena: String [0..1]
+  }
+
+  class Ponuda <<Entity>> {
+    -id: Long
+    -opis: String
+    -procijenjeniTrosak: Decimal
+    -odluka: OdlukaPonude
+    +prihvati(): void
+    +odbij(): void
+  }
+
+  class Ocjena <<ValueObject>> {
+    -vrijednost: Integer {readOnly}
+    -komentar: String [0..1] {readOnly}
+  }
+
+  enum StatusZahtjeva {
+    ZATRAZEN
+    POTVRDEN
+    ZAPRIMLJEN
+    U_TIJEKU
+    CEKA_ODOBRENJE
+    ZAVRSEN
+    OTKAZAN
+  }
+
+  enum VrstaServisa {
+    REDOVNI_SERVIS
+    ZAMJENA_GUMA
+    POPRAVAK_KOCNICA
+    DIJAGNOSTIKA
+  }
+
+  enum OdlukaPonude {
+    NA_CEKANJU
+    PRIHVACENA
+    ODBIJENA
+  }
+
+  interface ZahtjevRepozitorij <<Repository>> {
+    +findById(id: Long): ServisniZahtjev
+    +findByVlasnik(vlasnikId: Long): List<ServisniZahtjev>
+    +findByServiser(serviserId: Long): List<ServisniZahtjev>
+    +findByAutoservis(autoservisId: Long): List<ServisniZahtjev>
+    +save(zahtjev: ServisniZahtjev): void
+  }
+
+}
+
+' ==============================================================================
+' Veze i višestrukosti
+' ==============================================================================
+
+' Radovi, ponude i ocjena imaju smisla samo uz zahtjev: životni ciklus im je
+' vezan uz zahtjev (kompozicija).
+ServisniZahtjev "1" *-- "0..*" ObavljeniRad : sadrži ►
+ServisniZahtjev "1" *-- "0..*" Ponuda : sadrži ►
+ServisniZahtjev "1" *-- "0..1" Ocjena : sadrži ►
+
+ServisniZahtjev ..> StatusZahtjeva
+ServisniZahtjev ..> VrstaServisa
+Ponuda ..> OdlukaPonude
+
+' Servis ovisi o sučeljima (repozitorij, obavijesti), a ne o konkretnoj
+' implementaciji (Django ORM, vanjski e-mail servis).
+ZahtjevServis ..> ServisniZahtjev : stvara / mijenja ►
+ZahtjevServis ..> ZahtjevRepozitorij : učitava / sprema ►
+ZahtjevServis ..> ObavijestPort : obavještava vlasnika ►
+ZahtjevRepozitorij ..> ServisniZahtjev : vraća / sprema ►
+
+' ==============================================================================
+' Ograničenja
+' ==============================================================================
+
+note right of ServisniZahtjev
+  Novi zahtjev nastaje sa statusom ZATRAZEN
+  i vremenom podnošenja; vozilo mora pripadati
+  vlasniku (inače ValidationException).
+
+  Dopušteni prijelazi stanja:
+  - potvrdi()        : ZATRAZEN   -> POTVRDEN
+  - zaprimiVozilo()  : POTVRDEN   -> ZAPRIMLJEN
+  - zapocni()        : ZAPRIMLJEN -> U_TIJEKU
+  - ponudi()         : U_TIJEKU   -> CEKA_ODOBRENJE
+  - odluciOPonudi()  : CEKA_ODOBRENJE -> U_TIJEKU
+  - zavrsi(trosak)   : U_TIJEKU   -> ZAVRSEN
+  - otkazi()         : bilo koje nezavršno -> OTKAZAN
+  ZAVRSEN i OTKAZAN su završna stanja.
+
+  dodajRad() samo u stanju U_TIJEKU;
+  ocijeni() samo u stanju ZAVRSEN i najviše jednom.
+  Status se smije mijenjati samo ovim metodama
+  radi očuvanja integriteta podataka.
+  Nedopušteni prijelaz se odbija pogreškom.
+end note
+
+note right of Ponuda
+  Najviše jedna ponuda smije biti
+  NA_CEKANJU u isto vrijeme.
+  procijenjeniTrosak > 0;
+  odluka je konačna (prihvati/odbij
+  samo iz NA_CEKANJU).
+end note
+
+note bottom of Ocjena
+  Nepromjenjiva. Invarijanta:
+  vrijednost u [1, 5];
+  inače ValidationException.
+end note
+
+note bottom of ZahtjevServis
+  Provjera dopuštenja je u aplikacijskom sloju:
+  - vlasnik: zatraziServis, odluciOPonudi, ocijeni, potvrda
+  - serviser (samo dodijeljeni zahtjevi): evidentirajRad,
+    izradiPonudu, zavrsi, promijeniStatus
+  - voditelj (samo vlastiti autoservis): dodijeliServisera,
+    promijeniTermin, promijeniStatus
+  Nakon svake promjene statusa vlasnik dobiva
+  obavijest putem ObavijestPort (vanjski e-mail servis).
+end note
+
+@enduml

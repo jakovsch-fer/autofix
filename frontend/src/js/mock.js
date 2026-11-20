@@ -7,10 +7,10 @@ function pocetniPodaci() {
     cijena: 29,
     pretplata: false,
     korisnici: [
-      { id: 1, ime: "Ivan Vlasnik", email: "ivan@example.com", uloga: "vlasnik", aktivan: true },
-      { id: 2, ime: "Marko Serviser", email: "marko@example.com", uloga: "serviser", autoservis: "AutoPlus", specijalizacija: "Kočnice i podvozje", aktivan: true },
-      { id: 3, ime: "Petra Serviser", email: "petra@example.com", uloga: "serviser", autoservis: "AutoPlus", specijalizacija: "Dijagnostika", aktivan: true },
-      { id: 4, ime: "Ana Voditelj", email: "ana@example.com", uloga: "voditelj", autoservis: "AutoPlus", aktivan: true },
+      { id: 1, ime: "Ivan Vlasnik", email: "vlasnik@example.com", uloga: "vlasnik", aktivan: true },
+      { id: 2, ime: "Marko Serviser", email: "serviser@example.com", uloga: "serviser", autoservis: "AutoPlus", specijalizacija: "Kočnice i podvozje", aktivan: true },
+      { id: 3, ime: "Petra Serviser", email: "serviser2@example.com", uloga: "serviser", autoservis: "AutoPlus", specijalizacija: "Dijagnostika", aktivan: true },
+      { id: 4, ime: "Ana Voditelj", email: "voditelj@example.com", uloga: "voditelj", autoservis: "AutoPlus", aktivan: true },
     ],
     vozila: [
       { id: 10, vlasnikId: 1, oznaka: "ZG1234AB", model: "VW Golf", godina: 2015, km: 182000 },
@@ -57,10 +57,32 @@ function spremiDb(db) {
   localStorage.setItem(KLJUC, JSON.stringify(db));
 }
 
+function prijaviMock(id, novi=false) {
+  // if (novi) {
+  //   const k = { id: db.sljedeci++, ime: "Novi Korisnik", email: "novi" + db.sljedeci + "@example.com", uloga: null, aktivan: true };
+  //   db.korisnici.push(k);
+  //   spremiDb(db);
+  //   localStorage.setItem(KLJUC_KORISNIK, String(k.id));
+  //   return mockOsoba(k);
+  // }
+  // const k = db.korisnici.find((x) => x.id === tijelo.id);
+  // if (!k) throw greska(404, "Korisnik ne postoji");
+  // if (!k.aktivan) throw greska(403, "Račun je deaktiviran");
+  localStorage.setItem(KLJUC_KORISNIK, id);
+}
+
+function odjaviMock() {
+  localStorage.removeItem(KLJUC_KORISNIK);
+}
+
+function mockId() {
+  return localStorage.getItem(KLJUC_KORISNIK);
+}
+
 function resetirajMock() {
   localStorage.removeItem(KLJUC);
   localStorage.removeItem(KLJUC_KORISNIK);
-  location.href = "index.html";
+  location.href = location.origin;
 }
 
 function greska(status, poruka) {
@@ -98,8 +120,8 @@ const MOCK_STATUSI = ["zatrazeno", "potvrdeno", "zaprimljeno", "u_tijeku", "zavr
 async function mock(metoda, putanja, tijelo) {
   await new Promise((r) => setTimeout(r, 40));
   const db = ucitajDb();
-  const idKorisnika = Number(localStorage.getItem(KLJUC_KORISNIK));
-  const ja = db.korisnici.find((k) => k.id === idKorisnika);
+  const idKorisnika = mockId();
+  const ja = db.korisnici.find((k) => k.email === idKorisnika);
   tijelo = tijelo || {};
   let m = null;
   const ruta = (met, re) => {
@@ -116,35 +138,26 @@ async function mock(metoda, putanja, tijelo) {
     return z;
   };
 
-  if (ruta("POST", /^\/mock-login$/)) {
-    if (tijelo.novi) {
-      const k = { id: db.sljedeci++, ime: "Novi Korisnik", email: "novi" + db.sljedeci + "@example.com", uloga: null, aktivan: true };
-      db.korisnici.push(k);
-      spremiDb(db);
-      localStorage.setItem(KLJUC_KORISNIK, String(k.id));
-      return mockOsoba(k);
-    }
-    const k = db.korisnici.find((x) => x.id === tijelo.id);
-    if (!k) throw greska(400, "Korisnik ne postoji");
-    if (!k.aktivan) throw greska(403, "Račun je deaktiviran");
-    localStorage.setItem(KLJUC_KORISNIK, String(k.id));
-    return mockOsoba(k);
-  }
-  if (ruta("POST", /^\/logout$/)) {
-    localStorage.removeItem(KLJUC_KORISNIK);
-    return null;
-  }
-  if (!ja) throw greska(401, "Niste prijavljeni");
-
-  if (ruta("GET", /^\/me$/)) return mockOsoba(ja);
-  if (ruta("POST", /^\/registracija$/)) {
-    if (!tijelo.ime || !tijelo.uloga) throw greska(400, "Ime i uloga su obavezni");
-    ja.ime = tijelo.ime;
-    ja.uloga = tijelo.uloga;
-    ja.autoservis = tijelo.autoservis || null;
+  if (ruta("POST", /^\/auth\/register$/)) {
+    if (!tijelo.ime || !tijelo.uloga || !tijelo.email) throw greska(400, "Nedostaju obavezna polja");
+    const x = db.korisnici.find((x) => x.email === tijelo.email);
+    if (x) throw greska(403, "Korisnik već postoji");
+    const k = {
+      id: db.sljedeci++,
+      ime: tijelo.ime, email: tijelo.email, uloga: tijelo.uloga, aktivan: true,
+      autoservis: tijelo.autoservis || null, specijalizacija: tijelo.specijalizacija || null,
+    };
+    db.korisnici.push(k);
     spremiDb(db);
-    return mockOsoba(ja);
+    return k;
   }
+  if (!idKorisnika) throw greska(401, "Mock korisnik nije prijavljen");
+  if (ruta("GET", /^\/users\/me$/)) {
+    if (!ja) throw greska(404, "Korisnik nije pronađen");
+    if (!ja.aktivan) throw greska(403, "Korisnik je deaktiviran");
+    return ja
+  }
+  if (!ja || !ja.aktivan) throw greska(403, "Nemate pravo na ovu radnju");
 
   if (ruta("GET", /^\/vozila$/)) {
     treba("vlasnik");
