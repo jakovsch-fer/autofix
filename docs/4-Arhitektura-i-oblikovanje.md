@@ -81,12 +81,13 @@ Započnite crtanjem granice oko predloženog sustava. Unutar nje prepoznajte dij
 
 ### 4.3.1 ER dijagram i model podataka
 
-**Cilj:** Prikazati važne pohranjene entitete, njihove identifikatore i veze te dovoljno atributa za razumijevanje podataka aplikacije. ER dijagram odvojen je od reprezentativnog UML dijagrama razreda u nastavku.
+**Primjer-Autofix:** Korisnik putem svog korisničkog računa postavlja automobil i pronalazi servis. Korisnik može postaviti više vozila i svako vozilo se zasebno moze servisirati. Aplikacija pohranjuje vozilo i daje autoservisu da odabere jednog radnika koji radi na vozilu.
 
-**ER dijagram:** [Ugradite čitljiv dijagram projekta.]  
-**Izvor dijagrama:** [Poveznica na njegov izvor.]  
+**ER dijagram:** ![ER dijagram podataka sustava Autofix](./assets/diagrams/4-2-Autofix-data-ERD.svg)
+
+**Izvor dijagrama:** [izvor](./puml/4-2-Autofix-data-ERD.puml)  
 **Implementacija:** [Navedite gdje je odgovarajući model podataka definiran u projektu.]
-
+<!--
 <details>
 <summary><strong>Jedna prijava poplave i povezani podaci</strong></summary>
 
@@ -101,7 +102,7 @@ Započnite crtanjem granice oko predloženog sustava. Unutar nje prepoznajte dij
 **Analiza primjera:** `R-104` ima jednog autora i jednu kategoriju; Ana i kategorija *Poplava* mogu biti povezane s više prijava. Dijagram prikazuje veze bez prepisivanja svih stupaca baze podataka ili pisanja drugog tabličnog opisa za svaki entitet. Ako aplikacija prihvaća i **anonimne** prijave, tu mogućnost prikažite u vezi s entitetom `Citizen`. Ako su kategorije fiksne vrijednosti, a ne pohranjeni zapisi, nemojte izmišljati tablicu kategorija. Završni ER dijagram usporedite s modelom trajne pohrane i objasnite samo razlike važne za razumijevanje projekta.
 
 </details>
-
+-->
 ### 4.3.2 Reprezentativni UML dijagram razreda
 
 **Cilj:** Prije implementacije reprezentativnog dijela sustava modelirati i prikazati razrede ili sučelja potrebna za dodjelu odgovornosti, operacija i veza. Oblikovanje ažurirajte kada se te odluke promijene.
@@ -109,7 +110,7 @@ Započnite crtanjem granice oko predloženog sustava. Unutar nje prepoznajte dij
 **Dijagram razreda:** [Ugradite čitljiv UML dijagram razreda za reprezentativni dio oblikovanja.]  
 **PlantUML izvor:** [Poveznica na odgovarajuću `.puml` datoteku.]  
 **Referenca na kod pri završnom pregledu:** [Poveznica na odgovarajuću implementaciju.]
-
+<!--
 <details>
 <summary><strong>Oblikovanje odgovornosti prijave i dopuštenih promjena</strong></summary>
 
@@ -124,7 +125,7 @@ Započnite crtanjem granice oko predloženog sustava. Unutar nje prepoznajte dij
 **Analiza primjera:** `DisasterReport` sadrži dopuštena pravila promjene stanja pa tijek rada ne može prešutno odobriti već odbijenu prijavu. `ReportWorkflow` koordinira operaciju bez preuzimanja pravila prijelaza stanja same prijave; `ReportRepository` definira potrebne operacije pohrane. Kompozicija `Location` i odabrani tipovi prikazuju veze korisne za oblikovanje. Dijagram namjerno izostavlja stupce baze podataka i nepovezane razrede: ER model objašnjava pohranjene podatke, dok ovaj dijagram dodjeljuje programske odgovornosti i operacije. Ti su razredi odluka oblikovanja, a ne obavezni slojevi za svaki tim. Završnu implementaciju usporedite s početnim oblikovanjem i ažurirajte dijagram tamo gdje su se odluke promijenile; generiranje dijagrama iz koda tek na kraju ne može zamijeniti ovo početno modeliranje.
 
 </details>
-
+-->
 ## 4.4 Ponašanje tijekom izvođenja
 
 **Cilj:** Objasniti jednu važnu interakciju među dijelovima koji se izvode i životni ciklus jednog smislenog objekta. Odaberite primjere koji otkrivaju odluke ili neuspješne putove umjesto izrade dijagrama za svaku CRUD radnju.

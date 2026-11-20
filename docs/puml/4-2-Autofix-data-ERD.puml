@@ -1,0 +1,97 @@
+' ==============================================================================
+' 4-2-Autofix-data-ERD.puml
+'
+' Svrha:    Prikazuje trajne entitete sustava AutoFix (autoservis, radnik,
+'           klijent, automobil, voditelj te asocijativnu tablicu vozilo_radnik),
+'           njihove ključeve, atribute i kardinalnosti.
+' Izvor:    db/AutoFixERD.pgerd (PostgreSQL shema "public")
+  Ai:       Dijagram je izradio autor ai pomogao u translaciji er dijagrama 
+' Praćenje: Entiteti, atributi i veze trebaju ostati usklađeni sa shemom baze;
+'           pri promjeni sheme ažurirati model.
+'
+' Diagram level: Logical data model
+' Diagram type:  Entity-Relationship Diagram (ERD), crow's foot
+' Version:       1.0
+' ==============================================================================
+
+@startuml
+title Sustav AutoFix – logički podatkovni model
+left to right direction
+
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam ArrowColor #212529
+
+skinparam entity {
+    BackgroundColor #E7F1FF
+    BorderColor #0D6EFD
+    FontColor #212529
+}
+
+' ==============================================================================
+' Autoservis i radnici
+' ==============================================================================
+
+entity "autoservis" as Autoservis {
+    * id : bigint <<PK>>
+    --
+    * ime : varchar(100)
+}
+
+entity "radnici" as Radnici {
+    * id : bigint <<PK>>
+    --
+    id_autoservis : bigint <<FK>>
+    * ime : varchar(100)
+    * prezime : varchar(100)
+    * email : varchar(255) <<UNIQUE>>
+}
+
+' ==============================================================================
+' Klijenti i automobili
+' ==============================================================================
+
+entity "klijent" as Klijent {
+    * id : bigint <<PK>>
+    --
+    * ime : varchar(100)
+    * prezime : varchar(100)
+    * email : varchar(255) <<UNIQUE>>
+}
+
+entity "automobili" as Automobili {
+    * id_auto : bigint <<PK>>
+    --
+    id_klijent : bigint <<FK>>
+}
+
+' vozilo_radnik je asocijativna tablica između automobila i radnika:
+' jedan automobil može obrađivati više radnika, a jedan radnik više automobila.
+entity "vozilo_radnik" as VoziloRadnik {
+    * id_vozilo : bigint <<PK, FK>>
+    * id_radnik : bigint <<PK, FK>>
+}
+
+' ==============================================================================
+' Voditelj (bez veza prema ostalim tablicama)
+' ==============================================================================
+
+entity "voditelj" as Voditelj {
+    * id : bigint <<PK>>
+    --
+    * ime : varchar(100)
+    * prezime : varchar(100)
+    * email : varchar(255) <<UNIQUE>>
+}
+
+' ==============================================================================
+' Veze između entiteta
+' (FK stupci id_autoservis i id_klijent su NULL-abilni, stoga |o)
+' ==============================================================================
+
+Autoservis |o--o{ Radnici : zapošljava ►
+Klijent |o--o{ Automobili : posjeduje ►
+
+Automobili ||--o{ VoziloRadnik : obrađuje se ►
+Radnici ||--o{ VoziloRadnik : radi na ►
+@enduml
