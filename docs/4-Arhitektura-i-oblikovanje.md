@@ -1,46 +1,24 @@
 # 4. Arhitektura i oblikovanje
 
-**Cilj:** Definirati arhitekturni stil, dekompoziciju programa na podsustave i module, organizaciju podataka te dinamičko ponašanje tijekom izvođenja. Arhitektura predstavlja temelj za implementaciju i ažurira se pri svakoj važnijoj promjeni projektnih odluka.
-
 | Arhitekturni pogled | Ključno inženjersko pitanje | Primijenjeni model ili dijagram |
 | :--- | :--- | :--- |
-| **Strategija rješenja** | Koji stil i temeljne odluke određuju program? | Tablica odluka (odjeljak 4.1) |
+| **Strategija rješenja** | Koji stil i temeljne odluke određuju program? | Tablica arhitekturnih odluka |
 | **Struktura podsustava** | Koji su glavni dijelovi i kako komuniciraju? | Dijagram komponenata |
-| **Model podataka** | Kako su strukturirani trajni podaci programa? | Relacijski ER dijagram |
-| **Struktura koda** | Kako su dodijeljene odgovornosti i ključne klase? | Reprezentativni dijagram razreda |
-| **Dinamičko ponašanje** | Kako moduli surađuju pri obradi ključnih transakcija? | sekvencijski dijagram |
+| **Model podataka** | Kako su strukturirani trajni podatci programa? | Relacijski (ER) dijagram |
+| **Struktura koda** | Kako su dodijeljene odgovornosti i ključni razredi? | Reprezentativni dijagram razreda |
+| **Dinamičko ponašanje** | Kako moduli surađuju pri obradi ključnih transakcija? | Sekvencijski dijagram |
 | **Stanja sustava** | Kako ključni domenski objekt mijenja svoja stanja? | Dijagram stanja |
 | **Fizički razmještaj** | Na kojim se izvršnim čvorovima program izvodi? | Dijagram razmještaja (poglavlje 6) |
 
----
-
-Za svaki UML dijagram čuvajte čitljivu sliku i PlantUML izvor, kako je opisano na stranici [Home](./Home.md). U dovršenoj stranici koristite vlastite projektne odluke i modele.
-
 ## 4.1 Ključne arhitekturne odluke
 
-**Cilj:** Objasniti nekoliko arhitekturnih odluka koje najviše utječu na rješenje i navesti njihove projektno specifične razloge.
-
 | Odluka | Razmatrana alternativa | Projektno specifično obrazloženje i kompromis |
 | --- | --- | --- |
-| Klijent u pregledniku i jedan API | Više poslužiteljskih domena  | Klijent u pregledniku korisnicima olakšava pregled sadržaja te na jednostavan način povezuje servise i korisnike |
-|Relacijska pohrana podataka|Dokumentno orjentirana pohrana podataka|Pohrana podataka u vanjskoj bazi podataka omogućuje lakši pristup adminu stranice za izmjenu samih podataka i olakšava prikaz veza između korisnika i servisa|
+| Razdvojen klijentski i poslužiteljski podsustav (frontend i backend) | Usko vezano posluživanje web-sadržaja i upravljanje podatcima | Odvajanje odgovornosti omogućuje istovremeni razvoj pomoću zasebnih programskih jezika i razvojnih okvira prilagođenim iskustvu tima, kao i jednostavnije ispitivanje tj. izvođenje uz nadopunjavanje nepostojeće funkcionalnosti. Nezavisnost dijelova ograničena je isključivo komunikacijskim sučeljem (REST API) koje se također može samostalno modelirati (npr. OpenAPI specifikacijom). Nije odlučeno spadaju li usko vezana korisnička sučelja (npr. A-04, administrator) u odgovornost klijentskog dijela, jer razvojni okviri mogu smanjiti potrebu za ponovnim razvojem istog. |
+| Aplikacijska logika i korisničko sučelje klijentskog dijela izvodi se u web-pregledniku korisnika | Aplikacijska logika izvodi se na posebno prilagođenom web-poslužitelju | Jednostavno posluživanje cijelog klijentskog dijela korisnicima (po mogućnosti raspodijeljeno i predmemorirano) bez potrebe za prilagođenim okruženjem za postavljanje niti razvojem poslužiteljskog modula klijentskog dijela. Također omogućuje predmemoriranje samih podataka aplikacije za prikaz ili ograničene funkcionalnosti u slučaju ispada mreže ili poslužiteljskog dijela. Moguće sigurnosne mane zbog nedostatka podrške za npr. upravljanje sjednicama (koja zbog prethodne odluke nije u odgovornosti poslužiteljskog dijela). |
+| Objedinjena (monolitna) izvedba poslužiteljskog dijela | Raspodijeljeni poslužiteljski dio (mikroservisi) | Jednostavniji razvoj i međusobna komunikacija gradivnih komponenti (za različite domenske funkcionalnosti), a odvajanje odgovornosti je omogućeno objektnim oblikovanjem (razredima, modulima). Neke funkcionalnosti su također već pokrivene vanjskim uslugama treće strane i stoga odvojene, kao i sama baza podataka koja i dalje može biti raspodijeljeni sustav. Objedinjena izvedba može postati ograničenje za skaliranje (podnošenje opterećenja) što utječe na ispunjavanje nefunkcijskih zahtjeva. |
+| Relacijska pohrana podataka | Dokumentno orijentirana pohrana | Iskustvo s relacijskim modeliranjem i SQL izvedbama baza podataka, kao i podrška ugrađena u korištene razvojne okvire tj. objektna reprezentacija postojećeg modela (ORM) i automatske migracije pri promjenama. Domenska potreba za modeliranjem i pohranom više vrsta relacija umjesto pretežito stablastih/hijerarhijskih, s dobro definiranim (unaprijed pozantim i stalnim) atributima entiteta. |
 
-Objasnite glavne arhitekturne odluke bez ponavljanja popisa tehnologija. Ako važna odluka ima ADR, dovoljno je u tablici navesti njegov ID.
-<!--
-<details>
-<summary><strong>Primjer arhitekturnih odluka i kompromisa</strong></summary>
-
-**Primjer — CrisisMap:**
-
-| Odluka | Razmatrana alternativa | Projektno specifično obrazloženje i kompromis |
-| --- | --- | --- |
-| Klijent u pregledniku i jedan poslužiteljski API | Više zasebno postavljenih poslužiteljskih usluga | Klijent prikazuje kartu, dok poslužiteljski sustav provjerava i pohranjuje prijave. Jedan poslužiteljski sustav upravljiv je za ovaj opseg; njegov kvar može privremeno prekinuti rad s prijavama. Obrazloženje je u ADR-01. |
-| Relacijska pohrana prijava | Dokumentno orijentirana pohrana | Prijave imaju prepoznatljive veze s korisnicima i lokacijama. Relacijska shema te veze čini eksplicitnima, ali zahtijeva migracije kada se shema promijeni. |
-
-**Analiza primjera:** Obje odluke navode razlog vezan uz aplikaciju za prijavljivanje kriznih događaja i priznaju kompromis. Odluka o poslužiteljskom sustavu upućuje na ADR-01 umjesto ponavljanja cijele usporedbe. Moduli unutar jedne aplikacije koja se postavlja kao cjelina nisu zasebne mikrousluge. U vlastitoj tablici navedite alternative koje je tim doista razmatrao.
-
-</details>
--->
 ## 4.2 Gradivni blokovi i UML dijagram komponenata
 
 **Cilj:** Prikazati logičku podjelu programa na komponente, njihova sučelja i vanjske integracije. Dijagram komponenata prikazuje logičku organizaciju, dok dijagram razmještaja prikazuje fizičko izvođenje. Ovaj prikaz ažurirajte kako sustav poprima konačan oblik.
@@ -78,57 +56,26 @@ Započnite crtanjem granice oko predloženog sustava. Unutar nje prepoznajte dij
 
 ## 4.3 Model podataka i oblikovanje razreda
 
-**Cilj:** Objasniti važne informacije koje aplikacija pohranjuje i jedno reprezentativno područje oblikovanja na razini razreda. Model podataka i UML dijagram razreda odgovaraju na različita pitanja; jedno ne zamjenjuje drugo.
-
 ### 4.3.1 ER dijagram i model podataka
 
-**Primjer-Autofix:** Korisnik putem svog korisničkog računa postavlja automobil i pronalazi servis. Korisnik može postaviti više vozila i svako vozilo se zasebno moze servisirati. Aplikacija pohranjuje vozilo i daje autoservisu da odabere jednog radnika koji radi na vozilu.
+![ER dijagram podataka sustava Autofix](assets/diagrams/4-2-Autofix-data-ERD.svg)
 
-**ER dijagram:** 
-![ER dijagram podataka sustava Autofix](./assets/diagrams/4-2-Autofix-data-ERD.svg)
+**Slika 4.2. ER dijagram podataka sustava Autofix**
 
-**Izvor dijagrama:** [izvor](./puml/4-2-Autofix-data-ERD.puml)  
-**Implementacija:** Implementacija je na [izvoru](../db/AutoFixERD.pgerd)
-<!--
-<details>
-<summary><strong>Jedna prijava poplave i povezani podaci</strong></summary>
+**Opis:** Korisnik putem svog korisničkog računa dodaje automobil i pronalazi servis. Korisnik može dodati više vozila i svako vozilo se zasebno moze servisirati. Aplikacija pohranjuje vozilo i daje voditelju izbor jednog radnika koji radi na svakom vozilu.
 
-**Primjer — CrisisMap:** Ana putem svojeg korisničkog računa podnosi prijavu poplave `R-104`. Odabire lokaciju na karti i označava razinu ozbiljnosti kao visoku. Građanin može podnijeti više prijava; svaka prijava pripada jednoj kategoriji kriznog događaja, primjerice *Poplava*. Aplikacija pohranjuje prijavu i njezine koordinate. Kartografske pločice dolaze od vanjskog pružatelja i nisu entiteti u modelu podataka aplikacije.
+**Izvor:** [PlantUML](puml/4-2-Autofix-data-ERD.puml), [ERDPlus](../db/AutoFixERD.pgerd)
 
-![ER dijagram podataka sustava CrisisMap](./assets/diagrams/4-2-crisismap-data-ERD.svg)
-
-**Slika 4.2. ER dijagram podataka sustava CrisisMap**
-
-**PlantUML izvor:** [izvor](./puml/4-2-crisismap-data-ERD.puml)
-
-**Analiza primjera:** `R-104` ima jednog autora i jednu kategoriju; Ana i kategorija *Poplava* mogu biti povezane s više prijava. Dijagram prikazuje veze bez prepisivanja svih stupaca baze podataka ili pisanja drugog tabličnog opisa za svaki entitet. Ako aplikacija prihvaća i **anonimne** prijave, tu mogućnost prikažite u vezi s entitetom `Citizen`. Ako su kategorije fiksne vrijednosti, a ne pohranjeni zapisi, nemojte izmišljati tablicu kategorija. Završni ER dijagram usporedite s modelom trajne pohrane i objasnite samo razlike važne za razumijevanje projekta.
-
-</details>
--->
 ### 4.3.2 Reprezentativni UML dijagram razreda
 
-**Cilj:** Prije implementacije reprezentativnog dijela sustava modelirati i prikazati razrede ili sučelja potrebna za dodjelu odgovornosti, operacija i veza. Oblikovanje ažurirajte kada se te odluke promijene.
+![Dijagram razreda za zatraženi servis](assets/diagrams/4-3-Autofix-domain-CD.svg)
 
-**Dijagram razreda:** 
-![Dijagram razreda za zatraženi servis](./assets/diagrams/4-3-Autofix-domain-CD.svg)
-**PlantUML izvor:** [izvor](./puml/4-3-Autofix-domain-CD.puml)  
+**Slika 4.3. Dijagram razreda za zatraženi servis**
+
+**Izvor:** [PlantUML](./puml/4-3-Autofix-domain-CD.puml)
+
 **Referenca na kod pri završnom pregledu:** [Poveznica na odgovarajuću implementaciju.]
-<!--
-<details>
-<summary><strong>Oblikovanje odgovornosti prijave i dopuštenih promjena</strong></summary>
 
-**Primjer — CrisisMap:** Prijava sadrži pravila za promjenu vlastitog statusa. Razred tijeka rada koordinira podnošenje i pregled, dok sučelje repozitorija opisuje potrebne operacije trajne pohrane. Dijagram predlaže te odgovornosti prije implementacije.
-
-![Dijagram razreda za obradu prijava kriznih događaja](./assets/diagrams/4-3-crisismap-domain-CD.svg)
-
-**Slika 4.3. Dijagram razreda za obradu prijava kriznih događaja**
-
-**PlantUML izvor:** [izvor](./puml/4-3-crisismap-domain-CD.puml)
-
-**Analiza primjera:** `DisasterReport` sadrži dopuštena pravila promjene stanja pa tijek rada ne može prešutno odobriti već odbijenu prijavu. `ReportWorkflow` koordinira operaciju bez preuzimanja pravila prijelaza stanja same prijave; `ReportRepository` definira potrebne operacije pohrane. Kompozicija `Location` i odabrani tipovi prikazuju veze korisne za oblikovanje. Dijagram namjerno izostavlja stupce baze podataka i nepovezane razrede: ER model objašnjava pohranjene podatke, dok ovaj dijagram dodjeljuje programske odgovornosti i operacije. Ti su razredi odluka oblikovanja, a ne obavezni slojevi za svaki tim. Završnu implementaciju usporedite s početnim oblikovanjem i ažurirajte dijagram tamo gdje su se odluke promijenile; generiranje dijagrama iz koda tek na kraju ne može zamijeniti ovo početno modeliranje.
-
-</details>
--->
 ## 4.4 Ponašanje tijekom izvođenja
 
 **Cilj:** Objasniti jednu važnu interakciju među dijelovima koji se izvode i životni ciklus jednog smislenog objekta. Odaberite primjere koji otkrivaju odluke ili neuspješne putove umjesto izrade dijagrama za svaku CRUD radnju.
@@ -292,8 +239,3 @@ Obrasci poput injektiranja ovisnosti (engl. Dependency Injection) ili repozitori
 **Analiza primjera:** Prvi tehnički rizik prihvaća realistično ograničenje projekta kolegija; domenski se rizik odnosi na način na koji čitatelj tumači prijavu. Zabilježite ograničenje i realan odgovor koji pripadaju vašem projektu. Neostvarena obavezna funkcionalnost nije tehnički dug nego nedovršen opseg.
 
 </details>
-
----
-
-
->**Završna provjera:** Usporedite dijagrame komponenata, podataka, razreda, sekvencijski dijagram i dijagram stanja s implementiranim kodom, ponašanjem aplikacije i stvarnim razmještajem. Ažurirajte zastarjele opise oblikovanja i objasnite svaku važnu razliku koja ostaje; poveznice na odgovarajući kod ili ispitivanja korisne su kada odgovaraju na konkretno pitanje.
