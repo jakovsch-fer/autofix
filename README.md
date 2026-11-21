@@ -17,7 +17,7 @@ Web platforma za upravljanje servisiranjem vozila koja povezuje vlasnike vozila,
 - Praćenje tijeka servisa i evidentiranje radova
 - Praćenje servisne povijesti vozila
 
-Za potpuni opseg, zahtjeve, oblikovanje i dokaze ispitivanja pogledajte [projektnu dokumentaciju](docs/Home.md).
+Za potpuni opseg, zahtjeve, oblikovanje i dokaze ispitivanja pogledajte [projektnu dokumentaciju](docs/0-Home.md).
 
 <a id="deployment"></a>
 ## Postavljanje (engl. deployment)
@@ -81,7 +81,7 @@ python -m http.server -d dist -b localhost 8000
 
 ## Doprinos projektu
 
-Pogledajte [projektnu dokumentaciju](docs/Home.md#organizacija-projekta-i-razvojni-proces).
+Pogledajte [projektnu dokumentaciju](docs/0-Home.md#organizacija-projekta-i-razvojni-proces).
 
 <a id="license"></a>
 ## Licenca
@@ -97,7 +97,7 @@ Kod trećih strana, skupovi podataka, slike, ikone i drugi sadržaji zadržavaju
 
 Ovaj projekt slijedi FER-ova [pravila o primjerenoj uporabi umjetne inteligencije](https://www.fer.unizg.hr/_download/repository/Policy%20on%20the%20appropriate%20use%20of%20artificial%20intelligence%20at%20the%20faculty%20of%20electrical%20engineering%20and%20computing%5B1%5D.pdf).
 
-**Izjava:** Korišteni su alati umjetne inteligencije. Za detaljan opseg pogledajte [projektnu dokumentaciju](docs/Home.md#izjava-o-uporabi-umjetne-inteligencije).
+**Izjava:** Korišteni su alati umjetne inteligencije. Za detaljan opseg pogledajte [projektnu dokumentaciju](docs/0-Home.md#izjava-o-uporabi-umjetne-inteligencije).
 
 <a id="code-of-conduct-and-support"></a>
 ## Kodeks ponašanja i podrška [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
