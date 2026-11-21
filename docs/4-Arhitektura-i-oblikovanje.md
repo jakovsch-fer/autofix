@@ -4,7 +4,7 @@
 | :--- | :--- | :--- |
 | **Strategija rješenja** | Koji stil i temeljne odluke određuju program? | Tablica arhitekturnih odluka |
 | **Struktura podsustava** | Koji su glavni dijelovi i kako komuniciraju? | Dijagram komponenata |
-| **Model podataka** | Kako su strukturirani trajni podatci programa? | Relacijski (ER) dijagram |
+| **Model podataka** | Kako su strukturirani trajni podatci programa? | ER dijagram |
 | **Struktura koda** | Kako su dodijeljene odgovornosti i ključni razredi? | Reprezentativni dijagram razreda |
 | **Dinamičko ponašanje** | Kako moduli surađuju pri obradi ključnih transakcija? | Sekvencijski dijagram |
 | **Stanja sustava** | Kako ključni domenski objekt mijenja svoja stanja? | Dijagram stanja |
@@ -58,9 +58,9 @@ Započnite crtanjem granice oko predloženog sustava. Unutar nje prepoznajte dij
 
 ### 4.3.1 ER dijagram i model podataka
 
-![ER dijagram podataka sustava Autofix](assets/diagrams/4-2-Autofix-data-ERD.svg)
+![ER dijagram](assets/diagrams/4-2-Autofix-data-ERD.svg)
 
-**Slika 4.2. ER dijagram podataka sustava Autofix**
+**Slika 4.2. ER dijagram platforme Autofix**
 
 **Opis:** Korisnik putem svog korisničkog računa dodaje automobil i pronalazi servis. Korisnik može dodati više vozila i svako vozilo se zasebno moze servisirati. Aplikacija pohranjuje vozilo i daje voditelju izbor jednog radnika koji radi na svakom vozilu.
 
@@ -72,7 +72,7 @@ Započnite crtanjem granice oko predloženog sustava. Unutar nje prepoznajte dij
 
 **Slika 4.3. Dijagram razreda za zatraženi servis**
 
-**Izvor:** [PlantUML](./puml/4-3-Autofix-domain-CD.puml)
+**Izvor:** [PlantUML](puml/4-3-Autofix-domain-CD.puml)
 
 **Referenca na kod pri završnom pregledu:** [Poveznica na odgovarajuću implementaciju.]
 

@@ -12,8 +12,8 @@ Web platforma za upravljanje servisiranjem vozila koja povezuje vlasnike vozila,
 
 ### Ključne funkcionalnosti
 
-- Dodavanje i naručivanje vozila na servis
-- Raspoređivanje i dodjela servisa
+- Dodavanje vozila i naručivanje na servis
+- Raspoređivanje narudžbi i dodjela serviseru
 - Praćenje tijeka servisa i evidentiranje radova
 - Praćenje servisne povijesti vozila
 
@@ -48,12 +48,13 @@ python -m http.server -d dist -b localhost 8000
 
 ## Tehnologije
 
-Navedite nekoliko tehnologija i vanjskih usluga koje bitno određuju kako vaša aplikacija radi. Za svaku navedite njezinu konkretnu ulogu i jedan razlog ili ograničenje važno za projekt. Alat za razvoj ili ispitivanje uključite samo ako je njegova uloga važna za razumijevanje načina na koji je projekt izrađen ili provjeren. Nemojte prepisivati popis ovisnosti (engl. dependencies), statistiku programskih jezika ni popis razvojnih okruženja i komunikacijskih alata. Tablicu provjerite prema stvarnom repozitoriju i pokrenutoj aplikaciji; potrebne verzije i konfiguraciju dokumentirajte u vodiču za instalaciju.
-
 | Tehnologija ili alat | Uloga u projektu | Razlog uporabe |
 | --- | --- | --- |
+| [Django](https://www.djangoproject.com) | Poslužiteljski dio (backend) | Iskustvo tima s programskim jezikom Python, objektna orijentacija i ORM |
+| [Auth0](https://auth0.com/platform/authentication) | Pružatelj identiteta | Sigurna autentifikacija i središnje upravljanje izvorima identiteta (prve ili treće strane) |
+| [Render](https://render.com) | Infrastruktura | Okruženje za postavljanje integrirano s automatizacijom repozitorija (CI/CD) i prema principu infrastruktura-kao-kod. |
 
-<details>
+<!-- <details>
 <summary><strong>Primjer: objašnjenje ključnih tehnoloških odluka</strong></summary>
 
 **Primjer — CrisisMap:**
@@ -66,13 +67,13 @@ Navedite nekoliko tehnologija i vanjskih usluga koje bitno određuju kako vaša 
 
 **Analiza primjera:** Svaki redak opisuje ulogu ili posljedicu konkretne tehnologije u ovoj aplikaciji. Verzije paketa pripadaju datotekama s ovisnostima projekta; verzije izvršnog okruženja i konfiguracija važna za postavljanje pripadaju vodiču za instalaciju. Važne kompromise u oblikovanju (engl. design trade-offs) objasnite na stranici arhitekture u direktoriju `docs/` umjesto da ovdje ponavljate cijeli zapis odluke. Navodite samo usluge koje vaš tim stvarno integrira.
 
-</details>
+</details> -->
 
 <a id="team-members"></a>
 ## Članovi tima
 
 | Član | GitHub profil | Glavna uloga ili doprinos |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | Marko Nujić | @Marko1324354 | Voditelj, modeliranje, dokumentacija |
 | Ivan Borbaš | @IBorbas | Frontend, dokumentacija |
 | Tonko Bogdan | @TB-FER | Backend, modeliranje, dokumentacija |

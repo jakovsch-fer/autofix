@@ -1,35 +1,29 @@
 # A. Pregled aktivnosti grupe
 
-**Cilj:** Prikazati kako je tim organizirao projekt, raspodijelio rad, reagirao na važne probleme i pridonio rezultatu. Zapisi trebaju opisivati ishode, a ne samo navoditi da je sastanak održan ili da se o nekoj temi raspravljalo.
+<!-- **Cilj:** Prikazati kako je tim organizirao projekt, raspodijelio rad, reagirao na važne probleme i pridonio rezultatu. Zapisi trebaju opisivati ishode, a ne samo navoditi da je sastanak održan ili da se o nekoj temi raspravljalo. -->
 
 ## A.1 Evidencija sastanaka
 
-**Cilj:** Voditi kratak zapis projektnih sastanaka i tjedne koordinacije: tko je sudjelovao, što je odlučeno i koja je radnja uslijedila. Raspravu koja nije dovela do odluke zabilježite samo ako je važno pitanje ostalo otvoreno.
 <!--
->Definirati prije prve uporabe:
-`[Inicijali/Kratica] = [Ime i prezime]` (npr. *AK = Ana Kovač; LM = Luka Marić; EP = Ema Petrović; NK = Nika Kralj*).																														
+**Cilj:** Voditi kratak zapis projektnih sastanaka i tjedne koordinacije: tko je sudjelovao, što je odlučeno i koja je radnja uslijedila. Raspravu koja nije dovela do odluke zabilježite samo ako je važno pitanje ostalo otvoreno.
 
-| Datum i sudionici | Glavna tema | Donesena odluka ili zadatak  | Poveznica na zadatak ili  rezultat, ako postoji |
+Definirati prije prve uporabe:
+`[Inicijali/Kratica] = [Ime i prezime]` (npr. *AK = Ana Kovač; LM = Luka Marić; EP = Ema Petrović; NK = Nika Kralj*).
+
+| Datum i sudionici | Glavna tema | Donesena odluka ili zadatak  | Poveznica na zadatak ili rezultat, ako postoji |
 | --- | --- | --- | --- |
-|  |  |  |  |
 
 Za svaki relevantan sastanak ili zapis tjedne koordinacije upišite jedan sažet redak. Dodijeljeni zadatak treba imati odgovornu osobu; za neriješeno pitanje treba navesti tko će ga dalje obraditi. Sam naslov sastanka ne pokazuje što se promijenilo. U ovu evidenciju nemojte kopirati cijeli popis issuea ni prijepis razgovora.
 -->
-<details>
-<summary><strong>Evidencija sastanka Autofix</strong></summary>
-
-**Autofix:**
 
 **Kratice članova tima:** MN = Marko Nujić, JS = Jakov Schramadei, IB = Ivan Borbaš, TB = Tonko Bogdan
 
-| Datum i sudionici | Glavna tema | Odluka, radnja ili otvoreno pitanje | Poveznica na zadatak ili nastali rezultat, ako postoji |
+| Datum i sudionici | Glavna tema | Odluka, zadatak ili otvoreno pitanje | Poveznica na zadatak ili rezultat, ako postoji |
 | --- | --- | --- | --- |
-| 24. 10. 2026.; MN, JS, IB, TB | Podjela uloga u izradi projekta | Inicijalno: MN - baza podataka, JS - backend, IB - frontend, TB - backend | / |
-| 8. 11. 2026.; MN, JS, IB, TB | Diskusija o načinu izrade projekta (izgled stranice, potrebne funkcionalnosti, baza podataka) | Koristi se Django za izradu stranice; dogovoreni su izgled stranice i potrebne tablice za bazu podataka  | / |
+| 24.10.2026. (MN, JS, IB, TB) | Podjela uloga u izradi projekta | Inicijalno: MN - baza podataka, JS - backend, IB - frontend, TB - backend | - |
+| 8.11.2026. (MN, JS, IB, TB) | Rasprava o načinu izrade projekta i planiranje rada (izgled stranice, potrebne funkcionalnosti, baza podataka) | Koristi se Django za izradu poslužiteljskog dijela, dogovoreni su izgled stranice i potrebne tablice za bazu podataka | - |
 
-**Ishod i odgovornost:** Zapisi jasno definiraju tko je odgovoran za koji dio posla i koji je provjerljivi rezultat dogovoren. npr Rečenica „Raspravljali smo o obradi lokacije” prikrila bi je li se itko obvezao na promjenu. Ovi redci navode odluku ili otvorenu radnju, odgovornu osobu i rezultat koji se može pregledati.
-
-</details>
+<!-- **Ishod i odgovornost:** Zapisi jasno definiraju tko je odgovoran za koji dio posla i koji je provjerljivi rezultat dogovoren. npr Rečenica „Raspravljali smo o obradi lokacije” prikrila bi je li se itko obvezao na promjenu. Ovi redci navode odluku ili otvorenu radnju, odgovornu osobu i rezultat koji se može pregledati. -->
 
 ## A.2 Plan rada
 
@@ -59,14 +53,14 @@ Ako koristite tablicu, plan vodite na korisnoj tjednoj razini i ažurirajte ga k
 
 ## A.3 Aktivnosti i doprinosi članova
 
-**Cilj:** Prikazati koji su članovi radili na važnim projektnim aktivnostima i približan trud koji prijavljuju. Uz implementaciju uključite oblikovanje, dokumentaciju, integraciju, ispitivanje i postavljanje.
+<!-- **Cilj:** Prikazati koji su članovi radili na važnim projektnim aktivnostima i približan trud koji prijavljuju. Uz implementaciju uključite oblikovanje, dokumentaciju, integraciju, ispitivanje i postavljanje. -->
 
 | Aktivnost ili rezultat | Član | Prijavljeni sati | Reprezentativni rezultat ili poveznica |
 | --- | --- | --- | --- |
-| Modeliranje baze podataka | MN, TB | 2, 4 | grana - BP-dodaneTablice |
-| Ispunjavanje dokumentacije | MN | 7 | grana - 3.2---verzija-1; UML-update-1; grana - docs-zahtjevi (poglavlje 2.6 Sljedivost zahtjeva) |
-| Ispunjavanje dokumentacije | JS | 9 | grana `docs-projekt` (PR #3), grana `docs-zahtjevi` (PR #9) |
-| Implementacija frontend-a | IB | 5 | Izrada korisničkog sučelja pomoću HTML-a, CSS-a i JavaScripta (PR #12) |
+| Modeliranje baze podataka | MN, TB | 2, 5 | grana `BP-dodaneTablice` |
+| Pisanje dokumentacije | MN | 7 | grane `3.2---verzija-1` i `UML-update-1`, grana `docs-zahtjevi` (2.6 Sljedivost zahtjeva) |
+| Pisanje dokumentacije | JS | 9 | grana `docs-projekt` (PR #3), grana `docs-zahtjevi` (PR #9) |
+| Implementacija frontenda | IB | 6 | Izrada korisničkog sučelja pomoću HTML-a, CSS-a i JavaScripta (PR #12) |
 | OAuth prijava i registracija | JS, IB | 5, 3 | Auth0 autentifikacija, preusmjeravanje, odjava i registracija korisnika (PR #12) |
 
 <!--
@@ -86,37 +80,23 @@ Ako koristite tablicu, plan vodite na korisnoj tjednoj razini i ažurirajte ga k
 
 </details>
 -->
+
 ## A.4 Pregled promjena u repozitoriju
 
-**Cilj:** Prikazati kada su promjene napravljene u repozitoriju i tko ih je napravio, uz napomenu da sam broj zapisa promjena ne mjeri kvalitetu doprinosa.
+<!-- **Cilj:** Prikazati kada su promjene napravljene u repozitoriju i tko ih je napravio, uz napomenu da sam broj zapisa promjena ne mjeri kvalitetu doprinosa. -->
 
-**Prikaz aktivnosti repozitorija:** [Contributors link](https://github.com/jakovsch-fer/autofix/graphs/contributors?selectedMetric=commits); prikaz - last 3 months
+**Prikaz aktivnosti repozitorija:** [Contributors](https://github.com/jakovsch-fer/autofix/graphs/contributors?selectedMetric=commits&all=1)
 
-Graf može pokazati kada su zapisi promjena napravljeni i tko ih je napravio, ali ne prikazuje sav rad na oblikovanju, ispitivanju, integraciji, pregledu ili dokumentaciji. Ako postoji uočljiv nesklad s tablicom aktivnosti, kratko ga objasnite; nemojte iz grafa izvoditi broj sati. Generirani prikaz neka bude vezan uz stvarni repozitorij umjesto da se ručno crta drugi graf.
+<!-- Graf može pokazati kada su zapisi promjena napravljeni i tko ih je napravio, ali ne prikazuje sav rad na oblikovanju, ispitivanju, integraciji, pregledu ili dokumentaciji. Ako postoji uočljiv nesklad s tablicom aktivnosti, kratko ga objasnite; nemojte iz grafa izvoditi broj sati. Generirani prikaz neka bude vezan uz stvarni repozitorij umjesto da se ručno crta drugi graf. -->
 
 ## A.5 Ključni inženjerski izazovi i rješenja
 
-**Cilj:** Dokumentirati stvarne tehničke i organizacijske prepreke s kojima se tim suočio, poduzete korektivne inženjerske korake te konačni ishod. Odaberite konkretne izazove umjesto općenite pohvale timskog rada.
+<!-- **Cilj:** Dokumentirati stvarne tehničke i organizacijske prepreke s kojima se tim suočio, poduzete korektivne inženjerske korake te konačni ishod. Odaberite konkretne izazove umjesto općenite pohvale timskog rada. -->
 
 | Izazov | Poduzeta radnja | Ishod ili preostalo ograničenje |
 | --- | --- | --- |
-| Mali broj članova tima | Fleksibilnije si dodijelili uloge - nije jednoznačno određeno, već imamo neke primarne uloge, a ako negdje treba pomoći, prilagodimo se. | Ograničenje - u slučaju da svi imaju puno posla, a nekome treba pomoći, nemamo opciju prebaciti nekoga |
+| Manji broj članova tima | Fleksibilnija dodjela uloga (Imamo dogovorene primarne uloge, ali nisu strogo određene. Prilagođavamo se zadatcima na čekanju bez obzira na vrstu i preuzimamo ih više istovremeno.) | Ograničenje nepredviđenog preuzimanja posla (Ako su svi članovi zauzeti, a nekome treba pomoć ili privremeno nije dostupan, ne možemo preraspodijeliti posao bez prekida trenutnog.), ograničenje dodjele vremena na popratne korake kontrole kvalitete (npr. pregled/code review) |
 
-<!--
-<details>
-<summary><strong>Rješavanje nesklada formata lokacije</strong></summary>
-
-**Autofix izazovi i riješenja:**
-
-| Izazov | Poduzeta radnja | Ishod ili preostalo ograničenje |
-| --- | --- | --- |
-| Mali broj članova tima | Fleksibilnije si dodijelili uloge - nije jednoznačno određeno, već imamo neke primarne uloge, a ako negdje treba pomoći, prilagodimo se privremenim ulogama | Ograničenje - u slučaju da svi imaju puno posla, a nekome treba pomoći, nemamo opciju privremeno dodijeliti nekome drugu ulogu |
-
-**Problem, odgovor i ishod:** Svaki se dio može provjeriti u projektu. Rečenica poput „imali smo poteškoće s integracijom i riješili ih timskim radom” ne bi čitatelju rekla što nije radilo ni kako je rješenje promijenjeno.
--->
-</details>
-
----
 <!--
 >**Završna provjera:** Sastanci navode smislene ishode i odgovorne osobe; plan odražava namjeravani rad; tablica uloženog rada i generirani prikaz repozitorija odnose na ovaj vidljivi projekt; konkretni izazovi povezani su s radnjama i njihovim rezultatima.
 -->

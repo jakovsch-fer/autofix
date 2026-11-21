@@ -1,18 +1,18 @@
 # 3. Obrasci uporabe
 
-**Cilj:** Prikazati glavne interakcije između aktera aplikacije i sustava. Opišite kako akter ostvaruje cilj i što se događa kada važan korak ne uspije. Interakcije temeljite na odobrenim zahtjevima i ažurirajte ih kako se aplikacija razvija.
+<!-- **Cilj:** Prikazati glavne interakcije između aktera aplikacije i sustava. Opišite kako akter ostvaruje cilj i što se događa kada važan korak ne uspije. Interakcije temeljite na odobrenim zahtjevima i ažurirajte ih kako se aplikacija razvija. -->
 
 ## 3.1 Dijagram obrazaca uporabe
 
-**Cilj:** Prikazati granicu sustava, relevantne aktere i njihove glavne ciljeve u **preglednom UML dijagramu obrazaca uporabe**. Ako je za razumijevanje pojedinog dijela sustava potrebno prikazati više detalja, taj dio izdvojite u dodatni usmjereni dijagram. Dodatni dijagrami trebaju produbiti dio preglednog modela, a ne stvarati nepovezane ili duplicirane prikaze istog sustava.
+<!-- **Cilj:** Prikazati granicu sustava, relevantne aktere i njihove glavne ciljeve u **preglednom UML dijagramu obrazaca uporabe**. Ako je za razumijevanje pojedinog dijela sustava potrebno prikazati više detalja, taj dio izdvojite u dodatni usmjereni dijagram. Dodatni dijagrami trebaju produbiti dio preglednog modela, a ne stvarati nepovezane ili duplicirane prikaze istog sustava. -->
 
-![Dijagram obrazaca uporabe sustava CrisisMap](./assets/diagrams/Autofix-funkcionalnosti.svg)
+![Dijagram obrazaca uporabe](assets/diagrams/Autofix-funkcionalnosti.svg)
 
-**Slika 3.1. Dijagram obrazaca uporabe sustava CrisisMap**
+**Slika 3.1. Dijagram obrazaca uporabe platforme Autofix**
 
-**PlantUML izvor:** [izvor](./puml/Autofix-funkcionalnosti.puml)
-<!--
-**Provjera dijagrama:** Prikažite prepoznate uloge koje **komuniciraju s aplikacijom**, a ne dionike koji s njom nemaju interakciju. Svaki glavni korisnički cilj mora imati pridruženog aktera; uključeni obrazac uporabe može se dosegnuti preko drugog obrasca uporabe bez vlastite izravne veze s akterom. `<<include>>` i `<<extend>>` koristite samo kada odnos odgovara stvarnom ponašanju.
+**Izvor:** [PlantUML](puml/Autofix-funkcionalnosti.puml)
+
+<!-- **Provjera dijagrama:** Prikažite prepoznate uloge koje **komuniciraju s aplikacijom**, a ne dionike koji s njom nemaju interakciju. Svaki glavni korisnički cilj mora imati pridruženog aktera; uključeni obrazac uporabe može se dosegnuti preko drugog obrasca uporabe bez vlastite izravne veze s akterom. `<<include>>` i `<<extend>>` koristite samo kada odnos odgovara stvarnom ponašanju.
 
 <details>
 <summary><strong>Primjer aktera i granica sustava</strong></summary>
@@ -22,7 +22,6 @@
 Dijagram prikazuje **ogledni scenarij** s građaninom, posjetiteljem i koordinatorom pomoći te vanjskim pružateljem identiteta. Pružatelj identiteta sudjeluje u obrascu uporabe „Prijava u sustav” kao sekundarni akter: korisnik pokreće prijavu u aplikaciji, a vanjski sustav provodi autentikaciju. Budući da projekt koristi vanjskog pružatelja identiteta, ta se ovisnost prikazuje i u dijagramu obrazaca uporabe; tehnički detalji integracije pripadaju arhitekturnoj dokumentaciji.
 
 **Odabir aktera i ciljeva:** Granica pokazuje što aplikacija nudi, akteri imaju različite ciljeve, a nijedan akter ni obrazac uporabe ne tvrdi da ova studentska aplikacija angažira hitne službe. Dijagram usporedite s odobrenim funkcijskim zahtjevima i akterima.
-
 
 **Pet pitanja za odabir sadržaja dijagrama** (ne pet dijagrama za predaju):
 
@@ -35,15 +34,14 @@ Dijagram prikazuje **ogledni scenarij** s građaninom, posjetiteljem i koordinat
 | Vanjske integracije | Sudjeluje li drugi sustav u obrascu uporabe kao **sekundarni akter**, primjerice odobreni pružatelj identiteta pri prijavi? |
 
 Vanjski sustav može biti sekundarni akter obrasca uporabe kada sudjeluje u ostvarenju korisničkog cilja; tehničke veze opisuju se u arhitekturi. Nemojte stvarati dodatni obavezni dijagram obrazaca uporabe samo radi popisa integracija. Prenatrpan dijagram podijelite prema povezanim akterima ili ciljevima samo kada time postaje čitljiviji.
--->
-</details>
+</details> -->
 
 ## 3.2 Specifikacije obrazaca uporabe
-<!--
-**Cilj:** Za svaki obrazac uporabe iz dijagrama objasniti cilj aktera, uobičajenu interakciju s aplikacijom i važne alternative. Jednostavne obrasce uporabe opišite kratko; proširite one kod kojih alternative, vanjske ovisnosti ili posljedice zahtijevaju dodatno objašnjenje.
+
+<!-- **Cilj:** Za svaki obrazac uporabe iz dijagrama objasniti cilj aktera, uobičajenu interakciju s aplikacijom i važne alternative. Jednostavne obrasce uporabe opišite kratko; proširite one kod kojih alternative, vanjske ovisnosti ili posljedice zahtijevaju dodatno objašnjenje.
 
 **Za svaki obrazac uporabe koristite jednu okomitu tablicu.** Navedite samo onoliko pojedinosti koliko interakcija zahtijeva; neprimjenjivu alternativu izostavite umjesto da je popunjavate samo radi forme.
--->
+
 ### UC-[ID]: [Naziv usmjeren na cilj]
 
 | Element specifikacije | Opis |
@@ -58,7 +56,7 @@ Vanjski sustav može biti sekundarni akter obrasca uporabe kada sudjeluje u ostv
 <details>
 <summary><strong>Specifikacije: Autofix</strong></summary>
 
-<!-- **Primjer — CrisisMap:**
+**Primjer — CrisisMap:**
 
 **UC-001: Registracija računa.** Ovaj kratki primjer odnosi se na projekt čiji odobreni zadatak uključuje račune s adresom e-pošte i lozinkom.
 
@@ -98,9 +96,7 @@ Ako odobreni zadatak umjesto toga koristi isključivo OAuth prijavu, zamijenite 
 | Rezultat | Prijava ima novi status ako je moderatorska radnja uspješno provedena; inače ostaje nepromijenjena. |
 </details> -->
 
----
-
-UC-001: Prijava u sustav - za korištenje Autofix-a korisnici se moraju uspješno registrirati i ulogirati.
+UC-001: Prijava u sustav - za korištenje platforme korisnici se moraju uspješno autentificirati i registrirati.
 
 | Polje | Opis |
 | --- | --- |
@@ -184,7 +180,7 @@ UC-007: Postavljanje cijene pretplate - s obzirom da je Autofix platforrma koja 
 | Rezultat | Cijena pretplate je promijenjena. |
 <br>
 
-UC-008: Upravljanje korisnicima i njihovim ulogama - Administrator može mijenjati i dodjeljivati uloge svojim korisnicima. 
+UC-008: Upravljanje korisnicima i njihovim ulogama - Administrator može mijenjati i dodjeljivati uloge svojim korisnicima.
 
 | Polje | Opis |
 | --- | --- |
@@ -208,7 +204,7 @@ UC-009: Dobivanje e-pošte o statusu servisa i potvrdi plaćanja - klijent za sv
 | Rezultat | Klijent dobije sve bitne informacije vezane za promjene pojedinih servisa. |
 <br>
 
-UC-010: Plaćanje servisa - klijent moar biti u mogućnosti internetsko platiti servis pomoću vanjske usluge.
+UC-010: Plaćanje servisa - klijent mora biti u mogućnosti internetsko platiti servis pomoću vanjske usluge.
 
 | Polje | Opis |
 | --- | --- |
@@ -219,13 +215,11 @@ UC-010: Plaćanje servisa - klijent moar biti u mogućnosti internetsko platiti 
 | Alternativni ili neuspješni tijekovi, ako postoje | Nemogućnost internetskog plaćanja - u slučaju da klijent nije u mogućnosti platiti preko usluge, može dobiti račun na e-poštu. |
 | Rezultat | Klijent je uspješno platio servis. |
 
-</details>
-
 ## 3.3 Provjera dosljednosti obrazaca uporabe
 
 **Cilj:** Provjeriti međusobnu usklađenost obrazaca uporabe, aktera, zahtjeva i ispitnih slučajeva. Cjelovito mapiranje održava se isključivo u **[matrici sljedivosti zahtjeva](2-Analiza-zahtjeva.md#26-sljedivost-zahtjeva)**.
-<!--
-| Provjera | Pitanje za tim |
+
+<!-- | Provjera | Pitanje za tim |
 | --- | --- |
 | Zahtjev | Je li svaki važan obrazac uporabe povezan s postojećim zahtjevom? |
 | Akter | Odgovara li akter naveden ovdje prethodno utvrđenoj ulozi i dopuštenoj interakciji? |
@@ -255,8 +249,6 @@ Povezivanje zahtjev → obrazac uporabe → ispitivanje održavajte **samo jedno
 - **Zahtjevi koji ne postoje:** F-022, F-045 i F-067 nisu definirani u oglednim zahtjevima u 2.1.
 - **Obrasci uporabe bez opisa:** UC-003 i UC-004 nemaju opis u 3.2. UC-004 (koordinacija s hitnim službama) ujedno je mogućnost s vanjskim posljedicama koju opseg dopušta samo ako je uključena u odobreni zadatak.
 - **Nesklad aktera:** primjer aktera u odjeljku 2.3 navodi da koordinator pomoći podnosi prijave (F-004), dok UC-002 kao primarnog aktera navodi građanina.
+</details> -->
 
-</details>
-
-**Završna provjera:** Dijagram, specifikacije obrazaca uporabe i matrica sljedivosti međusobno su usklađeni. Svaki važan obrazac uporabe povezan je s postojećim zahtjevom, akteri odgovaraju stvarnim ulogama u aplikaciji, a opisani glavni i alternativni tijekovi odgovaraju ponašanju koje sustav stvarno podržava.
--->
+<!-- **Završna provjera:** Dijagram, specifikacije obrazaca uporabe i matrica sljedivosti međusobno su usklađeni. Svaki važan obrazac uporabe povezan je s postojećim zahtjevom, akteri odgovaraju stvarnim ulogama u aplikaciji, a opisani glavni i alternativni tijekovi odgovaraju ponašanju koje sustav stvarno podržava. -->
