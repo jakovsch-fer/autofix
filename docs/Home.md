@@ -85,10 +85,6 @@ Automatsko postavljanje konačne javne inačice također koristi glavnu granu, a
 
 **Resursi:** [Projekt/Git](https://www.fer.unizg.hr/predmet/proinz/projekt/git), [Git u timskom razvoju](https://moodle.fer.hr/pluginfile.php/141989/mod_resource/content/10/PROINZ_26_Git.pdf)
 
-## Pravila dokumentacije
-
-Dokumentacija se sastoji od međusobno povezanih Markdown stranica. Obavezni UML dijagrami izrađuju se u PlantUML-u, uz PlantUML izvor u dokumentaciji sačuvajte i čitljivu sliku.
-
 ## Akademski integritet, ponašanje i licenciranje
 
 README repozitorija sadrži [izjavu o uporabi umjetne inteligencije](../README.md#ai-usage), [informacije o kodeksu ponašanja i podršci](../README.md#code-of-conduct-and-support) te [informacije o licenci](../README.md#license). Pristupni podatci i druge tajne nikada se ne objavljuju u dokumentaciji niti dijele u običnim porukama.
