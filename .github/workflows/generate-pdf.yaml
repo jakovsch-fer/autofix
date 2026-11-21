@@ -1,0 +1,19 @@
+name: Izvezi PDF dokumentaciju
+on:
+  workflow_dispatch:
+
+jobs:
+  generate-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: baileyjm02/markdown-to-pdf@v1
+        with:
+          input_dir: docs
+          output_dir: pdfs
+          images_dir: docs/assets
+          image_import: assets
+      - uses: actions/upload-artifact@v7
+        with:
+          name: docs
+          path: pdfs
