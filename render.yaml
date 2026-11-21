@@ -1,0 +1,14 @@
+version: "1"
+projects:
+- name: Autofix
+  environments:
+  - name: Production
+    services:
+    - type: web
+      name: g04-3-autofix
+      runtime: static
+      repo: https://github.com/jakovsch-fer/autofix
+      buildCommand: npm run build
+      staticPublishPath: dist
+      autoDeployTrigger: "off"
+      rootDir: frontend/
